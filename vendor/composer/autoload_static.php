@@ -286,7 +286,13 @@ class ComposerStaticInit0bc38a797ea268bf1c460c4f9497276f
     );
 
     public static $classMap = array (
+        'CreateCustomMetaTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_24_141916_create_custom_meta_table.php',
+        'CreateDiveMasterTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_27_123836_create_dive_master_table.php',
+        'CreateDivingCourseTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_27_131502_create_diving_course_table.php',
+        'CreateDivingPositionTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_27_123943_create_diving_position_table.php',
         'CreateDivingShopTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_22_020619_create_diving_shop_table.php',
+        'CreateGalleryCategoryTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_27_134109_create_gallery_category_table.php',
+        'CreateGalleryPhotoTable' => __DIR__ . '/../..' . '/database/migrations/2016_05_27_134123_create_gallery_photo_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',

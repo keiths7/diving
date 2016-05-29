@@ -14,41 +14,56 @@ return array(
     'model' => 'App\CustomMeta',
 
     'edit_fields' => array(
-        'key' => array(
-            'title' => 'key',
+        'desc' => array(
+            'title' => 'desc',
             'type' => 'text'
         ),
-        'val' => array(
-            'title' => 'value',
+        'value' => array(
+            'title' => 'Image (200 x 150)',
+            'type' => 'image',
+            'naming' => 'random',
+            'location' => public_path().'/uploads/originals/',
+            'size_limit' => 2,
+            'sizes' => array(
+                array(1423, 441, 'crop', public_path() . '/uploads/resize/', 100),
+            )
+        ),
+        'type' => array(
+            'title' => 'type',
             'type' => 'text'
         ),
-        'attr' => array(
-            'title' => 'attr',
+        'position' => array(
+            'title' => 'position',
             'type' => 'text'
+        ),
+        'sort',
+        'is_active' => array(
+            'title' => 'is_active',
+            'type' => 'bool'
         ),
     ),
 
     'columns' => array(
         'id',
-        'key',
-        'val',
-        'attr'
+        'desc',
+        'format_value' => array(
+            'title' => 'value'
+            ),
+        'type',
+        'position',
+        'sort',
+        'is_active'
     ),
 
     'sort' => array(
         'field' => 'id',
-        'direction' => 'desc',
+        'direction' => 'asc',
     ),
 
     'filters' => array(
         'id',
-        'key' => array(
-            'title' => 'key',
-        ),
-        'val' => array(
-            'title' => 'val',
-            'type' => 'text' .
-                '',
+        'desc' => array(
+            'title' => 'desc',
         ),
     ),
 );
