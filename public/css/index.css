@@ -1,0 +1,240 @@
+/*logo*/
+.menu .logo .side{
+  width:86px;
+}
+#diving .light.following.bar {
+    padding: 0.6em 0em;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #DDDDDD;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.04);
+    z-index: 99;
+}
+#diving .light.following.bar .light{
+    display: none;
+}
+#diving .light.following.bar .black{
+    display: block;
+}
+#diving .following.bar .light{
+    display: block;
+}
+#diving .following.bar .black{
+    display: none;
+}
+#diving .following.bar {
+    position: fixed;
+    top: 0px;
+    z-index: 900;
+    left: 0%;
+    padding: 1.2em 0em;
+    width: 100%;
+    box-shadow: 0px 0px 0px 0px transparent;
+    border-bottom: 1px solid transparent;
+    transition: padding 0.5s ease,
+   background 0.5s ease,
+   box-shadow 0.5s ease,
+   border 0.5s ease;
+}
+#diving .first-sec:after {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background-size: cover;
+    opacity: 0.45;
+}
+#diving header .right.menu{
+    cursor: pointer;
+}
+#diving .first-sec {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 0em;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0px;
+    border-bottom: none;
+    background-color: #000000;
+    background-position: 50% 50%;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+#diving .first-sec:after {
+    /*background-image: url("http://www.semantic-ui.cn/images/backgrounds/12.jpg");*/
+}
+#diving .first-sec, #diving .first-sec:after {
+    -ms-transition: background 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s,
+ opacity 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s;
+    -moz-transition: background 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s,
+ opacity 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s;
+    -webkit-transition: background 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s,
+ opacity 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s;
+    transition: background 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s,
+ opacity 6s cubic-bezier(0.680, -0.550, 0.265, 1.4) 0s;
+}
+#diving .first-sec{
+
+}
+#diving .first-sec-bg{
+    height: 490px;
+}
+#diving .first-sec-bg img{
+    width:100%;
+    height: 526px;
+}
+#diving .search-bar{
+   /*visibility: hidden!important;*/
+}
+#diving .search-bar .grid{
+  margin-bottom:10px!important;
+}
+#diving .search-bar .column{
+  padding: 0!important;
+  border-left:none!important;
+}
+
+#diving .search-bar .column input{
+  -webkit-border-radius:0!important;
+  border-radius: 0!important;
+  border-left:none!important;
+}
+#diving .search-bar .column .search{
+  -webkit-border-radius:0!important;
+  border-radius: 0!important;
+  height: 37px!important;
+  min-height: 37px!important;
+}
+#diving .search-bar .column.to input{
+  -webkit-border-radius:0!important;
+  border-radius: 0!important;
+  border-left:1px solid rgba(34,36,38,.15)!important;
+}
+#diving .search-bar .from-to-arrow.column{
+   width:24px!important;
+    border-left:none!important;
+    border-top:1px solid rgba(34,36,38,.15)!important;
+   line-height:34px;
+   text-align:center;
+   background-color: #fff;
+   color:rgba(0,0,0,.48);
+   height:37px;
+}
+#diving .search-bar .search-btn.column button{
+    border-top-left-radius: 0!important;
+    border-bottom-left-radius: 0!important;
+    border-bottom: 1px solid #00B5AD;
+}
+#diving .second-sec .ui.list{
+    height: 74px;
+    margin-top: 1em;
+}
+#diving .second-sec .ui.header{
+    height: 45px;
+}
+#diving .second-sec .ui.list .item{
+    text-align: left;
+    margin-left: 3.6em;
+}
+
+#diving .grid-sec .ui.container{
+  padding-top: 16px!important;
+}
+.ui.vertical{
+   padding: 2em 0;
+   background-color: #edefed;
+}
+.grid-sec .row .column .ui.container{
+   background-color: #fff;
+   padding: 0;
+   padding-top: 30px;
+   /*border: 1px solid */
+   text-align: center;
+
+}
+.grid-sec .row .column .ui.list{
+   margin-top: 2em;
+}
+#diving  .grid-sec .row .column .ui.list .item{
+   color: #67bce1;
+   margin-top: .5em;
+   cursor: pointer;
+}
+#diving  .grid-sec .row .column .ui.list .item:hover{
+   color: #1A1AA6;
+}
+.grid-sec .row .column .ui.container .image {
+      padding: 0;
+      margin-top: 3em;
+}
+.grid-sec .row .column .ui.container  img{
+      max-width: 100%!important;
+      width: 100%!important;
+      min-width:100%!important;
+      vertical-align: bottom;
+}
+.see-more-button button{
+    border-color: #fff!important;
+}
+#diving .third-sec .cards,#diving .sixth-sec .cards{
+   -webkit-justify-content:center!important;
+   justify-content:center!important;
+   -webkit-box-align:center!important;
+   box-align:center!important;
+    /*max-width:600px!important;  */
+}
+
+#diving .search-the-world .grid .ui.image{
+    height: 260px;
+    width: 100%;
+}
+#diving .search-the-world .grid .ui.image img{
+   width: 100%;
+   height: 100%;
+}
+#diving .grid .dimmer,#diving .card .dimmer{
+    background-color: rgba(0,0,0,.25)!important;
+    z-index: 90!important;
+}
+#diving .grid .dimmer .ui.header,#diving .card .dimmer .ui.header{
+    color:#fff!important;
+}
+#diving .fourth-sec .grid .column{
+  padding: 8px!important;
+}
+#diving .fourth-sec .grid .row{
+  padding-top: 0px!important;
+  padding-bottom: 0px!important;
+}
+#diving .fifth-sec .grid .column{
+  text-align: center!important;
+}
+#diving .fifth-sec .grid .column p{
+  text-align: center!important;
+}
+#diving .fifth-sec .ui.container {
+    margin-bottom: 26px
+}
+#diving .sixth-sec .column {
+    text-align: left!important;
+}
+#diving .sixth-sec .cards>.card {
+    margin: .5em!important;
+    border-radius: 0!important;
+    border:none!important;
+    box-shadow: none!important;
+    background-color: transparent!important;
+}
+#diving .sixth-sec .cards>.card .image {
+    border-top-left-radius:0!important;
+    border-top-right-radius:0!important;
+    border-bottom-left-radius:0!important;
+    border-bottom-right-radius:0!important;
+    border:none!important;
+    background-color: transparent!important;
+}
+#diving .sixth-sec .ui.container{
+  margin-top: 20px;
+}
