@@ -1,8 +1,8 @@
 <?php
 
 return array(
-	'title' => 'users',
-	'single' => 'user',
+	'title' => '用户',
+	'single' => '用户',
 	'model' => 'App\User',
 	'edit_fields' => array(
         'id',

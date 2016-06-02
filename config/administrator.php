@@ -67,7 +67,10 @@ return array(
 	 */
 	'menu' => array(
 		'custom_meta',
-		'users',
+		'用户' => array(
+			'users'
+		),
+		'diving_course',
 		'Settings' => array(
 			'settings.site'
 		),
@@ -106,7 +109,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'home_page' => 'settings.site',
+	'home_page' => 'custom_meta',
 
 	/**
 	 * The route to which the user will be taken when they click the "back to site" button
