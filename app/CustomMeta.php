@@ -13,7 +13,7 @@ class CustomMeta extends Model
     public function getFormatValueAttribute()
     {
     	if($this->getAttribute('type') == 'image')
-    		return '<img src="/public/uploads/originals/'.$this->getAttribute('value').'" height="100" />';
+    		return '<img src="/uploads/originals/'.$this->getAttribute('value').'" height="100" />';
     	else
     		return $this->getAttribute('value');
     }
