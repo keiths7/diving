@@ -30,11 +30,13 @@ return array(
         ),
         'type' => array(
             'title' => 'type',
-            'type' => 'text'
+            'type' => 'enum',
+            'options' => array('image', 'text')
         ),
         'position' => array(
             'title' => 'position',
-            'type' => 'text'
+            'type' => 'enum',
+            'options' => ['banner', 'pop', 'dest']
         ),
         'sort',
         'is_active' => array(

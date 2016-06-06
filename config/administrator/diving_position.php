@@ -9,13 +9,14 @@
 return array(
     'title' => '潜点',
     'single' => '潜点',
-    'model' => '',
+    'model' => 'App\DivingPosition',
     'edit_fields' => array(
         'id',
         'name',
     ),
     'columns' => array(
-
+        'id',
+        'name'
     ),
     'sort' => array(
         'field' => 'id',

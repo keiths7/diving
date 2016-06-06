@@ -29,7 +29,8 @@ class CustomMeta extends Model
     		}
 			$result[$value['position']][] = array(
     			'desc' => $value['desc'],
-    			'url' => '/uploads/originals/'.$value['value']
+    			'url' => '/uploads/originals/'.$value['value'],
+                'sort' => $value['sort']
     		);
     	}
     	return $result;

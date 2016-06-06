@@ -18,7 +18,8 @@ class IndexController extends Controller
     	$cm = new CustomMeta();
         $result = $cm->get_index_content();
         // echo Auth::check();
-        return view('index', ['images' => $result]);
+        // print_r($result);
+        return view('index', $result);
     }
 
     public function test(Request $request)

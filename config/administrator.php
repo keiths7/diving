@@ -70,7 +70,11 @@ return array(
 		'用户' => array(
 			'users'
 		),
-		'diving_course',
+		'diving' => array(
+			'diving_shop',
+			'diving_position',
+			'diving_course',
+		),
 		'Settings' => array(
 			'settings.site'
 		),

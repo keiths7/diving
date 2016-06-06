@@ -42,7 +42,13 @@
 
       <div class="first-sec-bg">
         <!-- 头图 img -->
+        @if(isset($banner))
+          @foreach($banner as $ban)
+            <img src="{{ $ban['url'] }}" alt="">
+          @endforeach
+        @else
         <img src="/images/index/top_bg.png" alt="">
+        @endif
       </div>
       <!-- 搜索框 -->
       <div class="search-bar">
@@ -152,12 +158,20 @@
                         <div class="content">
                           <div class="center">
                             <!-- 热门目的地1 地名 其余类似位置 -->
+                            @if(!empty($dest[0]))
+                                <div class="ui header">{{ $dest[0]['desc'] }}</div>
+                            @else
                             <div class="ui header">THAILAND</div>
+                            @endif
                           </div>
                         </div>
                       </div>
                       <!-- 热门目的地1 img -->
+                      @if(!empty($dest[0]))
+                          <img src="{{ $dest[0]['url'] }}">
+                      @else
                       <img src="/images/course/1.png">
+                      @endif
                     </div>
                 </div>
                 <div class="card">
@@ -165,12 +179,20 @@
                       <div class="ui dimmer">
                         <div class="content">
                           <div class="center">
+                            @if(!empty($dest[1]))
+                                <div class="ui header">{{ $dest[1]['desc'] }}</div>
+                            @else
                             <div class="ui header">Malasia</div>
+                            @endif
                           </div>
                         </div>
                       </div>
                       <!-- 热门目的地2 img -->
+                      @if(!empty($dest[1]))
+                          <img src="{{ $dest[1]['url'] }}">
+                      @else
                       <img src="/images/course/1.png">
+                      @endif
                     </div>
                 </div>
                 <div class="card">
@@ -178,12 +200,20 @@
                       <div class="ui dimmer">
                         <div class="content">
                           <div class="center">
+                            @if(!empty($dest[2]))
+                                <div class="ui header">{{ $images['dest'][2]['desc'] }}</div>
+                            @else
                             <div class="ui header">Vietnam</div>
+                            @endif
                           </div>
                         </div>
                       </div>
                       <!-- 热门目的地3 img -->
+                      @if(!empty($dest[2]))
+                          <img src="{{ $dest[2]['url'] }}">
+                      @else
                       <img src="/images/course/1.png">
+                      @endif
                     </div>
                 </div>
             </div>
@@ -206,12 +236,20 @@
                           <div class="content">
                             <div class="center">
                               <!--探索世界1 地名 其余位置类似-->
+                              @if(!empty($pop[0]))
+                                  <div class="ui header">{{ $pop[0]['desc'] }}</div>
+                              @else
                               <div class="ui header">Eygpt</div>
+                              @endif
                             </div>
                           </div>
                       </div>
                       <!--探索世界1 img -->
-                      <img   src="images/course/1.png" ></img>
+                      @if(!empty($pop[0]))
+                        <img   src="{{ $pop[0]['url'] }}" ></img>
+                      @else
+                      <img   src="/images/course/1.png" ></img>
+                      @endif
                     </div>
 
                   </div>
@@ -220,13 +258,21 @@
                       <div class="ui  dimmer ">
                           <div class="content">
                             <div class="center">
+                              @if(!empty($pop[1]))
+                                  <div class="ui header">{{ $pop[1]['desc'] }}</div>
+                              @else
                               <div class="ui header">MARIE DIVING CENTER</div>
+                              @endif
                               <p>Palo Atlo</p>
                             </div>
                           </div>
                       </div>
                       <!--探索世界2 img -->
-                      <img   src="images/course/1.png" ></img>
+                      @if(!empty($pop[1]))
+                        <img   src="{{ $pop[1]['url'] }}" ></img>
+                      @else
+                      <img   src="/images/course/1.png" ></img>
+                      @endif
                     </div>
                   </div>
                 </div>
@@ -236,12 +282,20 @@
                       <div class="ui  dimmer ">
                           <div class="content">
                             <div class="center">
+                              @if(!empty($pop[2]))
+                                  <div class="ui header">{{ $pop[2]['desc'] }}</div>
+                              @else
                               <div class="ui header">Paulau</div>
+                              @endif
                             </div>
                           </div>
                       </div>
                       <!--探索世界3 img -->
-                      <img   src="images/course/1.png" ></img>
+                      @if(!empty($pop[2]))
+                        <img   src="{{ $pop[2]['url'] }}" ></img>
+                      @else
+                      <img   src="/images/course/1.png" ></img>
+                      @endif
                     </div>
                   </div>
                   <div class="four wide column">
@@ -249,12 +303,20 @@
                       <div class="ui  dimmer ">
                           <div class="content">
                             <div class="center">
+                              @if(!empty($pop[2]))
+                                  <div class="ui header">{{ $pop[2]['desc'] }}</div>
+                              @else
                               <div class="ui header">Osaka</div>
+                              @endif
                             </div>
                           </div>
                       </div>
                       <!--探索世界4 img -->
-                      <img   src="images/course/1.png" ></img>
+                      @if(!empty($pop[3]))
+                        <img   src="{{ $pop[3]['url'] }}" ></img>
+                      @else
+                      <img   src="/images/course/1.png" ></img>
+                      @endif
                     </div>
                   </div>
                   <div class="four wide column">
@@ -262,12 +324,20 @@
                       <div class="ui  dimmer ">
                           <div class="content">
                             <div class="center">
+                              @if(!empty($pop[3]))
+                                  <div class="ui header">{{ $pop[3]['desc'] }}</div>
+                              @else
                               <div class="ui header">THAILAND </div>
+                              @endif
                             </div>
                           </div>
                       </div>
                       <!--探索世界5 img -->
-                      <img   src="images/course/1.png" ></img>
+                      @if(!empty($pop[4]))
+                        <img   src="{{ $pop[4]['url'] }}" ></img>
+                      @else
+                      <img   src="/images/course/1.png" ></img>
+                      @endif
                     </div>
                   </div>
                 </div>
@@ -277,12 +347,20 @@
                       <div class="ui  dimmer ">
                           <div class="content">
                             <div class="center">
+                              @if(!empty($pop[4]))
+                                  <div class="ui header">{{ $pop[4]['desc'] }}</div>
+                              @else
                               <div class="ui header">MARIE DIVING CENTER</div>
+                              @endif
                             </div>
                           </div>
                       </div>
                       <!--探索世界6 img -->
-                      <img   src="images/course/1.png" ></img>
+                      @if(!empty($pop[5]))
+                        <img   src="{{ $pop[5]['url'] }}" ></img>
+                      @else
+                      <img   src="/images/course/1.png" ></img>
+                      @endif
                     </div>
                   </div>
                   <div class="eight wide column">
@@ -290,12 +368,20 @@
                       <div class="ui  dimmer ">
                           <div class="content">
                             <div class="center">
+                              @if(!empty($pop[5]))
+                                  <div class="ui header">{{ $pop[5]['desc'] }}</div>
+                              @else
                               <div class="ui header">MARIE DIVING CENTER</div>
+                              @endif
                             </div>
                           </div>
                       </div>
                       <!--探索世界7 img -->
-                      <img   src="images/course/1.png" ></img>
+                      @if(!empty($pop[6]))
+                        <img   src="{{ $pop[6]['url'] }}" ></img>
+                      @else
+                      <img   src="/images/course/1.png" ></img>
+                      @endif
                     </div>
                   </div>
                 </div>
@@ -305,12 +391,20 @@
                       <div class="ui  dimmer ">
                           <div class="content">
                             <div class="center">
+                              @if(!empty($pop[6]))
+                                  <div class="ui header">{{ $pop[6]['desc'] }}</div>
+                              @else
                               <div class="ui header">Eygpt</div>
+                              @endif
                             </div>
                           </div>
                       </div>
                       <!--探索世界8 img -->
-                      <img   src="images/course/1.png" ></img>
+                      @if(!empty($pop[7]))
+                        <img   src="{{ $pop[7]['url'] }}" ></img>
+                      @else
+                      <img   src="/images/course/1.png" ></img>
+                      @endif
                     </div>
                   </div>
                   <div class="four wide column">
@@ -318,12 +412,20 @@
                       <div class="ui  dimmer ">
                           <div class="content">
                             <div class="center">
+                              @if(!empty($pop[7]))
+                                  <div class="ui header">{{ $pop[7]['desc'] }}</div>
+                              @else
                               <div class="ui header">Philippines</div>
+                              @endif
                             </div>
                           </div>
                       </div>
                       <!--探索世界9 img -->
-                      <img   src="images/course/1.png" ></img>
+                      @if(!empty($pop[8]))
+                        <img   src="{{ $pop[8]['url'] }}" ></img>
+                      @else
+                      <img   src="/images/course/1.png" ></img>
+                      @endif
                     </div>
                   </div>
                   <div class="four wide column">
@@ -331,12 +433,20 @@
                       <div class="ui  dimmer ">
                           <div class="content">
                             <div class="center">
+                              @if(!empty($pop[8]))
+                                  <div class="ui header">{{ $pop[8]['desc'] }}</div>
+                              @else
                               <div class="ui header">Spain</div>
+                              @endif
                             </div>
                           </div>
                       </div>
                       <!--探索世界10 img -->
-                      <img   src="images/course/1.png" ></img>
+                      @if(!empty($pop[9]))
+                        <img   src="{{ $pop[9]['url'] }}" ></img>
+                      @else
+                      <img   src="/images/course/1.png" ></img>
+                      @endif
                     </div>
                   </div>
                 </div>
