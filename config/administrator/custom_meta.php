@@ -36,7 +36,7 @@ return array(
         'position' => array(
             'title' => 'position',
             'type' => 'enum',
-            'options' => ['banner', 'pop', 'dest']
+            'options' => ['banner', 'pop', 'dest', 'course']
         ),
         'sort',
         'is_active' => array(

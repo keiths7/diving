@@ -109,7 +109,11 @@
                       </div>
                       <div class="image">
                         <!--课程 img  -->
+                        @if(!empty($course[0]))
+                        <img src="{{ $course[0]['url'] }}" />
+                        @else
                         <img src="/images/course/1.png" />
+                        @endif
                       </div>
                     </div>
                   </div>
@@ -121,7 +125,11 @@
                         <div class="item">PADI Scuba Diver</div>
                       </div>
                       <div class="image">
+                        @if(!empty($course[1]))
+                        <img src="{{ $course[1]['url'] }}" />
+                        @else
                         <img src="/images/course/1.png" />
+                        @endif
                       </div>
                     </div>
                   </div>
@@ -134,7 +142,11 @@
                         <div class="item">Advanced Open Water</div>
                       </div>
                       <div class="image">
+                        @if(!empty($course[2]))
+                        <img src="{{ $course[2]['url'] }}" />
+                        @else
                         <img src="/images/course/1.png" />
+                        @endif
                       </div>
                     </div>
                   </div>
