@@ -201,7 +201,7 @@
                         <div class="content">
                           <div class="center">
                             @if(!empty($dest[2]))
-                                <div class="ui header">{{ $dest['dest'][2]['desc'] }}</div>
+                                <div class="ui header">{{ $dest[2]['desc'] }}</div>
                             @else
                             <div class="ui header">Vietnam</div>
                             @endif
