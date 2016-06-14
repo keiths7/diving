@@ -160,7 +160,7 @@
                         <div class="item">Advanced Open Water</div>
                       </div>
                       <div class="image">
-                        @if(!empty($course[3]))
+                        @if(!empty($course[2]))
                         <img src="{{ $course[2]['url'] }}" />
                         @else
                         <img src="/images/course/1.png" />
