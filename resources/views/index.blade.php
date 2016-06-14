@@ -30,7 +30,7 @@
             </div>
           </div>
           <!-- <a class="view-ui item"><i class="sidebar icon"></i>  </a> -->
-          <div class="right item menu">
+          <div class="right menu">
             <div class="item">Sign Up</div>
             <div class="item">Sign In</div>
           </div>
@@ -39,20 +39,18 @@
     </header>
     <!-- 头图部分 开始 -->
     <section class="first-sec ">
-
-      <div class="first-sec-bg">
-        <!-- 头图 img -->
-        @if(isset($banner))
-          @foreach($banner as $ban)
-            <img src="{{ $ban['url'] }}" alt="">
-          @endforeach
-        @else
-        <img src="/images/index/top_bg.png" alt="">
-        @endif
-      </div>
+      <!-- 头图 img -->
+      @if(isset($banner))
+        @foreach($banner as $ban)
+          <img src="{{ $ban['url'] }}" alt="">
+        @endforeach
+      @else
+      <img src="/images/index/top_bg.jpg" alt="">
+      @endif
       <!-- 搜索框 -->
       <div class="search-bar">
         <div class="ui centered  grid">
+          <div class="ui row computer only">
             <div class="four wide column">
               <div class="ui fluid search selection dropdown">
                 <input type="hidden" name="country">
@@ -67,13 +65,13 @@
                 </div>
               </div>
             </div>
-            <div class="one wide column">
+            <div class="one wide column from">
               <div class="ui fluid input">
                 <input type="text" placeholder="from">
               </div>
             </div>
             <div class=" one wide column  from-to-arrow" style="">
-                <div style="display:inline-block">-></div>
+                <div style="display:inline-block">→</div>
             </div>
             <div class="one wide column to">
               <div class="ui fluid input">
@@ -86,8 +84,28 @@
               </div>
             </div>
             <div class="one wide column search-btn">
-                <button class="ui teal  button">search </button>
+                <button class="ui teal  button">Search </button>
             </div>
+          </div>
+          <div class="ui row mobile only">
+            <div class="ten wide column">
+              <div class="ui fluid search selection dropdown">
+                <input type="hidden" name="country">
+                <i class="dropdown icon"></i>
+                <div class="default text">Select Country</div>
+                <div class="menu">
+                    <div class="item" data-value='sydeny'>悉尼</div>
+                    <div class="item" data-value='boston'>波士顿</div>
+                    <div class="item" data-value='shanghai'>上海</div>
+                    <div class="item" data-value='shanghai'>伦敦</div>
+                    <div class="item" data-value='shanghai'>佛罗里达州</div>
+                </div>
+              </div>
+            </div>
+            <div class="three wide column search-btn">
+                <button class="ui teal  button">Search </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -142,7 +160,7 @@
                         <div class="item">Advanced Open Water</div>
                       </div>
                       <div class="image">
-                        @if(!empty($course[2]))
+                        @if(!empty($course[3]))
                         <img src="{{ $course[2]['url'] }}" />
                         @else
                         <img src="/images/course/1.png" />
@@ -155,7 +173,7 @@
       </div>
     </section>
     <!-- 课程 结束-->
-    <div class=" ui vertical see-more-button">
+    <div class=" ui vertical see-more-button more-course">
       <div class="ui center aligned container "><button class="ui basic button">    See more courses    </button></div>
     </div>
     <!-- 热门目的地开始  -->
@@ -166,7 +184,7 @@
             <div class="ui special cards">
                 <div class="card">
                     <div class="ui  image">
-                      <div class="ui dimmer">
+                      <div class="ui dimmer visible active">
                         <div class="content">
                           <div class="center">
                             <!-- 热门目的地1 地名 其余类似位置 -->
@@ -188,7 +206,7 @@
                 </div>
                 <div class="card">
                     <div class="ui  image">
-                      <div class="ui dimmer">
+                      <div class="ui dimmer visible active">
                         <div class="content">
                           <div class="center">
                             @if(!empty($dest[1]))
@@ -209,13 +227,13 @@
                 </div>
                 <div class="card">
                     <div class="ui image">
-                      <div class="ui dimmer">
+                      <div class="ui dimmer visible active">
                         <div class="content">
                           <div class="center">
                             @if(!empty($dest[2]))
                                 <div class="ui header">{{ $dest[2]['desc'] }}</div>
                             @else
-                            <div class="ui header">Vietnam</div>
+                            <div class="ui header">Malasia</div>
                             @endif
                           </div>
                         </div>
@@ -230,21 +248,21 @@
                 </div>
             </div>
     </section>
-    <div class=" ui vertical see-more-button">
-      <div class="ui center aligned container "><button class="ui basic button">    See more courses    </button></div>
+    <div class=" ui vertical see-more-button more-destination">
+      <div class="ui center aligned container "><button class="ui basic button">    See All Destination     </button></div>
     </div>
       <!-- 热门目的地  结束  -->
       <!--探索世界 开始  -->
     <section class="fourth-sec grid-sec ui vertical search-the-world">
       <div class="ui container">
           <h2 class="ui header center aligned">Most popular Course around the world</h2>
-          <p  style="text-align:center">See where people are diving, all around the world.</p>
+          <p>See where people are diving, all around the world.</p>
           <div class="ui divider hidden"></div>
           <div class="ui centered stackable internally grid">
                 <div class="row">
                   <div class="eight wide  column">
                     <div class="ui image">
-                      <div class="ui  dimmer ">
+                      <div class="ui dimmer visible active ">
                           <div class="content">
                             <div class="center">
                               <!--探索世界1 地名 其余位置类似-->
@@ -267,15 +285,14 @@
                   </div>
                   <div class="four wide column">
                     <div class="ui image">
-                      <div class="ui  dimmer ">
+                      <div class="ui dimmer visible active ">
                           <div class="content">
                             <div class="center">
                               @if(!empty($pop[1]))
                                   <div class="ui header">{{ $pop[1]['desc'] }}</div>
                               @else
-                              <div class="ui header">MARIE DIVING CENTER</div>
+                              <div class="ui header">Eygpt</div>
                               @endif
-                              <p>Palo Atlo</p>
                             </div>
                           </div>
                       </div>
@@ -291,13 +308,13 @@
                 <div class="row">
                   <div class="four wide column">
                     <div class="ui image">
-                      <div class="ui  dimmer ">
+                      <div class="ui dimmer visible active ">
                           <div class="content">
                             <div class="center">
                               @if(!empty($pop[2]))
                                   <div class="ui header">{{ $pop[2]['desc'] }}</div>
                               @else
-                              <div class="ui header">Paulau</div>
+                              <div class="ui header">Eygpt</div>
                               @endif
                             </div>
                           </div>
@@ -312,13 +329,13 @@
                   </div>
                   <div class="four wide column">
                     <div class="ui image">
-                      <div class="ui  dimmer ">
+                      <div class="ui dimmer visible active ">
                           <div class="content">
                             <div class="center">
-                              @if(!empty($pop[2]))
-                                  <div class="ui header">{{ $pop[2]['desc'] }}</div>
+                              @if(!empty($pop[3]))
+                                  <div class="ui header">{{ $pop[3]['desc'] }}</div>
                               @else
-                              <div class="ui header">Osaka</div>
+                              <div class="ui header">Eygpt</div>
                               @endif
                             </div>
                           </div>
@@ -333,13 +350,13 @@
                   </div>
                   <div class="four wide column">
                     <div class="ui image">
-                      <div class="ui  dimmer ">
+                      <div class="ui dimmer visible active ">
                           <div class="content">
                             <div class="center">
-                              @if(!empty($pop[3]))
-                                  <div class="ui header">{{ $pop[3]['desc'] }}</div>
+                              @if(!empty($pop[4]))
+                                  <div class="ui header">{{ $pop[4]['desc'] }}</div>
                               @else
-                              <div class="ui header">THAILAND </div>
+                              <div class="ui header">Eygpt</div>
                               @endif
                             </div>
                           </div>
@@ -356,13 +373,13 @@
                 <div class="row">
                   <div class="four wide column">
                     <div class="ui image">
-                      <div class="ui  dimmer ">
+                      <div class="ui dimmer visible active ">
                           <div class="content">
                             <div class="center">
-                              @if(!empty($pop[4]))
-                                  <div class="ui header">{{ $pop[4]['desc'] }}</div>
+                              @if(!empty($pop[5]))
+                                  <div class="ui header">{{ $pop[5]['desc'] }}</div>
                               @else
-                              <div class="ui header">MARIE DIVING CENTER</div>
+                              <div class="ui header">Eygpt</div>
                               @endif
                             </div>
                           </div>
@@ -377,13 +394,13 @@
                   </div>
                   <div class="eight wide column">
                     <div class="ui image">
-                      <div class="ui  dimmer ">
+                      <div class="ui dimmer visible active ">
                           <div class="content">
                             <div class="center">
-                              @if(!empty($pop[5]))
-                                  <div class="ui header">{{ $pop[5]['desc'] }}</div>
+                              @if(!empty($pop[6]))
+                                  <div class="ui header">{{ $pop[6]['desc'] }}</div>
                               @else
-                              <div class="ui header">MARIE DIVING CENTER</div>
+                              <div class="ui header">Eygpt</div>
                               @endif
                             </div>
                           </div>
@@ -400,11 +417,11 @@
                 <div class="row">
                   <div class="four wide column">
                     <div class="ui image">
-                      <div class="ui  dimmer ">
+                      <div class="ui dimmer visible active ">
                           <div class="content">
                             <div class="center">
-                              @if(!empty($pop[6]))
-                                  <div class="ui header">{{ $pop[6]['desc'] }}</div>
+                              @if(!empty($pop[7]))
+                                  <div class="ui header">{{ $pop[7]['desc'] }}</div>
                               @else
                               <div class="ui header">Eygpt</div>
                               @endif
@@ -421,13 +438,13 @@
                   </div>
                   <div class="four wide column">
                     <div class="ui image">
-                      <div class="ui  dimmer ">
+                      <div class="ui dimmer visible active ">
                           <div class="content">
                             <div class="center">
-                              @if(!empty($pop[7]))
-                                  <div class="ui header">{{ $pop[7]['desc'] }}</div>
+                              @if(!empty($pop[8]))
+                                  <div class="ui header">{{ $pop[8]['desc'] }}</div>
                               @else
-                              <div class="ui header">Philippines</div>
+                              <div class="ui header">Eygpt</div>
                               @endif
                             </div>
                           </div>
@@ -442,13 +459,13 @@
                   </div>
                   <div class="four wide column">
                     <div class="ui image">
-                      <div class="ui  dimmer ">
+                      <div class="ui dimmer visible active ">
                           <div class="content">
                             <div class="center">
-                              @if(!empty($pop[8]))
-                                  <div class="ui header">{{ $pop[8]['desc'] }}</div>
+                              @if(!empty($pop[9]))
+                                  <div class="ui header">{{ $pop[9]['desc'] }}</div>
                               @else
-                              <div class="ui header">Spain</div>
+                              <div class="ui header">Eygpt</div>
                               @endif
                             </div>
                           </div>
@@ -475,7 +492,7 @@
                 <div class="row">
                   <div class="four wide column">
                     <h2 class="ui icon header">
-                      <img class="ui icon image" src="/images/index/how-to-book-1.png">
+                      <img class="ui icon image" src="/images/index/how_to_book_1.png">
                       Find a dive site
                     </h2>
                     <p>Just enter your dates and destination. Then refine your search
@@ -485,7 +502,7 @@
                   </div>
                   <div class="four wide  column">
                     <h2 class="ui icon header">
-                      <img class="ui icon image" src="/images/index/how-to-book-1.png">
+                      <img class="ui icon image" src="/images/index/how_to_book_2.png">
                       Book right now
                     </h2>
                     <p>Just enter your dates and destination. Then refine your search
@@ -495,8 +512,8 @@
                   </div>
                   <div class="four wide column">
                     <h2 class="ui icon header">
-                      <img class="ui icon image" src="/images/index/how-to-book-1.png">
-                      Get travel-ready 
+                      <img class="ui icon image" src="/images/index/how_to_book_3.png">
+                      Get travel-ready
                     </h2>
                     <p>Just enter your dates and destination. Then refine your search
                         Just enter your dates and destination. Then refine your search
@@ -515,16 +532,18 @@
       <div class="row">
       <div class="three wide column">
         <h4 class="ui inverted header">Dream Scubatrip</h4>
-        <div class="ui inverted divider"></div>
+        <div class="ui inverted bolded divider "></div>
         <div class="ui inverted link list">
           <a class="item" href="https://www.transifex.com/organization/semantic-org/" target="_blank">
             <i class="marker icon"></i>
             Address:BEIJING
           </a>
+          <div class="ui inverted divider"></div>
           <a class="item" href="https://github.com/Semantic-Org/Semantic-UI/issues" target="_blank">
             <i class="phone icon"></i>
             Mobile:+86 18610912179
           </a>
+          <div class="ui inverted divider"></div>
           <a class="item" href="https://gitter.im/Semantic-Org/Semantic-UI" target="_blank">
             <i class="mail outline icon"></i>
             Mail:diving@163.com
@@ -533,20 +552,22 @@
       </div>
       <div class="three wide column">
         <h4 class="ui inverted header">TAG</h4>
-        <div class="ui inverted divider"></div>
-        <div class="ui  tiny labels">
-          <div class="ui label">BIG ANIMAL</div>
-          <div class="ui label">STORE</div>
-          <div class="ui label">WALL</div>
-          <div class="ui label">SHADOW</div>
-          <div class="ui label">FREE DIVING</div>
+        <div class="ui inverted bolded divider"></div>
+        <div class="ui   tiny labels">
+          <div class="ui inverted  label">BIG ANIMAL</div>
+          <div class="ui inverted label">STORE</div>
+          <div class="ui inverted label">HO</div>
+          <div class="ui inverted label">WALL</div>
+          <div class="ui inverted label">GO DIVING</div>
+          <div class="ui inverted label">SHADOW</div>
+          <div class="ui inverted label">FREEEEE</div>
         </div>
       </div>
       <div class="three wide column">
         <h4 class="ui inverted header">GALLERY</h4>
-        <div class="ui inverted divider"></div>
+        <div class="ui inverted bolded divider"></div>
         <!-- 底部的图片 -->
-        <div class="ui link three stackable cards">
+        <div class="ui link three cards">
             <div class="card">
               <div class="image"><img src="/images/index/gallery.png" alt=""></div>
             </div>
@@ -566,7 +587,7 @@
       </div>
       <div class="three wide  column">
         <h4 class="ui inverted header">CONTACT US</h4>
-        <div class="ui inverted divider"></div>
+        <div class="ui inverted bolded divider"></div>
         <form class="ui form" >
           <div class=" ui field  input ">
             <input type="text" name="email" placeholder="email">
@@ -574,12 +595,12 @@
           <div class=" ui field  input">
             <input type="text" name="message" placeholder="message">
           </div>
-          <button class="ui tiny teal button" type="submit">SEND</button>
+          <button class="ui mini teal button" type="submit">SEND</button>
         </form>
       </div>
       </div>
     </div>
-    <div class="ui inverted section divider"></div>
+    <div class="ui  hidden  divider"></div>
     <div class="ui two column grid">
       <div class="seven wide left floated column">
           <div class="ui inverted link list">
@@ -594,8 +615,16 @@
     </div>
   </div>
 </section>
-  </div>
+</div>
 <script src="/js/jquery.min.js"></script>
 <script src="/js/semantic.min.js"></script>
 <script src="/js/index.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-78887752-1', 'auto');
+  ga('send', 'pageview');
+</script>
 </body>
