@@ -7,15 +7,16 @@
     <meta name="format-detection" content="telephone=no,email=no">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="full-screen" content="yes">
-    <meta name="description" content="undefined">
+    <meta name="description" content="Book your best diving trip，every diving trip with Dreamdivingtrip,the world’s best diving booking site.Your free personal diving assistant.">
+    <meta name="keywords" content="diving vacation, diving vacations, diving vacation packages, diving vacation package, diving travel package, diving travel packages, diving travel, diving trip package, diving trip packages, diving trip,planning, hotel, hotels, motel, bed and breakfast, inn, guidebook, review, reviews, popular, plan, airfare, cheap, discount, map, maps, golf, ski, articles, attractions, advice, restaurants">
     <link href="/css/semantic.min.css" rel="stylesheet">
     <link href="/css/index.css?v=2" rel="stylesheet">
-    <title>diving</title>
+    <title>Dreamdivingtrip.com: Online Booking for Scuba Diving,Liveaboard and Courses all around the world</title>
 </head>
 <body>
   <div class="full height" id="diving">
     <header class="ui following bar sticky">
-      <div class="ui container">
+      <div class="blurring-bg"></div>
         <div class="ui large secondary  network menu inverted">
           <div class="item">
             <div class="ui logo shape">
@@ -35,7 +36,6 @@
             <div class="item">Sign In</div>
           </div>
         </div>
-      </div>
     </header>
     <!-- 头图部分 开始 -->
     <section class="first-sec ">
@@ -115,9 +115,9 @@
       <div class="ui container">
           <h2 class="ui header center aligned">Most popular Course around the world</h2>
           <div class="ui divider hidden"></div>
-          <div class="ui centered stackable internally grid">
+          <div class="ui centered stackable internally three column grid">
               <div class=" row">
-                  <div class="four wide  column">
+                  <div class=" column">
                     <div class="ui container">
                       <h3 class="ui header">BECOME A PADI DIVIER</h3>
                       <div class="ui bulleted list">
@@ -135,7 +135,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="four wide column">
+                  <div class="column">
                     <div class="ui container">
                       <h3 class="ui header">I’M A PADI DIVER</h3>
                       <div class="ui bulleted list">
@@ -151,7 +151,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="four wide column">
+                  <div class="column">
                     <div class="ui container">
                       <h3 class="ui header">PADI TECHNICAL AND FREEDIVER</h3>
                       <div class="ui bulleted list">
@@ -179,7 +179,7 @@
     <!-- 热门目的地开始  -->
     <section class="third-sec ui vertical ">
       <div class="ui container">
-          <h2 class="ui header center aligned">Popular Destinations</h2>
+          <h2 class="ui header center aligned ">Popular Destinations</h2>
           <div class="ui divider hidden"></div>
             <div class="ui special cards">
                 <div class="card">
@@ -488,9 +488,9 @@
       <div class="ui container">
           <h2 class="ui header center aligned">How to book</h2>
           <div class="ui divider hidden"></div>
-          <div class="ui centered stackable internally grid">
+          <div class="ui centered stackable internally three column grid">
                 <div class="row">
-                  <div class="four wide column">
+                  <div class="column">
                     <h2 class="ui icon header">
                       <img class="ui icon image" src="/images/index/how_to_book_1.png">
                       Find a dive site
@@ -500,7 +500,7 @@
                       Just enter your dates and destination. Then refine your search
                     </p>
                   </div>
-                  <div class="four wide  column">
+                  <div class="column">
                     <h2 class="ui icon header">
                       <img class="ui icon image" src="/images/index/how_to_book_2.png">
                       Book right now
@@ -510,7 +510,7 @@
                       Just enter your dates and destination. Then refine your search
                     </p>
                   </div>
-                  <div class="four wide column">
+                  <div class="column">
                     <h2 class="ui icon header">
                       <img class="ui icon image" src="/images/index/how_to_book_3.png">
                       Get travel-ready
@@ -528,9 +528,9 @@
     <!-- footer 开始 -->
 <section class="sixth-sec ui black inverted vertical footer segment">
   <div class="ui center aligned container">
-    <div class="ui stackable inverted centered grid">
+    <div class="ui stackable inverted centered four column grid">
       <div class="row">
-      <div class="three wide column">
+      <div class="column">
         <h4 class="ui inverted header">Dream Scubatrip</h4>
         <div class="ui inverted bolded divider "></div>
         <div class="ui inverted link list">
@@ -550,7 +550,7 @@
           </a>
         </div>
       </div>
-      <div class="three wide column">
+      <div class="column">
         <h4 class="ui inverted header">TAG</h4>
         <div class="ui inverted bolded divider"></div>
         <div class="ui   tiny labels">
@@ -563,7 +563,7 @@
           <div class="ui inverted label">FREEEEE</div>
         </div>
       </div>
-      <div class="three wide column">
+      <div class="column">
         <h4 class="ui inverted header">GALLERY</h4>
         <div class="ui inverted bolded divider"></div>
         <!-- 底部的图片 -->
@@ -585,7 +585,7 @@
             </div>
         </div>
       </div>
-      <div class="three wide  column">
+      <div class="column">
         <h4 class="ui inverted header">CONTACT US</h4>
         <div class="ui inverted bolded divider"></div>
         <form class="ui form" >
@@ -616,6 +616,18 @@
   </div>
 </section>
 </div>
+<div class="ui basic inverted small modal">
+  <h2 class="ui icon header">
+    <img class="ui icon image" src="/images/index/logo.png">
+  </h2>
+  <div className="content">
+    <img class="ui icon image" src="/images/index/dev_notice.png">
+  </div>
+  <h2 class="ui fb">
+    <a href="https://www.facebook.com/dreamdivingtrip/"><img class="ui icon image" src="/images/index/fb.png"></a>
+    <a href="https://www.instagram.com/dreamdivingtrip/"><img class="ui icon image" src="/images/index/ins.png"></a>
+  </h2>
+</div>
 <script src="/js/jquery.min.js"></script>
 <script src="/js/semantic.min.js"></script>
 <script src="/js/index.js"></script>
@@ -626,5 +638,19 @@
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-78887752-1', 'auto');
   ga('send', 'pageview');
+</script>
+<script type='text/javascript'>
+    (function(m, ei, q, i, a, j, s) {
+        m[a] = m[a] || function() {
+            (m[a].a = m[a].a || []).push(arguments)
+        };
+        j = ei.createElement(q),
+            s = ei.getElementsByTagName(q)[0];
+        j.async = true;
+        j.charset = 'UTF-8';
+        j.src = i + '?v=' + new Date().getUTCDate();
+        s.parentNode.insertBefore(j, s);
+    })(window, document, 'script', '//static.meiqia.com/dist/meiqia.js', '_MEIQIA');
+    _MEIQIA('entId', 17368);
 </script>
 </body>
