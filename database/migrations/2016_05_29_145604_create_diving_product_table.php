@@ -18,7 +18,13 @@ class CreateDivingProductTable extends Migration
             $table->integer('position_id');
             $table->string('type');
             $table->string('name');
+            $table->string('description');
             $table->string('price');
+            $table->string('keyword');
+            $table->string('spec');
+            $table->string('stock');
+            $table->string('sales');
+            $table->string('status');
             $table->timestamp('start_date');
             $table->timestamp('end_date');
             $table->timestamps();

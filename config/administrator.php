@@ -74,6 +74,8 @@ return array(
 			'diving_shop',
 			'diving_position',
 			'diving_course',
+			'source',
+			'diving_product'
 		),
 		'Settings' => array(
 			'settings.site'

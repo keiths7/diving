@@ -44,7 +44,7 @@ class CreateDivingShopTable extends Migration
             $table->string('payment_method');
             $table->string('dive_types');
             $table->string('infrastructure');
-            $table->string('seasonality ');
+            $table->string('seasonality');
             $table->string('documents_required');
             $table->string('currency');
             $table->string('contact_manager');

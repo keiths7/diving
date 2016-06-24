@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\CustomMeta;
+use App\DivingProduct;
 
 use Auth;
 
@@ -20,6 +21,14 @@ class IndexController extends Controller
         // echo Auth::check();
         // print_r($result);
         return view('index', $result);
+    }
+
+    public function product(Request $request, $id)
+    {
+        $product = new DivingProduct();
+        $result = $product->get_product($id);
+        // var_dump($result->shop->name);
+        return view('product', $result);
     }
 
     public function test(Request $request)

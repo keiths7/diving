@@ -8,4 +8,9 @@ class DivingPosition extends Model
 {
     //
     protected $table = 'diving_position';
+
+    public function source()
+    {
+    	return $this->belongsToMany('App\Source', 'position_source', 'pid', 'sid');
+    }
 }

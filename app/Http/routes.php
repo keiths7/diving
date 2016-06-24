@@ -10,7 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::auth();
 
 Route::get('/test', 'IndexController@test');
 
@@ -18,7 +17,11 @@ Route::get('/', 'IndexController@index');
 
 Route::get('/index', 'IndexController@index');
 
+Route::get('/product/{id}', 'IndexController@product');
+
 Route::get('/home', 'HomeController@index');
+
+Route::auth();
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/user/info', 'UserController@get_user_info');
