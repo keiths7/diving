@@ -7,7 +7,12 @@ return array(
 	'edit_fields' => array(
         'id',
         'name',
-        'email'
+        'email',
+        'phone',
+        'gender',
+        'height',
+        'weight',
+        'shoes_size',
     ),
 
     'columns' => array(

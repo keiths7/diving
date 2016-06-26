@@ -91,8 +91,12 @@ return array(
 	'permission'=> function()
 	{
 		// return true;
-		return Auth::check();
-		// return Auth::attempt(['name' => 'lsq'])
+		// return Auth::check();
+		$user = Auth::user();
+		if(Auth::check() && $user && $user->admin == 1) {
+			return true;
+		}
+		return false;
 	},
 
 	/**

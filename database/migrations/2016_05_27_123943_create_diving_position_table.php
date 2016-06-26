@@ -26,6 +26,9 @@ class CreateDivingPositionTable extends Migration
             $table->string('best_dive_period');
             $table->string('description');
             $table->string('what_to_see');
+            $table->string('country');
+            $table->string('province');
+            $table->string('city');
             $table->timestamps();
         });
     }
