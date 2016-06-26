@@ -19,6 +19,9 @@ return array(
             'type' => 'relationship',
             'name_field' => 'name',
         ),
+        'country',
+        'province',
+        'city',
         'location',
         'location_x',
         'location_y',
@@ -51,6 +54,9 @@ return array(
                 return $ret;
             }
         ),
+        'country',
+        'province',
+        'city',
         'location',
         'location_x',
         'location_y',
