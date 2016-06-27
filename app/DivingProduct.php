@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class DivingProduct extends Model
 {
@@ -11,7 +12,7 @@ class DivingProduct extends Model
 
     public function shop()
     {
-    	return $this->hasOne('App\DivingShop','id', 'shop_id');
+    	return $this->belongsTo('App\DivingShop', 'shop_id','id');
     }
 
     public function positions()
@@ -22,7 +23,16 @@ class DivingProduct extends Model
     public function get_product($id)
     {
         $diving_product = DivingProduct::where('id', $id)->first();
-        var_dump($diving_product->shop);
+        // print_r($diving_product->positions);
+         
         return $diving_product;
     }
+
+    // public function __destruct(){
+    //     DB::listen(function($sql) {
+    //             dump($sql);
+    //             // echo $sql->sql;
+    //             // dump($sql->bindings);
+    //         });
+    // }
 }

@@ -12,9 +12,9 @@ return array(
     'model' => 'App\DivingProduct',
     'form_width' => 800,
     'edit_fields' => array(
-        'id',
+        // 'id',
         'shop' => array(
-            'title' => 'shops',
+            'title' => 'shop',
             'type' => 'relationship',
             'name_field' => 'name',
         ),
