@@ -160,7 +160,7 @@
                         <div class="item">Advanced Open Water</div>
                       </div>
                       <div class="image">
-                        @if(!empty($course[1]))
+                        @if(!empty($course[2]))
                         <img src="{{ $course[2]['url'] }}" />
                         @else
                         <img src="/images/course/1.png" />
@@ -255,33 +255,228 @@
       <!--探索世界 开始  -->
     <section class="fourth-sec grid-sec ui vertical search-the-world">
       <div class="ui container">
-          <h2 class="ui header center aligned">See where do people dive all over the world</h2>
+        <h2 class="ui header center aligned">See where do people dive all over the world</h2>
+        <div class="ui divider hidden"></div>
           <div class="ui divider hidden"></div>
-          <div class="ui centered stackable internally three column grid">
+          <div class="ui centered stackable internally grid">
                 <div class="row">
-                  <div class="column">
-                    <h2 class="ui icon header">
-                      <img class="ui icon image" src="/images/index/how_to_book_1.png">
-                      Find a dive site
-                    </h2>
-                    <p>Just enter your dates and destination. Then refine your search and compare choices. On DDT.COM, info about location, products, prices, cancellation & booking policies and reviews by other divers are all in one place!
-                    </p>
+                  <div class="eight wide  column">
+                    <div class="ui image">
+                      <div class="ui dimmer visible active ">
+                          <div class="content">
+                            <div class="center">
+                              <!--探索世界1 地名 其余位置类似-->
+                              @if(!empty($pop[0]))
+                                  <div class="ui header">{{ $pop[0]['desc'] }}</div>
+                              @else
+                              <div class="ui header">Egypt</div>
+                              @endif
+                            </div>
+                          </div>
+                      </div>
+                      <!--探索世界1 img -->
+                      @if(!empty($pop[0]))
+                        <img   src="{{ $pop[0]['url'] }}" ></img>
+                      @else
+                      <img   src="/images/course/1.png" ></img>
+                      @endif
+                    </div>
+
                   </div>
-                  <div class="column">
-                    <h2 class="ui icon header">
-                      <img class="ui icon image" src="/images/index/how_to_book_2.png">
-                      Book right now
-                    </h2>
-                    <p>Easily book online with our best price guarantee and no booking fees. Get email confirmation instantly. Most bookings don`t require any deposit and offer free cancellation. Credit card details are sent directly to dive center through a secure channel.
-                    </p>
+                  <div class="four wide column">
+                    <div class="ui image">
+                      <div class="ui dimmer visible active ">
+                          <div class="content">
+                            <div class="center">
+                              @if(!empty($pop[1]))
+                                  <div class="ui header">{{ $pop[1]['desc'] }}</div>
+                              @else
+                              <div class="ui header">Egypt</div>
+                              @endif
+                            </div>
+                          </div>
+                      </div>
+                      <!--探索世界2 img -->
+                      @if(!empty($pop[1]))
+                        <img   src="{{ $pop[1]['url'] }}" ></img>
+                      @else
+                      <img   src="/images/course/1.png" ></img>
+                      @endif
+                    </div>
                   </div>
-                  <div class="column">
-                    <h2 class="ui icon header">
-                      <img class="ui icon image" src="/images/index/how_to_book_3.png">
-                      Get travel-ready
-                    </h2>
-                    <p>We get in touch with your dive center as soon as you book to verify all the details such as transfer, language of course materials & more! Prior to your arrival we will contact dive center with a friendly reminder. Divebooker.com is here to serve you 24/7!
-                    </p>
+                </div>
+                <div class="row">
+                  <div class="four wide column">
+                    <div class="ui image">
+                      <div class="ui dimmer visible active ">
+                          <div class="content">
+                            <div class="center">
+                              @if(!empty($pop[2]))
+                                  <div class="ui header">{{ $pop[2]['desc'] }}</div>
+                              @else
+                              <div class="ui header">Egypt</div>
+                              @endif
+                            </div>
+                          </div>
+                      </div>
+                      <!--探索世界3 img -->
+                      @if(!empty($pop[2]))
+                        <img   src="{{ $pop[2]['url'] }}" ></img>
+                      @else
+                      <img   src="/images/course/1.png" ></img>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="four wide column">
+                    <div class="ui image">
+                      <div class="ui dimmer visible active ">
+                          <div class="content">
+                            <div class="center">
+                              @if(!empty($pop[3]))
+                                  <div class="ui header">{{ $pop[3]['desc'] }}</div>
+                              @else
+                              <div class="ui header">Egypt</div>
+                              @endif
+                            </div>
+                          </div>
+                      </div>
+                      <!--探索世界4 img -->
+                      @if(!empty($pop[3]))
+                        <img   src="{{ $pop[3]['url'] }}" ></img>
+                      @else
+                      <img   src="/images/course/1.png" ></img>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="four wide column">
+                    <div class="ui image">
+                      <div class="ui dimmer visible active ">
+                          <div class="content">
+                            <div class="center">
+                              @if(!empty($pop[4]))
+                                  <div class="ui header">{{ $pop[4]['desc'] }}</div>
+                              @else
+                              <div class="ui header">Egypt</div>
+                              @endif
+                            </div>
+                          </div>
+                      </div>
+                      <!--探索世界5 img -->
+                      @if(!empty($pop[4]))
+                        <img   src="{{ $pop[4]['url'] }}" ></img>
+                      @else
+                      <img   src="/images/course/1.png" ></img>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="four wide column">
+                    <div class="ui image">
+                      <div class="ui dimmer visible active ">
+                          <div class="content">
+                            <div class="center">
+                              @if(!empty($pop[5]))
+                                  <div class="ui header">{{ $pop[5]['desc'] }}</div>
+                              @else
+                              <div class="ui header">Egypt</div>
+                              @endif
+                            </div>
+                          </div>
+                      </div>
+                      <!--探索世界6 img -->
+                      @if(!empty($pop[5]))
+                        <img   src="{{ $pop[5]['url'] }}" ></img>
+                      @else
+                      <img   src="/images/course/1.png" ></img>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="eight wide column">
+                    <div class="ui image">
+                      <div class="ui dimmer visible active ">
+                          <div class="content">
+                            <div class="center">
+                              @if(!empty($pop[6]))
+                                  <div class="ui header">{{ $pop[6]['desc'] }}</div>
+                              @else
+                              <div class="ui header">Egypt</div>
+                              @endif
+                            </div>
+                          </div>
+                      </div>
+                      <!--探索世界7 img -->
+                      @if(!empty($pop[6]))
+                        <img   src="{{ $pop[6]['url'] }}" ></img>
+                      @else
+                      <img   src="/images/course/1.png" ></img>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="four wide column">
+                    <div class="ui image">
+                      <div class="ui dimmer visible active ">
+                          <div class="content">
+                            <div class="center">
+                              @if(!empty($pop[7]))
+                                  <div class="ui header">{{ $pop[7]['desc'] }}</div>
+                              @else
+                              <div class="ui header">Egypt</div>
+                              @endif
+                            </div>
+                          </div>
+                      </div>
+                      <!--探索世界8 img -->
+                      @if(!empty($pop[7]))
+                        <img   src="{{ $pop[7]['url'] }}" ></img>
+                      @else
+                      <img   src="/images/course/1.png" ></img>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="four wide column">
+                    <div class="ui image">
+                      <div class="ui dimmer visible active ">
+                          <div class="content">
+                            <div class="center">
+                              @if(!empty($pop[8]))
+                                  <div class="ui header">{{ $pop[8]['desc'] }}</div>
+                              @else
+                              <div class="ui header">Egypt</div>
+                              @endif
+                            </div>
+                          </div>
+                      </div>
+                      <!--探索世界9 img -->
+                      @if(!empty($pop[8]))
+                        <img   src="{{ $pop[8]['url'] }}" ></img>
+                      @else
+                      <img   src="/images/course/1.png" ></img>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="four wide column">
+                    <div class="ui image">
+                      <div class="ui dimmer visible active ">
+                          <div class="content">
+                            <div class="center">
+                              @if(!empty($pop[9]))
+                                  <div class="ui header">{{ $pop[9]['desc'] }}</div>
+                              @else
+                              <div class="ui header">Egypt</div>
+                              @endif
+                            </div>
+                          </div>
+                      </div>
+                      <!--探索世界10 img -->
+                      @if(!empty($pop[9]))
+                        <img   src="{{ $pop[9]['url'] }}" ></img>
+                      @else
+                      <img   src="/images/course/1.png" ></img>
+                      @endif
+                    </div>
                   </div>
                 </div>
           </div>
@@ -294,38 +489,32 @@
           <h2 class="ui header center aligned">How to book</h2>
           <div class="ui divider hidden"></div>
           <div class="ui centered stackable internally three column grid">
-                <div class="row">
-                  <div class="column">
-                    <h2 class="ui icon header">
-                      <img class="ui icon image" src="/images/index/how_to_book_1.png">
-                      Find a dive site
-                    </h2>
-                    <p>Just enter your dates and destination. Then refine your search
-                        Just enter your dates and destination. Then refine your search
-                      Just enter your dates and destination. Then refine your search
-                    </p>
-                  </div>
-                  <div class="column">
-                    <h2 class="ui icon header">
-                      <img class="ui icon image" src="/images/index/how_to_book_2.png">
-                      Book right now
-                    </h2>
-                    <p>Just enter your dates and destination. Then refine your search
-                        Just enter your dates and destination. Then refine your search
-                      Just enter your dates and destination. Then refine your search
-                    </p>
-                  </div>
-                  <div class="column">
-                    <h2 class="ui icon header">
-                      <img class="ui icon image" src="/images/index/how_to_book_3.png">
-                      Get travel-ready
-                    </h2>
-                    <p>Just enter your dates and destination. Then refine your search
-                        Just enter your dates and destination. Then refine your search
-                      Just enter your dates and destination. Then refine your search
-                    </p>
-                  </div>
-                </div>
+            <div class="row">
+              <div class="column">
+                <h2 class="ui icon header">
+                  <img class="ui icon image" src="/images/index/how_to_book_1.png">
+                  Find a dive site
+                </h2>
+                <p>Just enter your dates and destination. Then refine your search and compare choices. On DDT.COM, info about location, products, prices, cancellation & booking policies and reviews by other divers are all in one place!
+                </p>
+              </div>
+              <div class="column">
+                <h2 class="ui icon header">
+                  <img class="ui icon image" src="/images/index/how_to_book_2.png">
+                  Book right now
+                </h2>
+                <p>Easily book online with our best price guarantee and no booking fees. Get email confirmation instantly. Most bookings don`t require any deposit and offer free cancellation. Credit card details are sent directly to dive center through a secure channel.
+                </p>
+              </div>
+              <div class="column">
+                <h2 class="ui icon header">
+                  <img class="ui icon image" src="/images/index/how_to_book_3.png">
+                  Get travel-ready
+                </h2>
+                <p>We get in touch with your dive center as soon as you book to verify all the details such as transfer, language of course materials & more! Prior to your arrival we will contact dive center with a friendly reminder. Divebooker.com is here to serve you 24/7!
+                </p>
+              </div>
+            </div>
           </div>
       </div>
     </section>
