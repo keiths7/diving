@@ -5,7 +5,6 @@
 }
 }
 .menu .logo .side{
-  width:104px;
 }
 #diving .following.bar {
     /*display: none;*/
@@ -33,7 +32,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255,255,255,.9)
+  background-color: rgba(255,255,255,.9);
   -webkit-filter:blur(10px);
 }
 
@@ -58,6 +57,10 @@
 #diving .following.bar .black{
     display: none;
 }
+#diving header .right.menu{
+    cursor: pointer;
+    margin-top: -20px;
+}
 /*移动端header*/
 @media only screen and (max-width: 768px){
   #diving .following.bar{
@@ -72,15 +75,16 @@
       margin-top: .4em;
   }
   #diving .following.bar .ui.logo{
-    padding-top: .2em;
+    /*padding-top: .1em;*/
   }
   .menu .logo .side {
-    width: 88px;
+    width: 160px;
   }
   #diving .following.bar .right.menu{
-    margin-top: -2.4em;
+    margin-top: -2.6em;
     padding: 0 .4em;
     font-size: 12px;
+    /*display: none;*/
   }
   #diving .following.bar .right.menu .item{
     margin: 0 4px;
@@ -100,10 +104,6 @@
     content: '';
     background-size: cover;
     opacity: 0.45;
-}
-#diving header .right.menu{
-    cursor: pointer;
-    margin-top: -20px;
 }
 #diving .first-sec {
     position: relative;
@@ -236,8 +236,11 @@
       width: 100%!important;
   }
 }
+#diving .second-sec.grid-sec .ui.container{
+  padding-top: 22px!important;
+}
 #diving .grid-sec .ui.container{
-  padding-top: 16px!important;
+  padding-top: 12px!important;
 }
 .ui.vertical{
    padding: 2em 0;
@@ -283,6 +286,9 @@
 #diving .grid-sec h2.ui.header,#diving .third-sec h2.ui.header{
       color:#4f5154;
 }
+#diving .see-more-button{
+  padding: 1em 0;
+}
 #diving .see-more-button button{
     width:300px;
     background-color: #fff!important;
@@ -299,6 +305,9 @@
    -webkit-box-align:center!important;
    box-align:center!important;
     /*max-width:600px!important;  */
+}
+#diving .third-sec .ui.container>h2,#diving .fourth-sec .ui.container>h2{
+   margin-bottom:22px;
 }
 #diving .third-sec .cards>.card{
    margin: .5em .55em 0;
@@ -324,7 +333,7 @@
 }
 #diving .grid .dimmer .ui.header,#diving .card .dimmer .ui.header{
     color:#fff!important;
-    font-size: 1.4em!important;
+    font-size: 1.6em!important;
 }
 #diving .fourth-sec .grid .column{
   padding: 8px!important;

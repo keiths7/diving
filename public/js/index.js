@@ -65,5 +65,8 @@ $(function(){
 function notice(){
   $('.ui.modal').modal({
     blurring:true
-  }).modal('show')
+  }).modal('show');
+  $('.ui.modal').on('click',function(){
+    $(this).modal('hide');
+  })
 }
