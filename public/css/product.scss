@@ -1,12 +1,13 @@
 @import "common.scss";
 /*logo*/
 body{
-  background-color: #000;
+  background-color: #fff;
+  // min-width: 980px;
 }
 .menu .logo .side{
 }
 #product .following.bar {
-    /*display: none;*/
+    // display: none;
     position: fixed;
     top: 0px;
     z-index: 900;
@@ -89,6 +90,7 @@ body{
 }
 // 头图
 #product .first-sec {
+  // display: none;
     position: relative;
     overflow: hidden;
     padding: 0em;
@@ -97,7 +99,7 @@ body{
     border-bottom: none;
     color: rgba(255, 255, 255, 0.9);
     text-align: center;
-    background-color: #000000;
+    // background-color: #000000;
     background-position: 50% 50%;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -114,17 +116,168 @@ body{
   }
 }
 
-#product .grid-sec{
-  .ui.grid .left.column{
+#product {
+  .grid-sec{
+    margin: 1rem 0;
+    background-color: #edefed;
+  }
+  .ui.grid .p70.column{
     width: 70%;
   }
-  .ui.grid .right.column{
+  .ui.grid .p30.column{
     width: 30%;
   }
-
+  .ui.grid .p50.column{
+    width: 50%;
+  }
+}
+#product .second-sec{
+  // display: none;
+    position: relative;
+    background-color: #fff;
+    .p70.left.column{
+      .ui.header{
+        color: #565a5c;
+        margin:  1.2rem 0 1rem;
+      }
+      .icon{
+        &.marker{
+          font-size: 20px;
+          color: #57CFB4;
+        }
+      }
+      .rating{
+        vertical-align:text-top;
+        margin-left: 6px;
+        margin-bottom: .7rem;
+      }
+    }
+    .p30.right.column{
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+      &>.ui.label{
+        position: absolute;
+        top: -2.2em;
+        left: 0;
+        width: 100%;
+        font-size: 16px;
+        color: #fff;
+        background-color: #3A3F42;
+        border-radius: 0;
+      }
+    }
+}
+#product .third-sec{
+    padding-top: 2rem;
+   .p70.character {
+     p{
+       width: 49%;
+       float:left;
+       &.streched{
+         width: 100%;
+         float: none;
+         clear: left;
+       }
+     }
+   }
+   .p70.description{
+      .content{
+        height: 210px;
+        overflow: hidden;
+        &.expand{
+          height: auto;
+          overflow: visible;
+          &+.more{
+            display: none;
+          }
+        }
+      }
+      .more{
+        i{
+          font-size: 14px;
+          font-weight: bold;
+        }
+        color: #1bbc9b;
+      }
+   }
+   .maps.row{
+      img{
+        width: 100%;
+        display: block;
+      }
+   }
+   .images.row{
+       img{
+         width: 100%;
+         display: block;
+       }
+       .top-side{
+         &>div{
+           width: 100%;
+         }
+       }
+       .bottom-side{
+         font-size: 0;
+         &>div{
+           width: 33.12%;
+           display: inline-block;
+           padding-left: 4px;
+           padding-top: 3px;
+           vertical-align: top;
+           &:first-child{
+             padding-left: 0;
+           }
+           &.more{
+             padding-left: 0;
+             padding-top: 0;
+             margin-left: 4px;
+             margin-top: 3px;
+           }
+         }
+       }
+   }
+   .diving-sites.row{
+     .row .ui.image{
+       aside{
+         position: absolute;
+         top: 60%;
+         left: 0;
+         padding-left:.5rem ;
+         padding-right:1rem ;
+         color: #fff;
+         font-size: 16px;
+         line-height: 32px;
+          background-color:#444742;
+       }
+       p{
+         padding-left: 1em;
+         margin-bottom:-.8rem;
+         margin-top: 1rem;
+         color: #565a5c;
+         span{
+           color:#82888a;
+         }
+       }
+     }
+   }
+   &>.ui.container>.ui.grid>.p30.right{
+     padding: 1.6rem 0 0 0;
+     .ui.form{
+       padding: .5rem 1.2rem 0;
+       border:1px solid #dce0e0;
+       background-color: #fff;
+       &>span{
+         line-height: 3em;
+       }
+       .ui.submit.button{
+         background-color: #1bbc9b;
+       }
+     }
+   }
 }
 
-
-#product .footer-sec{
-  // display: none;
+#product {
+  .first-sec,.second-sec,.footer-sec,.following.bar{
+    // display: none;
+  }
 }
