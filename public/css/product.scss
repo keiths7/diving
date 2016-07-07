@@ -193,6 +193,7 @@ body{
         }
       }
       .more{
+        cursor: pointer;
         i{
           font-size: 14px;
           font-weight: bold;
@@ -207,33 +208,47 @@ body{
       }
    }
    .images.row{
+        .column{
+          font-size: 0;
+        }
        img{
          width: 100%;
          height: 149px;
          display: block;
        }
-       .top-side{
-         &>div{
-           width: 100%;
+       .ui.image{
+         display: none;
+       }
+       .ui.image:first-child{
+         display: inline-block;
+         width: 100%;
+         img{
+           height: auto;
          }
        }
-       .bottom-side{
-         font-size: 0;
-         &>div{
+       .ui.image:nth-child(2){
+           font-size: 0;
            width: 33.12%;
            display: inline-block;
-           padding-left: 4px;
+           padding-left: 0;
            padding-top: 3px;
            vertical-align: top;
-           &:first-child{
-             padding-left: 0;
-           }
-           &.more{
-             padding-left: 0;
-             padding-top: 0;
-             margin-left: 4px;
-             margin-top: 3px;
-           }
+       }
+       .ui.image:nth-child(3){
+         padding-left: 4px;
+         @extend .ui.image:nth-child(2);
+       }
+       .ui.image:nth-child(4){
+         @extend .ui.image:nth-child(2);
+         &.more{
+           padding-left: 0;
+           padding-top: 0;
+           margin-left: 4px;
+           margin-top: 3px;
+         }
+         .ui.header{
+           font-size: 1.4rem;
+           color: #fff;
          }
        }
    }
@@ -262,7 +277,7 @@ body{
      }
    }
    &>.ui.container>.ui.grid>.p30.right{
-     padding: 1.6rem 0 0 0;
+     padding: 2rem 0 0 0;
      .ui.form{
        padding: .5rem 1.2rem 0;
        border:1px solid #dce0e0;
@@ -276,9 +291,112 @@ body{
      }
    }
 }
+.large-image-sec{
+  position: fixed;
+  z-index: 10009;
+  background-color: rgb(10, 10, 10);
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 100%;
+  .ui.arrow{
+    position: absolute;
+    top: 45%;
+    z-index: 1100;
+    font-size: 70px;
+    font-weight: 100;
+    color: rgba(140, 175, 199, 0.88);
+    cursor: pointer;
+    &.left{
+      left: 1.6%;
+      i{
+            text-shadow: -12px 2px 20px rgba(0,0,0,.9);
+      }
+    }
+    &.right{
+      right: 1.6%;
+      i{
+            text-shadow: 12px 2px 20px rgba(0,0,0,.9);
+      }
+    }
+  }
+  .close{
+    position: absolute;
+    z-index: 1200;
+    right: -2px;
+    top: 10px;
+    color: #ccc;
+    font-size: 44px;
+    font-weight: 100;
+    cursor: pointer;
+  }
+  #maskcontent {
+    	position: absolute;
+    	z-index: 1009;
+    	top: 45px;
+    	bottom: 48px;
+    	left: 0;
+    	width: 100%;
+    	overflow: hidden;
+  }
+  #scroller{
+    position: absolute;
+    z-index: 1;
+    -webkit-tap-highlight-color: rgb(10, 10, 10);
+    width: 100%;
+    height: 100%;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none;
+    ul{
+      list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+      li{
+          display: block;
+          float: left;
+          width: 10%;
+          height: 100%;
+          /* border-right: 1px solid #ccc; */
+          font-size: 14px;
+          &>div{
+            padding: 5px;
+            color: #fff;
+            line-height: 500px;
+            width: 100%;
+            height: 100%;
+            background: no-repeat center;
+            background-size: contain;
+            box-sizing: border-box;
+            .ui.loader{
+              width: 50px;
+              height: 50px;
+              font-size: 18px;
+            }
+          }
+      }
+    }
+  }
+}
+
 
 #product {
-  .first-sec,.second-sec,.footer-sec,.following.bar{
+  .first-sec,.second-sec,.footer-sec,.following.bar,.ui.form,.p70.left>div>.row:not(.column),.diving-sites,.maps{
     // display: none;
   }
 }
