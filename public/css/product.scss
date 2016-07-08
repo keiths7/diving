@@ -245,6 +245,9 @@ body{
            padding-top: 0;
            margin-left: 4px;
            margin-top: 3px;
+           .ui.dimmer{
+             z-index: 1;
+           }
          }
          .ui.header{
            font-size: 1.4rem;
