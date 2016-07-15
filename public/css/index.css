@@ -159,6 +159,9 @@
 #diving .search-bar .grid .four.wide.column{
   width:348.5px!important;
 }
+#diving .search-bar .grid .two.wide.column.from,#diving .search-bar .grid .two.wide.column.to{
+  width:106px!important;
+}
 #diving .search-bar .grid .two.wide.column{
   width:174.25px!important;
 }
