@@ -4,6 +4,48 @@
     width: 1000px;
 }
 }
+.w33.wide{
+  width: 33.33333%!important;
+}
+.w30.wide{
+  width: 30%!important;
+}
+.w70.wide{
+  width: 70%!important;
+}
+.w67.wide{
+  width: 66.666667%!important;
+}
+.ui.dimmer{
+  background-color: rgba(0,0,0,.7)!important;
+}
+.floated{
+  &.left{
+    float:left;
+  }
+  &.right{
+    float:right;
+  }
+}
+h5.ui.header{
+  font-size: 14px;
+}
+h4.ui.header{
+  font-size: 16px;
+}
+h3.ui.header{
+  font-size: 20px;
+}
+h2.ui.header{
+  font-size: 24px;
+}
+.clearfix:after {
+  content: " ";
+  display: block;
+  visibility: hidden;
+  clear: both;
+  height: 0;
+}
 // 底部footer
  .footer-sec .column {
     text-align: left!important;
