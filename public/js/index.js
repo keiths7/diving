@@ -60,6 +60,10 @@ $(function(){
     //允许用户自己输入，而不仅仅是选择列表
     allowAdditions:true
   })
+  $('.date-pick').kuiDate({
+    className:'date-pick',
+    isDisabled: "0"  // isDisabled为可选参数，“0”表示今日之前不可选，“1”标志今日之前可选
+  });
   // $('.grid .ui.image,.third-sec .ui.image ').dimmer('show');
 })
 function notice(){

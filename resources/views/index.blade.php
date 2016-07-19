@@ -9,6 +9,7 @@
     <meta name="full-screen" content="yes">
     <meta name="description" content="Book your best diving trip，every diving trip with Dreamdivingtrip,the world’s best diving booking site.Your free personal diving assistant.">
     <meta name="keywords" content="diving vacation, diving vacations, diving vacation packages, diving vacation package, diving travel package, diving travel packages, diving travel, diving trip package, diving trip packages, diving trip,planning, hotel, hotels, motel, bed and breakfast, inn, guidebook, review, reviews, popular, plan, airfare, cheap, discount, map, maps, golf, ski, articles, attractions, advice, restaurants">
+   <link href="/css/datePick.css" rel="stylesheet">
     <link href="/css/semantic.min.css" rel="stylesheet">
     <link href="/css/index.css?v=2" rel="stylesheet">
     <title>Dreamdivingtrip.com: Online Booking for Scuba Diving,Liveaboard and Courses all around the world</title>
@@ -65,17 +66,17 @@
                 </div>
               </div>
             </div>
-            <div class="one wide column from">
+            <div class="two wide column from">
               <div class="ui fluid input">
-                <input type="text" placeholder="from">
+                <input type="text" class="date-pick "  placeholder="from">
               </div>
             </div>
             <div class=" one wide column  from-to-arrow" style="">
                 <div style="display:inline-block">→</div>
             </div>
-            <div class="one wide column to">
+            <div class="two wide column to">
               <div class="ui fluid input">
-                <input type="text" placeholder="to">
+                <input type="text" class="date-pick " placeholder="to">
               </div>
             </div>
             <div class="two wide column">
@@ -624,6 +625,7 @@
 </div>
 <script src="/js/jquery.min.js"></script>
 <script src="/js/semantic.min.js"></script>
+<script src="/js/datePick.js"></script>
 <script src="/js/index.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -633,6 +635,8 @@
   ga('create', 'UA-78887752-1', 'auto');
   ga('send', 'pageview');
 </script>
+</body>
+
 <script type='text/javascript'>
     (function(m, ei, q, i, a, j, s) {
         m[a] = m[a] || function() {
@@ -647,4 +651,14 @@
     })(window, document, 'script', '//static.meiqia.com/dist/meiqia.js', '_MEIQIA');
     _MEIQIA('entId', 17368);
 </script>
-</body>
+<script type="text/javascript">
+var _mfq = _mfq || [];
+  (function() {
+    var mf = document.createElement("script");
+    mf.type = "text/javascript"; mf.async = true;
+    mf.src = "//cdn.mouseflow.com/projects/2363a729-1135-4bd6-80bc-aed1e41e9b4f.js";
+    document.getElementsByTagName("head")[0].appendChild(mf);
+  })();
+</script>
+
+</html>
