@@ -13,4 +13,9 @@ class DivingPosition extends Model
     {
     	return $this->belongsToMany('App\Source', 'position_source', 'pid', 'sid');
     }
+
+    public function country()
+    {
+    	return $this->belongsTo('App\Country', 'country_id','id');
+    }
 }

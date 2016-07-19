@@ -19,7 +19,11 @@ return array(
             'type' => 'relationship',
             'name_field' => 'name',
         ),
-        'country',
+        'country' => array(
+            'title' => 'country',
+            'type' => 'relationship',
+            'name_field' => 'name',
+        ),
         'province',
         'city',
         'location',
