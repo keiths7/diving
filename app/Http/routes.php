@@ -27,3 +27,24 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/user/info', 'UserController@get_user_info');
 	Route::get('/user/info/update', 'UserController@update_user_info');
 });
+
+Event::listen('illuminate.query', function($query,$binding,$time,$connections){
+
+  $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
+
+  foreach ($backtrace as $trace) {
+    if(array_key_exists('file',$trace) && array_key_exists('line',$trace)){
+      if( strpos($trace['file'],base_path().'/app') !== false ){
+        var_dump(array(
+          'query'    => $query
+          ,'binding' => $binding
+          ,'time'    => $time
+          ,'connection' => $connections
+          ,'file' => $trace['file']
+          ,'line' => $trace['line']
+        ));
+        break;
+      }
+    }
+  }
+});

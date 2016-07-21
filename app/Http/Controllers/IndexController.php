@@ -28,7 +28,7 @@ class IndexController extends Controller
         $product = new DivingProduct();
         $result = $product->get_product($id);
         // var_dump($result->shop->name);
-        return view('product', $result);
+        return view('product', ['product'=>$result]);
     }
 
     public function test(Request $request)

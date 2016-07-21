@@ -23,6 +23,8 @@ class CreateDivingShopTable extends Migration
             $table->string('checkin_time');
             $table->integer('extra_cost');
             $table->string('before_file');
+            $table->string('associated_with');
+            $table->string('general_facilities');
             $table->integer('non_diving_activities');
             $table->integer('physically_disabled_divers');
             $table->string('destination');

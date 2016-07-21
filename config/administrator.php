@@ -75,7 +75,9 @@ return array(
 			'diving_position',
 			'diving_course',
 			'source',
-			'diving_product'
+			'diving_product',
+			'country',
+			'language'
 		),
 		'Settings' => array(
 			'settings.site'

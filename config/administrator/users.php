@@ -13,6 +13,10 @@ return array(
         'height',
         'weight',
         'shoes_size',
+        'admin' => array(
+            'title' => 'is_admin',
+            'type' => 'bool'
+        )
     ),
 
     'columns' => array(

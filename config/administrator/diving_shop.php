@@ -18,6 +18,11 @@ return array(
             'type' => 'relationship',
             'name_field' => 'name',
         ),
+        'shop_languages' => array(
+            'title' => 'lang',
+            'type' => 'relationship',
+            'name_field' => 'name',
+        ),
         'description',
         'location_info',
         'equipment_desc',
@@ -26,6 +31,7 @@ return array(
         'checkin_time',
         'extra_cost',
         'before_file',
+        'associated_with',
         'non_diving_activities',
         'physically_disabled_divers',
         'destination',
@@ -45,7 +51,11 @@ return array(
         'location_x',
         'location_y',
         'payment_method',
-        'dive_types',
+        'dive_types' => array(
+            'title' => 'dive_types',
+            'type' => 'enum',
+            'options' => array(1=>'boat dives', 2=>'shore dives')
+        ),
         'infrastructure',
         'seasonality',
         'documents_required',
@@ -71,6 +81,11 @@ return array(
                 }
                 return $ret;
             }
+        ),
+        'shop_languages' => array(
+            'title' => 'language',
+            'relationship' => 'shop_languages',
+            'select' => 'GROUP_CONCAT((:table).name)',
         ),
         'description',
         'location_info',
