@@ -1,0 +1,220 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+a,
+img {
+    border: 0;
+}
+body {
+    font: 12px/180% Arial, Helvetica, sans-serif, "新宋体";
+}
+.kui_d_pane {
+    position: absolute;
+    width: 187px;
+    margin: 0;
+    z-index: 9999;
+}
+.kui_data_content_pane {
+    width: 476px;
+    overflow: hidden;
+    font-size: 12px;
+    position: absolute;
+    left: 0;
+    z-index: 100;
+    top: 0;
+    background: #fff;
+    box-shadow: 2px 4px 12px #aaa;
+    -webkit-box-shadow:2px 4px 12px #aaa;
+}
+.kui_data_content_pane a:link,
+.kui_data_content_pane a:visited {
+    color: #222222;
+    text-decoration: none;
+    font-weight: 900;
+}
+.kui_data_content_pane a:hover {
+    color: #fff;
+}
+.kui_date_reset {
+    clear: both;
+    margin: 6px;
+    padding: 3px;
+    text-align: right;
+}
+.kui_date_reset span {
+  padding: 5px 10px;
+  margin-top: 6px;
+  margin-right: 13px;
+  border-radius: 3px;
+  font-size: 14px;
+  cursor: pointer;
+  /*background: #1dc3a0;*/
+  background-color: #00B5AD;
+  color: #fff;
+}
+.kui_prev_next_month {
+    border-bottom: 0px solid #fd5900;
+    height: 23px;
+    line-height: 23px;
+    font-weight: 900;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+.kui_prev_m,
+.kui_today {
+    float: left;
+}
+.kui_data_content_pane .kui_prev_next_month .kui_prev_m,.kui_data_content_pane .kui_prev_next_month .kui_next_m {
+  position: absolute;
+   color: #bababa;
+    font-size: 18px!important;
+    margin-left: 4px!important;
+    border-radius: 4px;
+    width: 1.8em!important;
+    height: 1.5em!important;
+    padding: 0!important;
+    line-height: 1.5em!important;
+    vertical-align:  middle;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1) inset!important;
+    cursor: pointer;
+}
+.kui_data_content_pane .kui_prev_next_month .kui_prev_m{
+  top: 10px;
+  left: 16px;
+  padding-right: 2px!important;
+}
+.kui_data_content_pane .kui_prev_next_month .kui_next_m {
+    top: 10px;
+    right: 16px;
+    padding-left: 2px!important;
+}
+.kui_today,
+.kui_tomorrow {
+    width: 50%;
+    font-size: 15px;
+    font-weight: lighter;
+    text-align: center;
+    color: #393B3A;
+    cursor: default;
+}
+.kui_tomorrow {
+    float: right;
+}
+
+.kui_data_tab,
+.kui_date_info {
+    width: 212px;
+    zoom: 1;
+    overflow: hidden;
+}
+dl.kui_data_tab dt {
+    font-weight:normal;
+}
+.kui_data_tab dt,
+.kui_date_info dt {
+    line-height: 30px;
+    height: 30px;
+    text-align: center;
+    border-bottom: 0px solid #B2C4D2;
+    border-right: none;
+    cursor: default;
+    background: #fff;
+    font-size: 14px;
+    width: 30px;
+    float: left;
+    text-align: center;
+}
+.d_th_bg {
+    color: #FF9900;
+}
+.kui_date_info dt {
+    background: #fff;
+    border-left: 1px solid #E8E8E8;
+    border-bottom: 1px solid #E8E8E8;
+    color: #585A59;
+    font-weight: normal;;
+}
+.kui_date_info dt:not(.kui_td_kong):not(.td_select):hover{
+  background-color: #8BDECC;
+  border: none;
+  cursor: pointer;
+}
+.kui_date_info :nth-child(-n+7){
+  border-top: 1px solid #e8e8e8;
+}
+.kui_date_info :nth-child(7n){
+  border-right: 1px solid #e8e8e8;
+}
+.kui_date_info .kui_td_kong {
+    background: #fff;
+    cursor: default;
+}
+.kui_time_pane {
+    background: #2092D6;
+    line-height: 22px;
+    height: 22px;
+    overflow: hidden;
+    margin-bottom: 4px;
+    padding-bottom: 1px;
+    background: url(http://demo.lanrenzhijia.com/2013/riqi1216/images/date_top.png) 4px 0 no-repeat;
+}
+.kui_clean_btn {
+    float: left;
+    padding-left: 6px;
+}
+.kui_close_btn {
+    float: right;
+    padding-right: 6px;
+}
+.kui_time {
+    float: left;
+    padding-left: 8px;
+}
+.kui_time input {
+    width: 17px;
+    padding: 1px;
+    line-height: 12px;
+    height: 12px;
+    margin-right: 2px;
+    margin-top: 2px;
+    _margin-top: 1px;
+}
+.kui_date_info .td_select {
+    background-color: #1BBB99;
+    color: #fff;
+    border: none;
+}
+.kui_date_info .td_hover {
+    /*background-color: #8BDECC;
+    border: none;
+    cursor: pointer;*/
+}
+.kui_txt_hide {
+    display: none;
+}
+dl.kui_date_info .kui_td_hui {
+    background: #fff;
+    cursor: default;
+    color: #DBDBDB;
+    font-weight: 400;
+}
+a img {
+    border: 0;
+}
+#left_table,
+#right_table {
+    display: inline-block;
+    vertical-align: top;
+    width: 230px;
+    overflow: hidden;
+}
+#left_table {
+        padding-left: 20px;
+}
+#right_table{
+      padding-left: 16px;
+}
