@@ -11,6 +11,9 @@ var minify = require('gulp-minify');// https://www.npmjs.com/package/gulp-minify
 var connect = require('gulp-connect'); //https://www.npmjs.com/package/gulp-connect
 var jshint = require('gulp-jshint');
 var babel = require('gulp-babel');
+var imagemin = require('gulp-imagemin');
+var pngquant = require('imagemin-pngquant');
+var cache = require('gulp-cache');
 // var browserSync = require('browser-sync');   //http://www.browsersync.cn/docs/gulp/
 var md5 = require('gulp-md5-plus'),
     os = require('os'),
@@ -46,16 +49,7 @@ var buildEND = options.has('prd')?'md5:css':'copy:images';
 var prdTasks = options.has('prd')&&options.has('open')?['connect','htmlmin','md5:css','md5:js','open']:['htmlmin','md5:css','md5:js']
 
 
-gulp.task('clean', function (done) {
-   return  gulp.src('dist')
-                .pipe(clean());
-});
-
-gulp.task('copy:images', function (done) {
-   return gulp.src(['src/images/**/*'])
-                .pipe(gulp.dest('dist/images'))
-                // .pipe(gulp.dest('build/images'))
-});
+//以下为dev环境下的任务
 gulp.task('copy:css', function () {
     return gulp.src('src/sass/**/*.scss')
                 .pipe(sass().on('error', sass.logError))
@@ -87,6 +81,23 @@ gulp.task('copy:html', function (done) {
                 // .pipe(gulp.dest('./build/'))
                 .pipe(connect.reload());
 });
+//以下为公共任务
+gulp.task('copy:images', function (done) {
+   return gulp.src('src/images/**/*.{png,jpg,gif,ico}')
+                .pipe(cache(imagemin({  //加入缓存，只压缩有更改的
+                    optimizationLevel: 5,
+                    progressive:true,
+                    use: [pngquant()] //使用pngquant深度压缩png图片的imagemin插件
+                })))
+                .pipe(gulp.dest('dist/images'))
+                // .pipe(gulp.dest('build/images'))
+});
+gulp.task('clean', function (done) {
+   return  gulp.src('dist')
+                .pipe(clean());
+});
+
+//以下为prd环境用到的任务
 gulp.task('sassmin',['clean'], function () {
     return gulp.src('src/sass/**/*.scss')
                 .pipe(sass().on('error', sass.logError))
