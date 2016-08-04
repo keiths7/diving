@@ -22,7 +22,8 @@
   "globals":{ //可以使用的全局变量，忽略变量未定义错误
       "$":true,
       "IScroll":true,
-      "ga":true
+      "ga":true,
+      "alert":true
   },
   "immed": true,//匿名函数调用必须(function() {// body }());而不是(function() {// body})();
   "latedef": false, //变量定义前禁止使用
