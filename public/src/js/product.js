@@ -10,7 +10,7 @@ $('.ui.left.arrow').on('click',function(){
 $('.ui.right.arrow').on('click',function(){
     myScroll.next()
 })
-var myScroll,imgcount=0;
+var myScroll,imgcount=0,curpage=0;
 function registerScroll() {
     myScroll = new IScroll('#maskcontent', { scrollX: true, scrollY: false, mouseWheel: true, momentum: false, snap: true });
 
@@ -73,18 +73,18 @@ function initMask(obj) {
     // $("#mask").addClass("active");//css版动画
 }
 
-function setImgSrc(obj) {
-    var img = new Image();
-    img.onload = function () {
-        img.onload = null;
-        //模拟延迟用
-        setTimeout(function () {
-            $(obj).get(0).src = $(obj).data("src");
-        }, 1000);
-    };
-   console.log($(obj).data("src"));
-    img.src = $(obj).data("src");
-}
+// function setImgSrc(obj) {
+//     var img = new Image();
+//     img.onload = function () {
+//         img.onload = null;
+//         //模拟延迟用
+//         setTimeout(function () {
+//             $(obj).get(0).src = $(obj).data("src");
+//         }, 1000);
+//     };
+//    console.log($(obj).data("src"));
+//     img.src = $(obj).data("src");
+// }
 
 function displayImage(obj) {
     var path = $(obj).data('img');
@@ -101,8 +101,4 @@ function displayImage(obj) {
     };
     img.src = path;
 }
-function stopEventBubble(e) {
-    var evt = e || window.event;
-    evt.stopPropagation ? evt.stopPropagation() : (evt.cancelBubble = true);
-    e.preventDefault();
-}
+
