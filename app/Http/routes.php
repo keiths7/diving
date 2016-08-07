@@ -19,6 +19,8 @@ Route::get('/index', 'IndexController@index');
 
 Route::get('/product/{id}', 'IndexController@product');
 
+Route::get('/search/', 'IndexController@search');
+
 Route::get('/home', 'HomeController@index');
 
 Route::auth();
