@@ -31,19 +31,23 @@ class DivingProduct extends Model
         $diving_product->main_info = $main_info;
         $this->format_shop_lang($diving_product);
         // print_r($diving_product->positions[0]->source);
+        $diving_product->releated_product = $this->get_related_product($diving_product->positions[0]->city->id);
         return $diving_product;
     }
 
     public function format_shop_lang(&$product)
     {
-        $shop_lang = $product->shop->shop_languages();
+        // $shop_lang = $product->shop->shop_languages();
         $lang_str = '';
-        
-        // foreach($shop_lang as $key => $val)
-        // {
-        //     $lang_str .= $val['name'].',';
-        // }
-        // $product->shop->shop_lang = $lang_str;
+        $query = DB::table('shop_language')
+                    ->join('language', 'language.id', '=', 'shop_language.lid')
+                    ->where('sid', '=', $product->shop_id)->get();
+        foreach($query as $k => $v)
+        {
+            $lang_str .= ','.$v->name;
+        }
+        $lang_str = trim($lang_str, ',');
+        $product->lang_str = $lang_str;
     }
 
 
@@ -153,14 +157,35 @@ class DivingProduct extends Model
             $result = $query->get();
             // $queries = DB::getQueryLog(); // 获取查询日志
             // var_dump($queries); // 即可查看执行的sql，传入的参数等等
+            $ret = array();
+            foreach ($result as $key => $val) {
+                $pos_info = $this->get_positions_by_id($val->id);
+                // print_r($pos_info);
+                foreach($pos_info as $k => $v)
+                {
+                    $val->city_info = City::where('id', '=', $v->city_id)->first();
+                    $val->position_image = $this->get_position_image($v->id);
+                    if(array_key_exists($v->city_id, $ret)){
+                        $ret[$v->city_id][] = $val;
+                    }else{
+                        $ret[$v->city_id]  = array();
+                        $ret[$v->city_id][] = $val;
+                    }
+                }
+                
+            }
             // print_r($result);
         }
-        return $result;
+        return $ret;
     }
 
     public function judge_content($params)
     {
         $result = array();
+        if(empty($params['content']))
+        {
+            return 0;
+        }
         //country
         $query = DB::table('country')->where('name', $params['content'])->first();
         if($query)
@@ -390,4 +415,25 @@ class DivingProduct extends Model
         $query = DivingPosition::where('id', $pos_id)->first();
         return '/uploads/originals/'.$query->source[0]->file;
     }
+
+
+    public function get_related_product($city_id)
+    {
+        $query = DB::table('diving_product')
+                    ->leftJoin('product_position', 'diving_product.id', '=', 'product_position.pro_id')
+                    ->leftJoin('diving_position', 'diving_position.id', '=', 'product_position.pos_id')
+                    // ->groupBy('diving_product.id')
+                    ->where('diving_position.city_id', '=', $city_id)->take(3)->get();
+        foreach($query as $k => $v)
+        {
+            $query[$k]->position_image = $this->get_position_image($v->pos_id);
+        }
+        return $query;
+    }
+
+
+    // public function get_destination($country_id)
+    // {
+    //     $query = DB::table('')
+    // }
 }
