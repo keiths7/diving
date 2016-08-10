@@ -9,8 +9,8 @@
     <meta name="full-screen" content="yes">
     <meta name="description" content="Book your best diving trip，every diving trip with Dreamdivingtrip,the world’s best diving booking site.Your free personal diving assistant.">
     <meta name="keywords" content="diving vacation, diving vacations, diving vacation packages, diving vacation package, diving travel package, diving travel packages, diving travel, diving trip package, diving trip packages, diving trip,planning, hotel, hotels, motel, bed and breakfast, inn, guidebook, review, reviews, popular, plan, airfare, cheap, discount, map, maps, golf, ski, articles, attractions, advice, restaurants">
-    <link href="/build/css/semantic.min.css" rel="stylesheet">
-    <link href="/build/css/search.min.css" rel="stylesheet">
+    <link href="/css/semantic.min_0c0c8ca561.css" rel="stylesheet">
+    <link href="/css/search_b74c95c24c.css" rel="stylesheet">
     <title>Dreamdivingtrip.com: Online Booking for Scuba Diving,Liveaboard and Courses all around the world</title>
 </head>
 <body id="search">
@@ -267,14 +267,18 @@
           <h4 class="ui header">Locate Dive Sites</h4>
         <div class="ui three column grid">
           <div class="row">
+            @foreach($v as $num => $val)
+            @if($num >= 2)
+            @endif
               <div class="column">
                 <div class="ui image">
-                  <img src="{{ $v[0]->position_image }}" alt="">
-                  <aside class="">$ {{ $v[0]->price }}  </aside>
+                  <img src="{{ $val->position_image }}" alt="">
+                  <aside class="">$ {{ $val->price }}  </aside>
                   <p>A description of this dive center</p>
                   <p><span>tags</span></p>
                 </div>
               </div>
+              @endforeach
               <div class="column">
                 <div class="ui image">
                   <img src="/images/product/bottom_2.jpg" alt="">
@@ -459,9 +463,9 @@
     </div>
   </div>
 </section>
-<script src="/build/js/jquery.min.js" charset="utf-8"></script>
-<script src="/build/js/semantic.min.js" charset="utf-8"></script>
-<script src="/build/js/search.js" charset="utf-8"></script>
+<script src="/js/jquery.min.js" charset="utf-8"></script>
+<script src="/js/semantic.min.js" charset="utf-8"></script>
+<script src="/js/search.js" charset="utf-8"></script>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
