@@ -77,7 +77,8 @@ return array(
 			'source',
 			'diving_product',
 			'country',
-			'language'
+			'language',
+			'city'
 		),
 		'Settings' => array(
 			'settings.site'

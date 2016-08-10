@@ -54,7 +54,7 @@
                 </div>
                 <h2 class="ui header">{{ $product->name }}</h2>
                 <div class="ui icon">
-                  <i class="marker icon"></i><span>Thailand,Koh Tao</span>
+                  <i class="marker icon"></i><span>{{ $product->positions[0]->country->name }},{{ $product->positions[0]->city->name }}</span>
                   <div class="ui large star rating" data-max-rating="5" data-rating="3"></div>
                 </div>
             </div>
@@ -119,7 +119,7 @@
                           <P>Diving types</P>
                         </div>
                         <div class="p70 column">
-                          <p>{{ $product->shop->shop_lang }}english</p>
+                          <p>{{ $product->lang_str }}</p>
                           <p>{{ $product->shop->associated_with }}</p>
                           <p>{{ $product->shop->general_facilities }}</p>
                           <P>{{ $product->type }}</P>
@@ -131,7 +131,7 @@
                         </div>
                         <div class="p70 description column">
                           <p class="content">
-                            {{ $product->description }}
+                            {{ strip_tags($product->description) }}
                           </P>
                           <p class="more"><i>+</i> More</p>
                         </div>
@@ -139,7 +139,7 @@
                     <div class=" one column row images">
                       <div class="column">
                           @foreach($product->positions[0]->source as $key => $val)
-                            @if($key == 4)
+                            @if($key == 3)
                               <div class="ui image more" data-img="/uploads/originals/{{ $val->file }}">
                                 <div class="ui dimmer visible active">
                                   <div class="content">
@@ -207,15 +207,17 @@
               <div class="ui three column grid">
                 <h3 class="ui header">Some related diving sites</h3>
                 <div class="row">
+                    @foreach($product->releated_product as $k => $v)
                     <div class="column">
                       <div class="ui image">
-                        <img src="/images/product/bottom_1.jpg" alt="">
-                        <aside class="">$ 1029  </aside>
-                        <p>A description of this dive center</p>
+                        <img src="{{ $v->position_image }}" alt="">
+                        <aside class="">$ {{ $v->price }}  </aside>
+                        <p>{{ $v->name }}</p>
                         <p><span>tags</span></p>
                       </div>
                     </div>
-                    <div class="column">
+                    @endforeach
+                    <!-- <div class="column">
                       <div class="ui image">
                         <img src="/images/product/bottom_2.jpg" alt="">
                         <aside class="">$ 1029  </aside>
@@ -230,7 +232,7 @@
                         <p>A description of this dive center</p>
                         <p><span>tags</span></p>
                       </div>
-                    </div>
+                    </div> -->
                 </div>
               </div>
             </div>

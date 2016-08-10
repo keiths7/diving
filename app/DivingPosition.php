@@ -18,4 +18,9 @@ class DivingPosition extends Model
     {
     	return $this->belongsTo('App\Country', 'country_id','id');
     }
+
+    public function city()
+    {
+        return $this->belongsTo('App\City', 'city_id','id');
+    }
 }

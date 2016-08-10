@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+namespace App\Http\Controllers\Auth;
+
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -40,5 +42,22 @@ class UserController extends Controller
     public function get_user_order(Request $request)
     {
 
+    }
+
+    public function login(Request $request)
+    {
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            // 认证通过...
+            return redirect()->intended('dashboard');
+        }
+        else
+        {
+            return redirect()->intended('dashboard');
+        }
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
     }
 }

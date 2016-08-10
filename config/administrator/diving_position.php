@@ -24,8 +24,13 @@ return array(
             'type' => 'relationship',
             'name_field' => 'name',
         ),
+        'city' => array(
+            'title' => 'city',
+            'type' => 'relationship',
+            'name_field' => 'name',
+        ),
         'province',
-        'city',
+        // 'city',
         'location',
         'location_x',
         'location_y',
@@ -58,9 +63,19 @@ return array(
                 return $ret;
             }
         ),
-        'country',
+        //'country',
+        'country' => array(
+            'title' => 'country',
+            'relationship' => 'country',
+            'select' => '(:table).name'
+        ),
+        'city' => array(
+            'title' => 'city',
+            'relationship' => 'city',
+            'select' => '(:table).name'
+        ),
         'province',
-        'city',
+        // 'city',
         'location',
         'location_x',
         'location_y',

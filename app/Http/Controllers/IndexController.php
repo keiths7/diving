@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use App\CustomMeta;
 use App\DivingProduct;
+use App\Country;
 
 use Auth;
 
@@ -31,9 +32,33 @@ class IndexController extends Controller
         return view('product', ['product'=>$result]);
     }
 
-    public function test(Request $request)
+    public function search(Request $request)
     {
-    	$php_info = phpinfo();
-        return view('test', ['php_info' => $php_info]);
+        $params = array();
+        $params['date_start'] = $request->input('date_start', '');
+        $params['date_end'] = $request->input('date_end', '');
+        $params['dive_type'] = $request->input('dive_type', '');
+        $params['price_start'] = $request->input('price_start', '');
+        $params['price_end'] = $request->input('price_end', '');
+        $params['lang'] = $request->input('lang', '');
+        $params['dest'] = $request->input('dest', '');
+        $params['offer'] = $request->input('offer', '');
+        $params['content'] = $request->input('content', '');
+
+        $products = new DivingProduct();
+        $result = $products->search($params);
+        // print_r($result);
+        return view('search', ['result'=>$result]);
     }
+
+    // public function test(Request $request)
+    // {
+    //     $products = DivingProduct::all();
+    //     foreach ($products as $key => $val) {
+    //         $country = Country::where('name', $val['country'])->first();
+    //         $products[$key]->country_id = $country->id;
+    //     }
+    // 	$php_info = phpinfo();
+    //     return view('test', ['php_info' => $php_info]);
+    // }
 }
