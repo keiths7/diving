@@ -19,7 +19,7 @@ class DivingProduct extends Model
 
     public function positions()
     {
-    	return $this->hasMany('App\DivingPosition','id', 'position_id');
+    	return $this->belongsToMany('App\DivingPosition', 'product_position','pro_id', 'pos_id');
     }
     
     public function get_product($id)
