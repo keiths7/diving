@@ -29,7 +29,7 @@ var options = require('gulp-options');
 
 var host = {  
     name:'localhost',
-    path: '.',
+    path: 'build',
     port: 3000,
     html: 'demo.html'
 };

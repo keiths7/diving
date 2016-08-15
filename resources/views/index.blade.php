@@ -9,9 +9,9 @@
     <meta name="full-screen" content="yes">
     <meta name="description" content="Book your best diving trip，every diving trip with Dreamdivingtrip,the world’s best diving booking site.Your free personal diving assistant.">
     <meta name="keywords" content="diving vacation, diving vacations, diving vacation packages, diving vacation package, diving travel package, diving travel packages, diving travel, diving trip package, diving trip packages, diving trip,planning, hotel, hotels, motel, bed and breakfast, inn, guidebook, review, reviews, popular, plan, airfare, cheap, discount, map, maps, golf, ski, articles, attractions, advice, restaurants">
-   <link href="css/datePick_00bc5907f7.css" rel="stylesheet">
-    <link href="css/semantic.min_0c0c8ca561.css" rel="stylesheet">
-    <link href="css/index_b5d4a2c3fd.css" rel="stylesheet">
+   <link href="/css/datePick_00bc5907f7.css" rel="stylesheet">
+    <link href="/css/semantic.min_0c0c8ca561.css" rel="stylesheet">
+    <link href="/css/index_b5d4a2c3fd.css" rel="stylesheet">
     <title>Dreamdivingtrip.com: Online Booking for Scuba Diving,Liveaboard and Courses all around the world</title>
 </head>
 <body>
