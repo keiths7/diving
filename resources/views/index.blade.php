@@ -624,10 +624,10 @@
   </h2>
 </div>
 
-<script src="js/jquery.min_0139f8274e.js"></script>
-<script src="js/semantic.min_3ca570aec1.js"></script>
-<script src="js/datePick_682050cf3e.js"></script>
-<script src="js/index_0318a505bc.js"></script>
+<script src="/js/jquery.min_0139f8274e.js"></script>
+<script src="/js/semantic.min_3ca570aec1.js"></script>
+<script src="/js/datePick_682050cf3e.js"></script>
+<script src="/js/index_0318a505bc.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
