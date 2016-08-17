@@ -106,16 +106,19 @@ class DivingProduct extends Model
         {
             $params['country_id'] = $ret['ret'];
             $result = $this->get_country_product($params);
+            return $result;
         }
         elseif($ret['type'] == 2)
         {
-            $params['position_ids'] = $ret['ret'];
+            $params['city_id'] = $ret['ret'];
             $result = $this->get_city_product($params);
+            return $result;
         }
         elseif($ret['type'] == 3)
         {
             $params['position_id'] = $ret['ret'];
             $result = $this->get_postion_product($params);
+            return $result;
         }
         else{
             // DB::connection()->enableQueryLog();
@@ -143,7 +146,7 @@ class DivingProduct extends Model
                 $dests = explode('-', $params['dest']);
                 // $query = $query->leftJoin('product_position', 'product_position.pro_id', '=', 'diving_product.id');
                 $query = $query->leftJoin('diving_position', 'diving_position.id', '=', 'product_position.pos_id');
-                $query = $query->whereIn('diving_position.city', $dests);
+                $query = $query->whereIn('diving_position.city_id', $dests);
             }
             if(array_key_exists('offer', $params) && $params['offer'])
             {
@@ -152,7 +155,7 @@ class DivingProduct extends Model
                 $query = $query->leftJoin('shop_dive_offer', 'shop_dive_offer.sid', '=', 'diving_shop.id');
                 $query = $query->whereIn('shop_dive_offer.offer', $dests);
             }
-            $query = $query->groupBy('diving_product.id');
+            $query = $query->groupBy('diving_product.id')->skip($params['page']*$params['per_page'])->take($params['per_page']);
             // $result = DB::select($sql);
             $result = $query->get();
             // $queries = DB::getQueryLog(); // 获取查询日志
@@ -194,7 +197,7 @@ class DivingProduct extends Model
             return $result;
         }
         //city
-        $query = DB::table('diving_position')->where('city', $params['content'])->get();
+        $query = DB::table('city')->where('name', $params['content'])->get();
         if($query)
         {
             $result = array();
@@ -242,7 +245,7 @@ class DivingProduct extends Model
             $query = $query->leftJoin('shop_dive_offer', 'shop_dive_offer.sid', '=', 'diving_shop.id');
             $query = $query->whereIn('shop_dive_offer.offer', $dests);
         }
-        $query = $query->groupBy('diving_product.id');
+        $query = $query->groupBy('diving_product.id')->skip($params['page']*$params['per_page'])->take($params['per_page']);;
         $result = $query->get();
         $ret = array();
         foreach ($result as $key => $val) {
@@ -272,7 +275,8 @@ class DivingProduct extends Model
                 ->leftJoin('product_position', 'product_position.pro_id', '=', 'diving_product.id')
                 ->select('diving_product.*');
 
-        $query = $query->whereIn('product_position.pos_id', $params['position_ids']);
+        $query = $query->leftJoin('diving_position', 'diving_position.id', '=', 'product_position.pos_id');
+        $query = $query->where('diving_position.city_id', $params['city_id']);
 
         if(array_key_exists('price_start', $params))
         {
@@ -292,8 +296,7 @@ class DivingProduct extends Model
         {
             $dests = explode('-', $params['dest']);
             // $query = $query->leftJoin('product_position', 'product_position.pro_id', '=', 'diving_product.id');
-            $query = $query->leftJoin('diving_position', 'diving_position.id', '=', 'product_position.pos_id');
-            $query = $query->whereIn('diving_position.city', $dests);
+            $query = $query->whereIn('diving_position.city_id', $dests);
         }
         if(array_key_exists('offer', $params) && $params['offer'])
         {
@@ -302,7 +305,7 @@ class DivingProduct extends Model
             $query = $query->leftJoin('shop_dive_offer', 'shop_dive_offer.sid', '=', 'diving_shop.id');
             $query = $query->whereIn('shop_dive_offer.offer', $dests);
         }
-        $query = $query->groupBy('diving_product.id');
+        $query = $query->groupBy('diving_product.id')->skip($params['page']*$params['per_page'])->take($params['per_page']);;
         $result = $query->get();
         // print_r($result);
         // if ($result){
@@ -342,6 +345,7 @@ class DivingProduct extends Model
                 ->leftJoin('product_position', 'product_position.pro_id', '=', 'diving_product.id')
                 ->select('diving_product.*');
 
+        $query = $query->leftJoin('diving_position', 'diving_position.id', '=', 'product_position.pos_id');
         $query = $query->where('diving_position.country_id', '=',$params['country_id']);
 
         if(array_key_exists('price_start', $params))
@@ -362,8 +366,7 @@ class DivingProduct extends Model
         {
             $dests = explode('-', $params['dest']);
             // $query = $query->leftJoin('product_position', 'product_position.pro_id', '=', 'diving_product.id');
-            $query = $query->leftJoin('diving_position', 'diving_position.id', '=', 'product_position.pos_id');
-            $query = $query->whereIn('diving_position.city', $dests);
+            $query = $query->whereIn('diving_position.city_id', $dests);
         }
         if(array_key_exists('offer', $params) && $params['offer'])
         {
@@ -372,7 +375,7 @@ class DivingProduct extends Model
             $query = $query->leftJoin('shop_dive_offer', 'shop_dive_offer.sid', '=', 'diving_shop.id');
             $query = $query->whereIn('shop_dive_offer.offer', $dests);
         }
-        $query = $query->groupBy('diving_product.id');
+        $query = $query->groupBy('diving_product.id')->skip($params['page']*$params['per_page'])->take($params['per_page']);;
         $result = $query->get();
         
         $ret = array();
@@ -431,6 +434,7 @@ class DivingProduct extends Model
         return $query;
     }
 
+    // public function 
 
     // public function get_destination($country_id)
     // {

@@ -23,4 +23,15 @@ class DivingPosition extends Model
     {
         return $this->belongsTo('App\City', 'city_id','id');
     }
+
+    public function find_position($word)
+    {
+        $result = [];
+        $query = DivingPosition::where('name', 'like', '%'.$word.'%')->get();
+        foreach($query as $val)
+        {
+            $result[] = $val->name;
+        }
+        return $result;
+    }
 }

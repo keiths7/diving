@@ -43,7 +43,7 @@
       <!-- 头图 img -->
       @if(isset($banner))
         @foreach($banner as $ban)
-          <img src="{{ $ban['url'] }}" alt="">
+          <img src="{{ $ban['image_url'] }}" alt="">
         @endforeach
       @else
       <img src="/images/index/top_bg.jpg" alt="">
@@ -129,7 +129,7 @@
                       <div class="image">
                         <!--课程 img  -->
                         @if(!empty($course[0]))
-                        <img src="{{ $course[0]['url'] }}" />
+                        <img src="{{ $course[0]['image_url'] }}" />
                         @else
                         <img src="/images/course/1.png" />
                         @endif
@@ -145,7 +145,7 @@
                       </div>
                       <div class="image">
                         @if(!empty($course[1]))
-                        <img src="{{ $course[1]['url'] }}" />
+                        <img src="{{ $course[1]['image_url'] }}" />
                         @else
                         <img src="/images/course/1.png" />
                         @endif
@@ -162,7 +162,7 @@
                       </div>
                       <div class="image">
                         @if(!empty($course[2]))
-                        <img src="{{ $course[2]['url'] }}" />
+                        <img src="{{ $course[2]['image_url'] }}" />
                         @else
                         <img src="/images/course/1.png" />
                         @endif
@@ -190,7 +190,7 @@
                           <div class="center">
                             <!-- 热门目的地1 地名 其余类似位置 -->
                             @if(!empty($dest[0]))
-                                <div class="ui header">{{ $dest[0]['desc'] }}</div>
+                                <div class="ui header" href="{{ $dest[0]['url'] }}">{{ $dest[0]['desc'] }}</div>
                             @else
                             <div class="ui header">THAILAND</div>
                             @endif
@@ -199,7 +199,7 @@
                       </div>
                       <!-- 热门目的地1 img -->
                       @if(!empty($dest[0]))
-                          <img src="{{ $dest[0]['url'] }}">
+                          <img src="{{ $dest[0]['image_url'] }}">
                       @else
                       <img src="/images/course/1.png">
                       @endif
@@ -211,7 +211,7 @@
                         <div class="content">
                           <div class="center">
                             @if(!empty($dest[1]))
-                                <div class="ui header">{{ $dest[1]['desc'] }}</div>
+                                <div class="ui header" href="{{ $dest[1]['url'] }}">{{ $dest[1]['desc'] }}</div>
                             @else
                             <div class="ui header">Malasia</div>
                             @endif
@@ -220,7 +220,7 @@
                       </div>
                       <!-- 热门目的地2 img -->
                       @if(!empty($dest[1]))
-                          <img src="{{ $dest[1]['url'] }}">
+                          <img src="{{ $dest[1]['image_url'] }}">
                       @else
                       <img src="/images/course/1.png">
                       @endif
@@ -232,7 +232,7 @@
                         <div class="content">
                           <div class="center">
                             @if(!empty($dest[2]))
-                                <div class="ui header">{{ $dest[2]['desc'] }}</div>
+                                <div class="ui header" href="{{ $dest[2]['url'] }}">{{ $dest[2]['desc'] }}</div>
                             @else
                             <div class="ui header">Malasia</div>
                             @endif
@@ -241,7 +241,7 @@
                       </div>
                       <!-- 热门目的地3 img -->
                       @if(!empty($dest[2]))
-                          <img src="{{ $dest[2]['url'] }}">
+                          <img src="{{ $dest[2]['image_url'] }}">
                       @else
                       <img src="/images/course/1.png">
                       @endif
@@ -268,7 +268,7 @@
                             <div class="center">
                               <!--探索世界1 地名 其余位置类似-->
                               @if(!empty($pop[0]))
-                                  <div class="ui header">{{ $pop[0]['desc'] }}</div>
+                                  <div class="ui header" href="{{ $pop[0]['url'] }}">{{ $pop[0]['desc'] }}</div>
                               @else
                               <div class="ui header">Egypt</div>
                               @endif
@@ -277,7 +277,7 @@
                       </div>
                       <!--探索世界1 img -->
                       @if(!empty($pop[0]))
-                        <img   src="{{ $pop[0]['url'] }}" ></img>
+                        <img   src="{{ $pop[0]['image_url'] }}" ></img>
                       @else
                       <img   src="/images/course/1.png" ></img>
                       @endif
@@ -290,7 +290,7 @@
                           <div class="content">
                             <div class="center">
                               @if(!empty($pop[1]))
-                                  <div class="ui header">{{ $pop[1]['desc'] }}</div>
+                                  <div class="ui header" href="{{ $pop[1]['url'] }}">{{ $pop[1]['desc'] }}</div>
                               @else
                               <div class="ui header">Egypt</div>
                               @endif
@@ -299,7 +299,7 @@
                       </div>
                       <!--探索世界2 img -->
                       @if(!empty($pop[1]))
-                        <img   src="{{ $pop[1]['url'] }}" ></img>
+                        <img   src="{{ $pop[1]['image_url'] }}" ></img>
                       @else
                       <img   src="/images/course/1.png" ></img>
                       @endif
@@ -313,7 +313,7 @@
                           <div class="content">
                             <div class="center">
                               @if(!empty($pop[2]))
-                                  <div class="ui header">{{ $pop[2]['desc'] }}</div>
+                                  <div class="ui header" href="{{ $pop[2]['url'] }}">{{ $pop[2]['desc'] }}</div>
                               @else
                               <div class="ui header">Egypt</div>
                               @endif
@@ -322,7 +322,7 @@
                       </div>
                       <!--探索世界3 img -->
                       @if(!empty($pop[2]))
-                        <img   src="{{ $pop[2]['url'] }}" ></img>
+                        <img   src="{{ $pop[2]['image_url'] }}" ></img>
                       @else
                       <img   src="/images/course/1.png" ></img>
                       @endif
@@ -334,7 +334,7 @@
                           <div class="content">
                             <div class="center">
                               @if(!empty($pop[3]))
-                                  <div class="ui header">{{ $pop[3]['desc'] }}</div>
+                                  <div class="ui header" href="{{ $pop[3]['url'] }}">{{ $pop[3]['desc'] }}</div>
                               @else
                               <div class="ui header">Egypt</div>
                               @endif
@@ -343,7 +343,7 @@
                       </div>
                       <!--探索世界4 img -->
                       @if(!empty($pop[3]))
-                        <img   src="{{ $pop[3]['url'] }}" ></img>
+                        <img   src="{{ $pop[3]['image_url'] }}" ></img>
                       @else
                       <img   src="/images/course/1.png" ></img>
                       @endif
@@ -355,7 +355,7 @@
                           <div class="content">
                             <div class="center">
                               @if(!empty($pop[4]))
-                                  <div class="ui header">{{ $pop[4]['desc'] }}</div>
+                                  <div class="ui header" href="{{ $pop[4]['url'] }}">{{ $pop[4]['desc'] }}</div>
                               @else
                               <div class="ui header">Egypt</div>
                               @endif
@@ -364,7 +364,7 @@
                       </div>
                       <!--探索世界5 img -->
                       @if(!empty($pop[4]))
-                        <img   src="{{ $pop[4]['url'] }}" ></img>
+                        <img   src="{{ $pop[4]['image_url'] }}" ></img>
                       @else
                       <img   src="/images/course/1.png" ></img>
                       @endif
@@ -378,7 +378,7 @@
                           <div class="content">
                             <div class="center">
                               @if(!empty($pop[5]))
-                                  <div class="ui header">{{ $pop[5]['desc'] }}</div>
+                                  <div class="ui header" href="{{ $pop[5]['url'] }}">{{ $pop[5]['desc'] }}</div>
                               @else
                               <div class="ui header">Egypt</div>
                               @endif
@@ -387,7 +387,7 @@
                       </div>
                       <!--探索世界6 img -->
                       @if(!empty($pop[5]))
-                        <img   src="{{ $pop[5]['url'] }}" ></img>
+                        <img   src="{{ $pop[5]['image_url'] }}" ></img>
                       @else
                       <img   src="/images/course/1.png" ></img>
                       @endif
@@ -399,7 +399,7 @@
                           <div class="content">
                             <div class="center">
                               @if(!empty($pop[6]))
-                                  <div class="ui header">{{ $pop[6]['desc'] }}</div>
+                                  <div class="ui header" href="{{ $pop[6]['url'] }}">{{ $pop[6]['desc'] }}</div>
                               @else
                               <div class="ui header">Egypt</div>
                               @endif
@@ -408,7 +408,7 @@
                       </div>
                       <!--探索世界7 img -->
                       @if(!empty($pop[6]))
-                        <img   src="{{ $pop[6]['url'] }}" ></img>
+                        <img   src="{{ $pop[6]['image_url'] }}" ></img>
                       @else
                       <img   src="/images/course/1.png" ></img>
                       @endif
@@ -422,7 +422,7 @@
                           <div class="content">
                             <div class="center">
                               @if(!empty($pop[7]))
-                                  <div class="ui header">{{ $pop[7]['desc'] }}</div>
+                                  <div class="ui header" href="{{ $pop[7]['url'] }}">{{ $pop[7]['desc'] }}</div>
                               @else
                               <div class="ui header">Egypt</div>
                               @endif
@@ -431,7 +431,7 @@
                       </div>
                       <!--探索世界8 img -->
                       @if(!empty($pop[7]))
-                        <img   src="{{ $pop[7]['url'] }}" ></img>
+                        <img   src="{{ $pop[7]['image_url'] }}" ></img>
                       @else
                       <img   src="/images/course/1.png" ></img>
                       @endif
@@ -443,7 +443,7 @@
                           <div class="content">
                             <div class="center">
                               @if(!empty($pop[8]))
-                                  <div class="ui header">{{ $pop[8]['desc'] }}</div>
+                                  <div class="ui header" href="{{ $pop[8]['url'] }}">{{ $pop[8]['desc'] }}</div>
                               @else
                               <div class="ui header">Egypt</div>
                               @endif
@@ -452,7 +452,7 @@
                       </div>
                       <!--探索世界9 img -->
                       @if(!empty($pop[8]))
-                        <img   src="{{ $pop[8]['url'] }}" ></img>
+                        <img   src="{{ $pop[8]['image_url'] }}" ></img>
                       @else
                       <img   src="/images/course/1.png" ></img>
                       @endif
@@ -464,7 +464,7 @@
                           <div class="content">
                             <div class="center">
                               @if(!empty($pop[9]))
-                                  <div class="ui header">{{ $pop[9]['desc'] }}</div>
+                                  <div class="ui header" href="{{ $pop[9]['url'] }}">{{ $pop[9]['desc'] }}</div>
                               @else
                               <div class="ui header">Egypt</div>
                               @endif
@@ -473,7 +473,7 @@
                       </div>
                       <!--探索世界10 img -->
                       @if(!empty($pop[9]))
-                        <img   src="{{ $pop[9]['url'] }}" ></img>
+                        <img   src="{{ $pop[9]['image_url'] }}" ></img>
                       @else
                       <img   src="/images/course/1.png" ></img>
                       @endif

@@ -13,4 +13,15 @@ class Country extends Model
     {
     	return $this->belongsToMany('App\Source', 'country_source', 'cid', 'sid');
     }
+
+    public function find_country($word)
+    {
+    	$result = [];
+    	$query = Country::where('name', 'like', '%'.$word.'%')->get();
+    	foreach($query as $val)
+    	{
+    		$result[] = $val->name;
+    	}
+    	return $result;
+    }
 }
