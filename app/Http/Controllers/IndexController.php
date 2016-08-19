@@ -46,7 +46,7 @@ class IndexController extends Controller
         $params['lang'] = $request->input('lang', '');
         $params['dest'] = $request->input('dest', '');
         $params['offer'] = $request->input('offer', '');
-        $params['content'] = $request->input('content', '');
+        $params['content'] = $request->input('destination', '');
         $params['page'] = $request->input('page', 0);
         $params['page'] = $params['page']-1;
         if($params['page'] < 0)
