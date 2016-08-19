@@ -33,6 +33,7 @@ return array(
             'type' => 'enum',
             'options' => array('image', 'text')
         ),
+        'url',
         'position' => array(
             'title' => 'position',
             'type' => 'enum',
@@ -52,6 +53,7 @@ return array(
             'title' => 'value'
             ),
         'type',
+        'url',
         'position',
         'sort',
         'is_active'

@@ -9,8 +9,11 @@ use App\Http\Requests;
 use App\CustomMeta;
 use App\DivingProduct;
 use App\Country;
+use App\City;
+use App\DivingPosition;
 
 use Auth;
+use DB;
 
 class IndexController extends Controller
 {
@@ -44,11 +47,43 @@ class IndexController extends Controller
         $params['dest'] = $request->input('dest', '');
         $params['offer'] = $request->input('offer', '');
         $params['content'] = $request->input('content', '');
+        $params['page'] = $request->input('page', 0);
+        $params['page'] = $params['page']-1;
+        if($params['page'] < 0)
+        {
+            $params['page'] = 0;
+        }
+        $params['per_page'] = 10;
 
         $products = new DivingProduct();
         $result = $products->search($params);
         // print_r($result);
         return view('search', ['result'=>$result]);
+    }
+
+    public function country_word(Request $request)
+    {
+        $word = $request->input('word', '');
+        if(empty($word)){
+            return '{}';
+        }
+        $result = array();
+        $country = new Country();
+        $query = $country->find_country($word);
+        if($query){
+            return json_encode($query);
+        }
+        $city = new City();
+        $query = $city->find_city($word);
+        if($query){
+            return json_encode($query);
+        }
+        $pos = new DivingPosition();
+        $query = $pos->find_position($word);
+        if($query){
+            return json_encode($query);
+        }
+        return json_encode($result);
     }
 
     // public function test(Request $request)
