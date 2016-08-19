@@ -107,7 +107,6 @@
 }
 #diving .first-sec {
     position: relative;
-    overflow: hidden;
     text-align: center;
     padding: 0em;
     color: rgba(255, 255, 255, 0.9);
@@ -181,7 +180,7 @@
   border-radius: 0!important;
   border-left:none!important;
 }
-#diving .search-bar .column .search{
+#diving .search-bar .column .passengers,#diving .search-bar .column .search{
   -webkit-border-radius:0!important;
   border-radius: 0!important;
   height: 37px!important;
@@ -213,6 +212,10 @@
     border-top-left-radius: 0!important;
     border-bottom-left-radius: 0!important;
     border-bottom: 1px solid #00B5AD;
+}
+#diving .second-sec{
+  position: relative;
+  z-index:-1;
 }
 #diving .second-sec .ui.list{
     height: 74px;

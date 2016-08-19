@@ -13,15 +13,31 @@ $(window).scroll(function(){
        $('.menu').addClass('inverted');
    }
 })
-$('.search-bar').on('click','.ui.button',function(){
-      notice();
+function search(dest){
+     var dateS=$('.search-bar .from').find('input').val();
+     var dateE=$('.search-bar .to').find('input').val();
+     var passenger=$('.search-bar .passengers').find('input').val();
+     if(!dest&&!dateS&&!dateE&&!passenger){
+       alert('please choose one option for search at least ~');
+     }
+     else{
+       location.href='/search?destination='+dest+'&date_start='+dateS+'&data_end='+dateE+'&passenger='+passenger;
+     }
+}
+$('.search-bar').on('click','.search-btn',function(){
+      // notice();
       var text='';
       if(window.screenSize=="PC"){
-        text=$(this).parent().siblings('.four.wide').find('.menu div[data-value] b').text();
+        text=$(this).siblings('.four.wide').find('input[name=country]').val();
       }else{
-        text=$(this).parent().siblings('.ten.wide').find('.menu div[data-value] b').text();
+        text=$(this).siblings('.ten.wide').find('input[name=country]').val();
       }
-      if(text)  ga('send', 'event', 'search_click', 'content:'+text, '');
+       search(text);
+      if(text){
+          ga('send', 'event', 'search_click', 'content:'+text, '');
+      } else{
+           ga('send', 'event', 'search_click', 'content:'+'null', '');
+      }
 
 })
 $('.second-sec').on('click','.ui.list .item',function(){
@@ -54,12 +70,13 @@ $('.ui.mini.teal.button').on('click',function(e){
   e.preventDefault();
 })
 $(function(){
-  $('.ui.dropdown').dropdown({
-    direction: 'upward',
-    transition:'slide up',
-    //允许用户自己输入，而不仅仅是选择列表
-    allowAdditions:true
-  })
+    $('.ui.dropdown.destination').dropdown({
+      direction: 'updown',
+      transition:'slide down',
+      //允许用户自己输入，而不仅仅是选择列表
+      allowAdditions:true
+    })
+  $('.ui.dropdown.passengers').dropdown()
   $('.date-pick').kuiDate({
     className:'date-pick',
     isDisabled: "0"  // isDisabled为可选参数，“0”表示今日之前不可选，“1”标志今日之前可选

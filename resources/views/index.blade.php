@@ -53,7 +53,7 @@
         <div class="ui centered  grid">
           <div class="ui row computer only">
             <div class="four wide column">
-              <div class="ui fluid search selection dropdown">
+              <div class="ui fluid search selection dropdown destination">
                 <input type="hidden" name="country">
                 <i class="dropdown icon"></i>
                 <div class="default text">Select Country</div>
@@ -80,8 +80,24 @@
               </div>
             </div>
             <div class="two wide column">
-              <div class="ui fluid input">
-                <input type="text" placeholder="passagers">
+               <div class="ui fluid input">
+                <div class="ui fluid  selection dropdown passengers">
+                    <input type="hidden" name="country">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Passengers</div>
+                    <div class="menu">
+                        <div class="item" data-value='1'>1 passenger</div>
+                        <div class="item" data-value='2'>2 passengers</div>
+                        <div class="item" data-value='3'>3 passengers</div>
+                        <div class="item" data-value='4'>4 passengers</div>
+                        <div class="item" data-value='5'>5 passengers</div>
+                        <div class="item" data-value='6'>6 passengers</div>
+                        <div class="item" data-value='7'>7 passengers</div>
+                        <div class="item" data-value='8'>8 passengers</div>
+                        <div class="item" data-value='9'>9 passengers</div>
+                        <div class="item" data-value='10'>10 passengers</div>
+                    </div>
+                </div>
               </div>
             </div>
             <div class="one wide column search-btn">
@@ -90,7 +106,7 @@
           </div>
           <div class="ui row mobile only">
             <div class="ten wide column">
-              <div class="ui fluid search selection dropdown">
+              <div class="ui fluid search selection dropdown destination">
                 <input type="hidden" name="country">
                 <i class="dropdown icon"></i>
                 <div class="default text">Select Country</div>
