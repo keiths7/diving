@@ -11,6 +11,7 @@ use App\DivingProduct;
 use App\Country;
 use App\City;
 use App\DivingPosition;
+use App\UserOrder;
 
 use Auth;
 use DB;
@@ -57,7 +58,7 @@ class IndexController extends Controller
 
         $products = new DivingProduct();
         $result = $products->search($params);
-        // print_r($result);
+//         print_r($result);
         return view('search', ['result'=>$result]);
     }
 
@@ -84,6 +85,25 @@ class IndexController extends Controller
             return json_encode($query);
         }
         return json_encode($result);
+    }
+
+    public function new_order(Request $request)
+    {
+        if (!Auth::check()) {
+            return '{}';
+        }
+        $user = $request->user();
+        $validator = Validator::make(Input::all(), UserOrder::$rules);
+
+        if($validator->passes()) {
+            $order = new UserOrder;
+            $result = $order->new_order(Input::all());
+            if($result) {
+                return;
+            }
+        }
+        return;
+
     }
 
     // public function test(Request $request)

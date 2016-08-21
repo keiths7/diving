@@ -68,9 +68,12 @@ class UserController extends Controller
 
     public function get_user_credit(Request $request)
     {
-        $user = $request->user();
+        if (!Auth::check()) {
+            return '{}';
+        }
+        $login_user = $request->user();
         $user = new User();
-        $ret = $user->get_pay_info($user['id']);
+        $ret = $user->get_pay_info($login_user['id']);
         return json_encode($ret);
     }
 
@@ -123,8 +126,27 @@ class UserController extends Controller
             // return Redirect::to('/')->with('message', '欢迎注册，好好玩耍!');
         } else {
             echo $validator->messages();
-            echo 'failed111';
-            // return Redirect::to('user/register')->with('message', '请您正确填写下列数据')->withErrors($validator)->withInput();    
+            echo 'failed';
+            // return Redirect::to('user/register')->with('message', '请您正确填写下列数据')->withErrors($validator)->withInput();
+        }
+    }
+
+    public function init_password(Request $request)
+    {
+        if (!Auth::check()) {
+            return '{}';
+        }
+        $login_user = $request->user();
+        $validator = Validator::make(Input::all(), User::$reset_pwd_rules);
+
+        if($validator->passes()) {
+            $user = User::where('id', '=', $login_user['id'])->first();
+            $user->password = Hash::make(Input::get('password'));
+            $user->save();
+            echo 'ok';
+        } else {
+            echo $validator->messages();
+            echo 'failed';
         }
     }
 }

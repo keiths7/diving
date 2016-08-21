@@ -33,6 +33,11 @@ class User extends Authenticatable
         'password_confirmation'=>'required|alpha_num|between:6,12'
     );
 
+    public static $reset_pwd_rules = array(
+        'password'=>'required|alpha_num|between:6,12|confirmed',
+        'password_confirmation'=>'required|alpha_num|between:6,12'
+    );
+
     public function get_user_info($uid)
     {
         $user_info = User::where('id', $uid)->find(1);
