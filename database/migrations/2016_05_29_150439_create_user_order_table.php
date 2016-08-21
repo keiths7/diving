@@ -14,6 +14,17 @@ class CreateUserOrderTable extends Migration
     {
         Schema::create('user_order', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('pid');
+            $table->integer('uid');
+            $table->integer('type');
+            $table->string('start_date');
+            $table->string('end_date');
+            $table->integer('divers');
+            $table->integer('money');
+            $table->integer('is_paid');
+            $table->string('paytime');
+            $table->string('discount');
+            $table->string('need_pay');
             $table->timestamps();
         });
     }
