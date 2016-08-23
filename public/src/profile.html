@@ -43,9 +43,9 @@
     <div class="ui container">
         <div class="ui four column grid">
             <div class="row">
-                <div class="column " data-tab="purchases">Purchases</div>
-                <div class="column  sel" data-tab="profile">Profile</div>
-                <div class="column " data-tab="setting">Setting</div>
+                <div class="column sel" data-tab="purchases">Purchases</div>
+                <div class="column  " data-tab="profile">Profile</div>
+                <div class="column " data-tab="setting">Change Password</div>
                 <div class="column " data-tab="payment">Payment</div>
             </div>
         </div>
@@ -54,44 +54,36 @@
 <section class="form-sec profile">
     <div class="ui container">
         <div class="forms-wrap">
-              <div class="purchases ">
-                    <div class="ui message">
-                        <div class="header">Saved Credit Cards </div>
-                    </div>     
-                    <div class="ui form">
-                        <div class="inline  fields">
-                            <div class="two wide field">
-                                <label for="">Card Number</label>
-                            </div>
-                            <div class=" eight wide field">
-                                <input type="text" placeholder="type your credit card number">
-                            </div>
-                        </div>
-                        <div class="inline  fields">
-                            <div class="two wide field">
-                                <label for="">MM/YY</label>
-                            </div>
-                            <div class=" eight wide field">
-                                <input type="text" placeholder="type your credit card effective dates">
-                            </div>
-                        </div>
-                        <div class="inline  fields">
-                            <div class="two wide field">
-                                <label for="">CVC</label>
-                            </div>
-                            <div class=" eight wide field">
-                                <input type="text" placeholder="type your credit card  cerification code">
-                            </div>
-                        </div>
-                        <div class="inline  fields">
-                            <div class="two wide field"></div>
-                            <div class="five wide field">
-                                <div class="ui submit teal large fluid button">Add  New  Card</div>
-                            </div>
-                        </div>
-                    </div>
+              <div class="purchases sel">
+                   <div class="ui five column grid">
+                       <div class="row list-header">
+                           <div class="column">Product</div>
+                           <div class="column">Price</div>
+                           <div class="column">Purchase Date</div>
+                           <div class="column">Schedule</div>
+                           <div class="column">Invoice</div>
+                       </div>
+                       <div class="row list-item">
+                           <div class="eight wide column">
+                               <img class="" src="/images/course/1.png" alt="">
+                               <p>this is most popular destination</p>
+                               <p>oh hoho  ,that is not the best choice</p>
+                           </div>
+                           <div class="two wide column"></div>
+                           <div class="two wide column"></div>
+                           <div class="two wide column"></div>
+                           <div class="two wide column"></div>
+                       </div>
+                       <div class="row list-item">
+                           <div class="column"></div>
+                           <div class="column"></div>
+                           <div class="column"></div>
+                           <div class="column"></div>
+                           <div class="column"></div>
+                       </div>
+                   </div>
               </div>  
-              <div class="profile sel">  
+              <div class="profile">  
                     <div class="ui form">
                         <div class="inline  fields">
                             <div class="two wide field">
@@ -114,7 +106,10 @@
                                 <label for="">Gender</label>
                             </div>
                             <div class=" eight wide field">
-                                <input type="text" placeholder="">
+                               <select name="" id="">
+                                   <option value="">man</option>
+                                   <option value="">woman</option>
+                               </select>
                             </div>
                         </div>
                         <div class="inline  fields">
@@ -169,7 +164,7 @@
                     <div class="ui form">
                         <div class="inline  fields">
                             <div class="two wide field">
-                                <label for="">First Name</label>
+                                <label for="">old password</label>
                             </div>
                             <div class=" eight wide field">
                                 <input type="text" placeholder="">
@@ -177,7 +172,7 @@
                         </div>
                         <div class="inline  fields">
                             <div class="two wide field">
-                                <label for="">Last Name</label>
+                                <label for="">new password</label>
                             </div>
                             <div class=" eight wide field">
                                 <input type="text" placeholder="">
@@ -185,48 +180,49 @@
                         </div>
                         <div class="inline  fields">
                             <div class="two wide field">
-                                <label for="">Gender</label>
+                                <label for="">verify password</label>
                             </div>
                             <div class=" eight wide field">
                                 <input type="text" placeholder="">
                             </div>
                         </div>
-                        <div class="inline  fields">
-                            <div class="two wide field">
-                                <label for="">Email</label>
-                            </div>
-                            <div class=" eight wide field">
-                                <input type="text" placeholder="">
-                            </div>
-                        </div>
-                        
                         <div class="inline  fields">
                             <div class="two wide field"></div>
                             <div class="five wide field">
-                                <div class="ui submit teal large fluid button">Add  New  Card</div>
+                                <div class="ui submit teal large fluid button">Save</div>
                             </div>
                         </div>
                     </div>
               </div>
               <div class="payment ">  
+                     <div class="ui message">
+                        <div class="header">Saved Credit Cards </div>
+                    </div>     
                     <div class="ui form">
                         <div class="inline  fields">
                             <div class="two wide field">
-                                <label for="">First Name</label>
+                                <label for="">Card Number</label>
                             </div>
                             <div class=" eight wide field">
-                                <input type="text" placeholder="">
+                                <input type="text" placeholder="type your credit card number">
                             </div>
                         </div>
                         <div class="inline  fields">
                             <div class="two wide field">
-                                <label for="">Last Name</label>
+                                <label for="">MM/YY</label>
                             </div>
                             <div class=" eight wide field">
-                                <input type="text" placeholder="">
+                                <input type="text" placeholder="type your credit card effective dates">
                             </div>
                         </div>
-                        
+                        <div class="inline  fields">
+                            <div class="two wide field">
+                                <label for="">CVC</label>
+                            </div>
+                            <div class=" eight wide field">
+                                <input type="text" placeholder="type your credit card  cerification code">
+                            </div>
+                        </div>
                         <div class="inline  fields">
                             <div class="two wide field"></div>
                             <div class="five wide field">

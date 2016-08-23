@@ -52,6 +52,27 @@ body{
                     text-align: right;  
                  }    
             }
+            .list-header.row{
+                padding: 16px 10px;
+                background-color: #EDEFEC;
+                text-align: center;
+                .column{
+                    
+                }
+            }
+            .list-item.row{
+                .column{
+                    text-align: center;
+                    &:first-child{
+
+                    }
+                    img{
+                        display: inline-block;
+                        width: 20px;
+                            
+                    }
+                }
+            }
             
         }
         .profile,.setting,.payment{
