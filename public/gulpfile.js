@@ -131,7 +131,7 @@ gulp.task('sprite', ['imagemin','sass'], function (done) {
                     pathToSpriteSheetFromCSS: '../images/spritesheet' + timestamp + '.png',
                     spritesmithOptions: {
                         padding: 10
-                    }
+                    }   
                 }))
                 .pipe(base64())
                 .pipe(cssmin())
@@ -140,7 +140,7 @@ gulp.task('sprite', ['imagemin','sass'], function (done) {
 //将css加上10位md5，并修改html中的引用路径，该动作依赖sprite
 gulp.task('md5:css', ['sprite','copy:html'], function (done) {
     gulp.src('build/css/*.css')
-        .pipe(md5(10, 'build/*.html'))
+        // .pipe(md5(10, 'build/*.html'))
         .pipe(gulp.dest('build/css'))
         .on('end', done);
 });
@@ -156,7 +156,7 @@ gulp.task('jsmin',['copy:js'],function(){
 //将js加上10位md5,并修改html中的引用路径，该动作依赖jsmin
 gulp.task('md5:js', ['jsmin','copy:html'], function (done) {
     gulp.src('build/js/*.js')
-        .pipe(md5(10, 'build/*.html'))
+        // .pipe(md5(10, 'build/*.html'))
         .pipe(gulp.dest('build/js'))
         .on('end', done);
 });

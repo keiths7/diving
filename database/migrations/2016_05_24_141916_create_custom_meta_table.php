@@ -19,6 +19,7 @@ class CreateCustomMetaTable extends Migration
             $table->string('type');
             $table->string('position');
             $table->integer('sort');
+            $tbale->string('url');
             $table->integer('is_active');
             $table->timestamps();
         });
