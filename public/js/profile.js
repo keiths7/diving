@@ -1,0 +1,1 @@
+"use strict";$(".profile-tab").on("click",".column",function(){$(this).addClass("sel").siblings().removeClass("sel");var s=$(this).data("tab");$("."+s).addClass("sel").siblings().removeClass("sel")});

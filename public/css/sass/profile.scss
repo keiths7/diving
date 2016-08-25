@@ -1,0 +1,113 @@
+@import "common.scss";
+
+body{
+   background-color: #F5F5F5;
+}
+#profile {
+
+.profile-tab{
+    margin-top: 1rem;
+    background-color: #565A5D;  
+    .ui.grid{
+        margin-bottom: 0;
+        line-height: 40px;
+        padding-bottom: 0;
+        .row{
+            padding-bottom:0;
+        }
+        .column{
+            display: inline-block;
+            padding: 0;
+            font-size: 16px;
+            text-align: center;
+            color:#fff;
+            cursor:pointer;
+            &.sel{
+                border-bottom: 4px solid #CACBCD;
+            }
+        }
+    }
+}
+.form-sec{
+    background-color: #F5F5F5;
+    .forms-wrap{
+        padding: 2rem  0 ;
+        color:#595A5C;
+        .profile{
+            display: none;
+            margin: 0 auto;
+            &.sel{
+                display: block;
+            }
+            .ui.message{    
+                border:none;
+                box-shadow:none;
+                background-color: #EDEFEC;
+            }
+            .inline.fields{
+                margin-top: 2rem;
+                @include flex-centered;
+                .two.wide.field{ 
+                    display: inline-block;
+                    text-align: right;  
+                 }    
+            }           
+        }
+        .setting,.payment{
+            @extend .profile;
+        }
+        .purchases{
+            @extend .profile;
+            padding: 2rem 0 4rem;
+            .list-header.row{
+                padding: 16px 10px;
+                background-color: #EDEFEC;
+                text-align: center;
+                .column{
+                    
+                }
+            }
+            .list-item.row{
+                border-bottom: 1px solid #ddd;
+                .column{
+                    height: 80px;
+                    line-height: 80px;
+                    text-align: center;
+                    &:first-child{
+
+                    }                  
+                    & .list{
+                        height: 100%;
+                        text-align: left;
+                        .item{
+                            height: 100%;
+                            font-size: 14px;   
+                            img{
+                                display: inline-block;
+                                width: 24%;
+                                height: 100%;   
+                            }
+                            .content{
+                                width: 69%;
+                                text-align: left;
+                            }
+                            .header {
+                                color: #58595B!important;
+                                line-height: 24px;      
+                            }
+                            .description{
+                                color: #A4A5A7;
+                                line-height: 24px;
+                            } 
+                        }                     
+                    }
+                }
+            }   
+        }
+    }
+ 
+
+}
+
+}
+

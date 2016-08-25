@@ -8,3 +8,4 @@ Homestead.json
 .env.example
 .gitattributes
 uploads
+/public/build   
