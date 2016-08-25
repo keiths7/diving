@@ -33,7 +33,7 @@ body{
     .forms-wrap{
         padding: 2rem  0 ;
         color:#595A5C;
-        .purchases{
+        .profile{
             display: none;
             margin: 0 auto;
             &.sel{
@@ -51,7 +51,14 @@ body{
                     display: inline-block;
                     text-align: right;  
                  }    
-            }
+            }           
+        }
+        .setting,.payment{
+            @extend .profile;
+        }
+        .purchases{
+            @extend .profile;
+            padding: 2rem 0 4rem;
             .list-header.row{
                 padding: 16px 10px;
                 background-color: #EDEFEC;
@@ -61,22 +68,41 @@ body{
                 }
             }
             .list-item.row{
+                border-bottom: 1px solid #ddd;
                 .column{
+                    height: 80px;
+                    line-height: 80px;
                     text-align: center;
                     &:first-child{
 
-                    }
-                    img{
-                        display: inline-block;
-                        width: 20px;
-                            
+                    }                  
+                    & .list{
+                        height: 100%;
+                        text-align: left;
+                        .item{
+                            height: 100%;
+                            font-size: 14px;   
+                            img{
+                                display: inline-block;
+                                width: 24%;
+                                height: 100%;   
+                            }
+                            .content{
+                                width: 69%;
+                                text-align: left;
+                            }
+                            .header {
+                                color: #58595B!important;
+                                line-height: 24px;      
+                            }
+                            .description{
+                                color: #A4A5A7;
+                                line-height: 24px;
+                            } 
+                        }                     
                     }
                 }
-            }
-            
-        }
-        .profile,.setting,.payment{
-            @extend .purchases;
+            }   
         }
     }
  
