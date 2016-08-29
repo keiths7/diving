@@ -32,8 +32,10 @@ class IndexController extends Controller
     {
         $product = new DivingProduct();
         $result = $product->get_product($id);
+        $params = $request->all();
+        // print_r($params);
         // var_dump($result->shop->name);
-        return view('product', ['product'=>$result]);
+        return view('product', ['product'=>$result, 'params'=>$params]);
     }
 
     public function search(Request $request)

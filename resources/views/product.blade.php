@@ -9,8 +9,8 @@
     <meta name="full-screen" content="yes">
     <meta name="description" content="Book your best diving trip，every diving trip with Dreamdivingtrip,the world’s best diving booking site.Your free personal diving assistant.">
     <meta name="keywords" content="diving vacation, diving vacations, diving vacation packages, diving vacation package, diving travel package, diving travel packages, diving travel, diving trip package, diving trip packages, diving trip,planning, hotel, hotels, motel, bed and breakfast, inn, guidebook, review, reviews, popular, plan, airfare, cheap, discount, map, maps, golf, ski, articles, attractions, advice, restaurants">
-    <link href="/css/semantic.min" rel="stylesheet">
-    <link href="/css/product" rel="stylesheet">
+    <link href="/css/semantic.min.css" rel="stylesheet">
+    <link href="/css/product.css" rel="stylesheet">
     <title>Dreamdivingtrip.com: Online Booking for Scuba Diving,Liveaboard and Courses all around the world</title>
 </head>
 <body id="product">
@@ -70,14 +70,18 @@
                     </select>
                   </div>
                   <div class="three fields">
-                      <div class="field"><label for="">Start Date</label><input type="text" id="input_start_date"></div>
-                      <div class="field"><label for="">End Date</label><input type="text" id="input_end_date"></div>
+                      <div class="field"><label for="">Start Date</label><input type="text" id="input_start_date" value="{{ $params['date_start'] }}"></div>
+                      <div class="field"><label for="">End Date</label><input type="text" id="input_end_date" value="{{ $params['date_end'] }}"></div>
                       <div class="field">
                         <label for="">Divers</label>
                         <select class="ui dropdown" name="" id="" >
-                          <option value="">1</option>
-                          <option value="">2</option>
-                          <option value="">3</option>
+                          @for($i=1;$i<=10;$i++)
+                          @if(isset($params['passenger']) && $i == $params['passenger'])
+                          <option value="{{$i}}" selected>{{$i}}</option>
+                          @else
+                          <option value="{{$i}}">{{$i}}</option>
+                          @endif
+                          @endfor
                         </select>
                       </div>
                   </div>
