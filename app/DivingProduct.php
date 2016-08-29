@@ -449,7 +449,63 @@ class DivingProduct extends Model
         return $query;
     }
 
-    // public function 
+    public function get_more_product($params)
+    {
+        $query = /*DB::table('diving_product')*/
+                DivingProduct::
+                join('diving_shop', 'diving_shop.id', '=', 'diving_product.shop_id')
+                ->leftJoin('product_position', 'product_position.pro_id', '=', 'diving_product.id')
+                ->select('diving_product.*');
+
+        if(array_key_exists('city_id', $params))
+        {
+            $city_id = $params['city_id'];
+            $query = $query->leftJoin('diving_position', 'diving_position.id', '=', 'product_position.pos_id');
+            $query = $query->where('diving_position.city_id', $params['city_id']);
+        }
+        if(array_key_exists('position_id', $params)){
+            $position_id = $params['position_id'];
+            $query = $query->where('product_position.pos_id', '=', $params['position_id']);
+        }
+        //////////////////////////////////////////////////
+        if(array_key_exists('price_start', $params))
+        {
+            $query = $query->whereBetween('price', [intval($params['price_start']), intval($params['price_end'])]);
+        }
+        if(array_key_exists('lang', $params) && $params['lang'])
+        {
+            $langs = explode('-', $params['lang']);
+            $query = $query->leftJoin('shop_language', 'shop_language.sid', '=', 'diving_shop.id');
+            $query = $query->whereIn('lid', $langs);
+        }
+        if(array_key_exists('dive_type', $params) && $params['dive_type'])
+        {
+            $query = $query->where('type', $params['dive_type']);
+        }
+        if(array_key_exists('dest', $params) && $params['dest'])
+        {
+            $dests = explode('-', $params['dest']);
+            // $query = $query->leftJoin('product_position', 'product_position.pro_id', '=', 'diving_product.id');
+            $query = $query->whereIn('diving_position.city_id', $dests);
+        }
+        if(array_key_exists('offer', $params) && $params['offer'])
+        {
+            $dests = explode('-', $params['offer']);
+            $dests = array_map(function($val){return intval($val);}, $dests);
+            $query = $query->leftJoin('shop_dive_offer', 'shop_dive_offer.sid', '=', 'diving_shop.id');
+            $query = $query->whereIn('shop_dive_offer.offer', $dests);
+        }
+        $query = $query->groupBy('diving_product.id')->skip($params['page']*$params['per_page'])->take($params['per_page']);;
+        $query = $query->get()->toArray();
+        // $result = array();
+        foreach ($query as $key => $val) {
+            $pos_info = $this->get_positions_by_id($val['id']);
+            $query[$key]['position_image'] = $this->get_position_image($pos_info[0]->id);
+        }
+        print_r($query);
+        // $result = array();
+        return $query;
+    }
 
     // public function get_destination($country_id)
     // {

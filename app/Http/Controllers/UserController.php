@@ -149,4 +149,9 @@ class UserController extends Controller
             echo 'failed';
         }
     }
+
+    public function user_profile(Request $request)
+    {
+        return view('profile');
+    }
 }

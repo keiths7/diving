@@ -106,6 +106,32 @@ class IndexController extends Controller
 
     }
 
+    public function get_more_product(Request $request)
+    {
+        $params = array();
+        $params['date_start'] = $request->input('date_start', '');
+        $params['date_end'] = $request->input('date_end', '');
+        $params['dive_type'] = $request->input('dive_type', '');
+        $params['price_start'] = $request->input('price_start', '');
+        $params['price_end'] = $request->input('price_end', '');
+        $params['lang'] = $request->input('lang', '');
+        $params['dest'] = $request->input('dest', '');
+        $params['offer'] = $request->input('offer', '');
+        $params['content'] = $request->input('destination', '');
+        $params['page'] = $request->input('page', 0);
+        $params['page'] = $params['page']-1;
+        if($params['page'] < 0)
+        {
+            $params['page'] = 0;
+        }
+        $params['per_page'] = 10;
+
+        $products = new DivingProduct();
+        $result = $products->get_more_product($params);
+//         print_r($result);
+        return view('search', ['result'=>$result]);
+    }
+
     // public function test(Request $request)
     // {
     //     $products = DivingProduct::all();
