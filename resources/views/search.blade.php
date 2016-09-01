@@ -268,8 +268,6 @@
         <div class="ui three column grid">
           <div class="row">
             @foreach($v as $num => $val)
-            @if($num >= 2)
-            @endif
               <div class="column">
                 <div class="ui image">
                   <img src="{{ $val->position_image }}" alt="">
@@ -279,7 +277,7 @@
                 </div>
               </div>
               @endforeach
-              <div class="column">
+              <!-- <div class="column">
                 <div class="ui image">
                   <img src="/images/product/bottom_2.jpg" alt="">
                   <aside class="">$ 1029  </aside>
@@ -294,7 +292,7 @@
                   <p>A description of this dive center</p>
                   <p><span>tags</span></p>
                 </div>
-              </div>
+              </div> -->
           </div>
         </div>
       </div>
