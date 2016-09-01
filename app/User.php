@@ -49,19 +49,28 @@ class User extends Authenticatable
         // User::
     }
 
-    public function get_pay_info($uid)
+    public function get_pay_info($uid, $toArray=false)
     {
         $query = UserPay::where('uid', '=', $uid)->first();
         $ret = array();
         if($query)
         {
-            $ret = $query->toArray();
+            if($toArray){
+                $ret = $query->toArray();
+            } else {
+                $ret = $query;
+            }
         }
         return $ret;
     }
 
-    public function update_pay_info($uid)
+    public function add_pay_info($uid, $card_number, $valid_thru, $cvc)
     {
-        return;
+        UserPay::insert(
+            ['card_number' => $card_number,
+            'valid_thru' => $valid_thru,
+            'cvc'=>$cvc,
+            'created_at'=>date('Y-m-d H:i:s'),
+            'uid'=>$uid]);
     }
 }

@@ -23,7 +23,7 @@ Route::get('/search/', 'IndexController@search');
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/country_word', 'IndexController@country_word');
+Route::get('/destination', 'IndexController@country_word');
 
 Route::auth();
 
