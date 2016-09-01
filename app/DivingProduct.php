@@ -268,6 +268,7 @@ class DivingProduct extends Model
 
     public function get_city_product($params)
     {
+        // var_dump($params);
         $query = DB::table('diving_product')
                 ->join('diving_shop', 'diving_shop.id', '=', 'diving_product.shop_id')
                 ->leftJoin('product_position', 'product_position.pro_id', '=', 'diving_product.id')
@@ -319,7 +320,10 @@ class DivingProduct extends Model
             $pos_info = DB::table('diving_position')->where('city_id', '=', $params['city_id'])->first();
             // print_r($pos_info);
 //            var_dump($params['city_id']);
-            $ret[$params['city_id']]  = array();
+            if(!isset($ret[$params['city_id']])) {
+                $ret[$params['city_id']]  = array();
+            }
+            
             $val->city_info = City::where('id', '=', $params['city_id'])->first();
             $val->position_image = $this->get_position_image($pos_info->id);
             $ret[$params['city_id']][] = $val;
@@ -337,7 +341,7 @@ class DivingProduct extends Model
 //            }
             
         }
-            
+          // var_dump($ret);  
         // $ret = array($city->id => $result);
         return $ret;
     }
