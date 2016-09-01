@@ -181,8 +181,14 @@
                     </div>
                     <div class=" one column row maps">
                       <div class="column">
-                        <div class="map">
-                           <img src="/images/product/map.jpg" alt="">
+                        <div class="map">                         
+                          <iframe
+                              width="100%"
+                              height="450"
+                              frameborder="0" style="border:0"
+                              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDpAZPEL4ft0aDFecsqzDO-irOoXs2x5TA
+                                &q={{ $product->positions[0]->city->name }},{{ $product->positions[0]->city->name }}+{{ $product->positions[0]->country->name }}," allowfullscreen>
+                            </iframe>
                         </div>
                       </div>
                     </div>

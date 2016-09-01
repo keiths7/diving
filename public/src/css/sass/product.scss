@@ -258,6 +258,9 @@ body{
    }
    .diving-sites.row{
      .row .ui.image{
+       img{
+         max-height: 240px;
+       }
        aside{
          position: absolute;
          top: 60%;
