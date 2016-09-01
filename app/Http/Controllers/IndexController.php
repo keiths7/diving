@@ -33,6 +33,11 @@ class IndexController extends Controller
         $product = new DivingProduct();
         $result = $product->get_product($id);
         $params = $request->all();
+        if(empty($params)) {
+            $params['date_start'] = '';
+            $params['date_end'] = '';
+            $params['passenger'] = 1;
+        }
         // print_r($params);
         // var_dump($result->shop->name);
         return view('product', ['product'=>$result, 'params'=>$params]);
