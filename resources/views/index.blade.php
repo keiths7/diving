@@ -58,11 +58,6 @@
                 <i class="dropdown icon"></i>
                 <div class="default text">Select Country</div>
                 <div class="menu">
-                    <div class="item" data-value='sydeny'>悉尼</div>
-                    <div class="item" data-value='boston'>波士顿</div>
-                    <div class="item" data-value='shanghai'>上海</div>
-                    <div class="item" data-value='shanghai'>伦敦</div>
-                    <div class="item" data-value='shanghai'>佛罗里达州</div>
                 </div>
               </div>
             </div>
@@ -111,11 +106,6 @@
                 <i class="dropdown icon"></i>
                 <div class="default text">Select Country</div>
                 <div class="menu">
-                    <div class="item" data-value='sydeny'>悉尼</div>
-                    <div class="item" data-value='boston'>波士顿</div>
-                    <div class="item" data-value='shanghai'>上海</div>
-                    <div class="item" data-value='shanghai'>伦敦</div>
-                    <div class="item" data-value='shanghai'>佛罗里达州</div>
                 </div>
               </div>
             </div>

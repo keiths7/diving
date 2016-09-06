@@ -13,17 +13,8 @@ $(window).scroll(function(){
        $('.menu').addClass('inverted');
    }
 })
-function search(dest){
-     var dateS=$('.search-bar .from').find('input').val();
-     var dateE=$('.search-bar .to').find('input').val();
-     var passenger=$('.search-bar .passengers').find('input').val();
-     if(!dest&&!dateS&&!dateE&&!passenger){
-       alert('please choose one option for search at least ~');
-     }
-     else{
-       location.href='/search?destination='+dest+'&date_start='+dateS+'&data_end='+dateE+'&passenger='+passenger;
-     }
-}
+ console.log($('.search-bar input[name=country]'));
+
 $('.search-bar').on('click','.search-btn',function(){
       // notice();
       var text='';
@@ -70,18 +61,38 @@ $('.ui.mini.teal.button').on('click',function(e){
   e.preventDefault();
 })
 $(function(){
-    $('.ui.dropdown.destination').dropdown({
+  var destDOM= $('.ui.dropdown.destination');
+    destDOM.dropdown({  
       direction: 'updown',
       transition:'slide down',
-      //允许用户自己输入，而不仅仅是选择列表
-      allowAdditions:true
+      allowAdditions:false,
+      // action:function(){      
+      // },
+      // onChange:function(value, text, selectedItem){
+      // },
+      // apiSettings: {
+      //    url: 'data.json?word={query}'
+      // }
     })
   $('.ui.dropdown.passengers').dropdown()
   $('.date-pick').kuiDate({
     className:'date-pick',
     isDisabled: "0"  // isDisabled为可选参数，“0”表示今日之前不可选，“1”标志今日之前可选
   });
-  // $('.grid .ui.image,.third-sec .ui.image ').dimmer('show');
+  $('.search-bar input.search').on('input',function(){
+     destDOM.addClass('loading');
+      var _this=$(this),word=_this.val(),itemStr='';
+      $.getJSON('data.json',{word:word},function(r){
+          destDOM.removeClass('loading');
+          if(r){
+              $(r).each(function(k,v){
+                itemStr+='<div class="item" data-value="'+v+'">'+v+'</div>';
+              })
+              _this.siblings('.menu').html(itemStr);
+              destDOM.dropdown('refresh');
+          }          
+      })
+  })
 })
 function notice(){
   $('.ui.modal').modal({
@@ -90,4 +101,15 @@ function notice(){
   $('.ui.modal').on('click',function(){
     $(this).modal('hide');
   })
+}
+function search(dest){
+     var dateS=$('.search-bar .from').find('input').val();
+     var dateE=$('.search-bar .to').find('input').val();
+     var passenger=$('.search-bar .passengers').find('input').val();
+     if(!dest&&!dateS&&!dateE&&!passenger){
+       alert('please choose one option for search at least ~');
+     }
+     else{
+       location.href='/search?destination='+dest+'&date_start='+dateS+'&data_end='+dateE+'&passenger='+passenger;
+     }
 }
