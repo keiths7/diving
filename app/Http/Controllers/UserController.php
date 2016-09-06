@@ -24,7 +24,7 @@ class UserController extends Controller
     public function get_user_info(Request $request)
     {
         if (!Auth::check()) {
-            return '{}';
+            return json_encode(['code'=>3, 'message'=>'not logined']);
         }
         $user = $request->user();
         $u = new User;
@@ -35,7 +35,7 @@ class UserController extends Controller
     public function update_user_info(Request $request)
     {
         if (!Auth::check()) {
-            return '{}';
+            return json_encode(['code'=>3, 'message'=>'not logined']);
         }
         $user = $request->user();
         $u = new User;
@@ -47,33 +47,42 @@ class UserController extends Controller
             }
         }
         $user_info->save();
+        return json_encode(['code'=>0, 'message'=>'success']);
     }
 
     public function update_user_pay(Request $request)
     {
         if (!Auth::check()) {
-            return '{}';
+            return json_encode(['code'=>3, 'message'=>'not logined']);
         }
         $user = $request->user();
         $u = new User;
-        $ret = $user->get_pay_info($user['id']);
+        $ret = $u->get_pay_info($user['id']);
         $params = ['card_number', 'valid_thru', 'cvc'];
-        foreach($params as $key) {
-            if($request->has($key)) {
-                $ret->$key = $request->input($key, '');
+        if($ret){
+            foreach($params as $key) {
+                if($request->has($key)) {
+                    $ret->$key = $request->input($key, '');
+                }
             }
+            $ret->save();
+        } else {
+            $card_number = $request->input('card_number', '');
+            $valid_thru = $request->input('valid_thru', '');
+            $cvc = $request->input('cvc', '');
+            $u->add_pay_info($user['id'], $card_number, $valid_thru, $cvc);
         }
-        $ret->save();
+        return json_encode(['code'=>0, 'message'=>'success']);
     }
 
     public function get_user_credit(Request $request)
     {
         if (!Auth::check()) {
-            return '{}';
+            return json_encode(['code'=>3, 'message'=>'not logined']);
         }
         $login_user = $request->user();
         $user = new User();
-        $ret = $user->get_pay_info($login_user['id']);
+        $ret = $user->get_pay_info($login_user['id'], true);
         return json_encode($ret);
     }
 
@@ -89,12 +98,12 @@ class UserController extends Controller
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
             // 认证通过...
             // return redirect()->intended('/');
-            echo 'ok';
+            return json_encode(['code'=>0, 'message'=>'success']);
         }
         else
         {
             // return redirect()->intended('/');
-            echo 'failed';
+            return json_encode(['code'=>1, 'message'=>'failed']);
         }
     }
 
@@ -106,9 +115,9 @@ class UserController extends Controller
     public function is_logined(Request $request)
     {
         if (Auth::check()) {
-            echo 'yes';
+            return json_encode(['code'=>0, 'message'=>'yes']);
         }
-        echo 'no';
+        return json_encode(['code'=>1, 'message'=>'no']);
     }
 
     public function register(Request $request)
@@ -122,11 +131,11 @@ class UserController extends Controller
             $user->password = Hash::make(Input::get('password'));
             $user->save();
 
-            echo 'ok';
+            return json_encode(['code'=>0, 'message'=>'success']);
             // return Redirect::to('/')->with('message', '欢迎注册，好好玩耍!');
         } else {
-            echo $validator->messages();
-            echo 'failed';
+            // echo $validator->messages();
+            return $validator->messages();
             // return Redirect::to('user/register')->with('message', '请您正确填写下列数据')->withErrors($validator)->withInput();
         }
     }
@@ -134,7 +143,7 @@ class UserController extends Controller
     public function init_password(Request $request)
     {
         if (!Auth::check()) {
-            return '{}';
+            return json_encode(['code'=>3, 'message'=>'not logined']);
         }
         $login_user = $request->user();
         $validator = Validator::make(Input::all(), User::$reset_pwd_rules);
@@ -143,10 +152,9 @@ class UserController extends Controller
             $user = User::where('id', '=', $login_user['id'])->first();
             $user->password = Hash::make(Input::get('password'));
             $user->save();
-            echo 'ok';
+            return json_encode(['code'=>0, 'message'=>'success']);
         } else {
-            echo $validator->messages();
-            echo 'failed';
+            return $validator->messages();
         }
     }
 

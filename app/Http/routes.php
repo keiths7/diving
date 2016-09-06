@@ -23,7 +23,7 @@ Route::get('/search/', 'IndexController@search');
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/country_word', 'IndexController@country_word');
+Route::get('/destination', 'IndexController@country_word');
 
 Route::auth();
 
@@ -31,6 +31,7 @@ Route::auth();
 Route::get('/user/login', 'UserController@login');
 Route::get('/user/logout', 'UserController@logout');
 Route::get('/user/register', 'UserController@register');
+Route::get('/user/islogin', 'UserController@is_logined');
 Route::get('/user/profile', 'UserController@user_profile');
 Route::get('/user/pay_info', 'UserController@get_user_credit');
 Route::get('/user/update_pay_info', 'UserController@update_user_pay');
