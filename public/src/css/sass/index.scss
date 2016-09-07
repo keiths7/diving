@@ -1,4 +1,5 @@
 /*logo*/
+@import "common.scss";
 @media only screen and (min-width: 1200px){
  .ui.container {
     width: 1000px;
@@ -471,4 +472,40 @@
     display: inline-block!important;
     margin-left: 10px;
     margin-right: 10px;
+}
+.login-dialog{
+  width: 400px!important;
+  margin-left:-200px!important;
+  padding:1rem  2rem 2rem;
+  .top-header{
+    text-align: center;
+    .logo{
+      display: inline-block;
+      margin-top: 1rem;
+    }
+    h3{
+      margin-top: .4rem!important;
+    }
+  }
+  .loginby-facebook{
+    padding: 0 1rem;
+    margin-top: 2rem;
+    text-align: center;
+    line-height: 50px;
+    .ui.button{
+      height: 50px; 
+    } 
+  }
+  .forms{
+
+    &>div{
+      margin-top: 1rem;
+    }
+    input{
+      height: 50px;
+    }
+    button{
+      height: 50px;
+    }
+  }
 }

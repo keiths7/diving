@@ -60,6 +60,11 @@ $('.ui.mini.teal.button').on('click',function(e){
   ga('send', 'event', 'contant_us_click', '', '');
   e.preventDefault();
 })
+$('.signin,.signup').on('click',function(){
+    $('.ui.modal.login-dialog').modal({
+    blurring:true
+  }).modal('show');
+})
 $(function(){
   var destDOM= $('.ui.dropdown.destination');
     destDOM.dropdown({  
@@ -82,7 +87,7 @@ $(function(){
   $('.search-bar input.search').on('input',function(){
      destDOM.addClass('loading');
       var _this=$(this),word=_this.val(),itemStr='';
-      $.getJSON('data.json',{word:word},function(r){
+      $.getJSON('/destination',{word:word},function(r){
           destDOM.removeClass('loading');
           if(r){
               $(r).each(function(k,v){
@@ -95,7 +100,7 @@ $(function(){
   })
 })
 function notice(){
-  $('.ui.modal').modal({
+  $('.ui.modal.indev').modal({
     blurring:true
   }).modal('show');
   $('.ui.modal').on('click',function(){

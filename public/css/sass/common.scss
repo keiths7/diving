@@ -37,6 +37,21 @@
     float:right;
   }
 }
+@for $i from 1 to 10 {
+  .mt-#{$i}{ margin-top:.5rem*$i!important };
+  .ml-#{$i}{ margin-left:.5rem*$i!important };
+  .mr-#{$i}{ margin-right:.5rem*$i!important };
+  .mb-#{$i}{ margin-bottom:.5rem*$i!important };
+}
+.tl{
+  text-align: left!important;
+}
+.tr{
+  text-align: right!important;
+}
+.tc{
+  text-align: center!important;
+}
 h5.ui.header{
   font-size: 14px;
 }
