@@ -41,6 +41,7 @@ class User extends Authenticatable
     public function get_user_info($uid)
     {
         $user_info = User::where('id', $uid)->find(1);
+        unset($user_info['admin']);
         return $user_info;
     }
 
