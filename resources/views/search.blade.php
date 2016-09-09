@@ -249,7 +249,9 @@
                        </div>
                      </div>
                    </div>
-                  <img src="/images/search/list_1.jpg" alt="">
+                  @foreach($v[0]->city_info->image as $val)
+                  <img src="{{ $val }}" alt="">
+                  @endforeach
                </div>
             </div>
             <div class="w33 wide column">

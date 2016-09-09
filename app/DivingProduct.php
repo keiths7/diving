@@ -393,6 +393,7 @@ class DivingProduct extends Model
 //            $city_info = DB::table('diving_position')->where('country_id', '=', $params['country_id'])->groupBy('city_id')->get();
 //            print_r($city_info);
             $val->city_info = City::where('id', '=', $val->city_id)->first();
+            $val->city_info->image = $this->get_city_image($val->city_id);
             $val->position_image = $this->get_position_image($val->pos_id);
             if(array_key_exists($val->city_id, $ret)){
                 $ret[$val->city_id][] = $val;
@@ -451,6 +452,19 @@ class DivingProduct extends Model
             $query[$k]->position_image = $this->get_position_image($v->pos_id);
         }
         return $query;
+    }
+
+    public function get_city_image($city_id)
+    {
+        $query = DB::table('city_source')
+                    ->leftJoin('source', 'city_source.sid', '=', 'source.id')->where('cid', '=', $city_id)->get();
+        $images = array();
+        foreach($query as $val)
+        {
+            array_push($images, '/uploads/originals/'.$val->file);
+        }
+
+        return $images;
     }
 
     public function get_more_product($params)
