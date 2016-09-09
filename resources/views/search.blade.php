@@ -278,7 +278,7 @@
                 <div class="ui image">
                   <img src="{{ $val->position_image }}" alt="">
                   <aside class="">$ {{ $val->price }}  </aside>
-                  <p>A description of this dive center</p>
+                  <p>{{ $val->name }}</p>
                   <p><span>tags</span></p>
                 </div>
               </div>
