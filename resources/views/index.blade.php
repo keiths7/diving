@@ -33,8 +33,8 @@
           </div>
           <!-- <a class="view-ui item"><i class="sidebar icon"></i>  </a> -->
           <div class="right menu">
-            <div class="item">Sign Up</div>
-            <div class="item">Sign In</div>
+            <div class="item signup">Sign Up</div>
+            <div class="item signin">Sign In</div>
           </div>
         </div>
     </header>
