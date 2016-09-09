@@ -62,7 +62,8 @@ $('.ui.mini.teal.button').on('click',function(e){
 })
 $('.signin,.signup').on('click',function(){
     $('.ui.modal.login-dialog').modal({
-    blurring:true
+    blurring:true,
+    transition:'fade up'
   }).modal('show');
 })
 $(function(){

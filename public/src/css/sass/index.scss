@@ -482,13 +482,15 @@
     .logo{
       display: inline-block;
       margin-top: 1rem;
+      img{
+        width: 72px;
+      }
     }
     h3{
       margin-top: .4rem!important;
     }
   }
   .loginby-facebook{
-    padding: 0 1rem;
     margin-top: 2rem;
     text-align: center;
     line-height: 50px;
