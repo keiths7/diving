@@ -249,9 +249,13 @@
                        </div>
                      </div>
                    </div>
+                  @if($v[0]->city_info->image)
                   @foreach($v[0]->city_info->image as $val)
                   <img src="{{ $val }}" alt="">
                   @endforeach
+                  @else
+                  <img src="/images/search/list_1.jpg" alt="">
+                  @endif
                </div>
             </div>
             <div class="w33 wide column">
