@@ -3,6 +3,7 @@ if(window.screen&&screen.width){
 }else{
   window.screenSize='PC';
 }
+var signUpDialog='',signInDialog='';
 $(window).scroll(function(){
    if(window.screenSize=="MOBILE") return;
    if(document.body.scrollTop>30){
@@ -60,14 +61,11 @@ $('.ui.mini.teal.button').on('click',function(e){
   ga('send', 'event', 'contant_us_click', '', '');
   e.preventDefault();
 })
-$('.signin,.signup').on('click',function(){
-    $('.ui.modal.login-dialog').modal({
-    blurring:true,
-    transition:'fade up'
-  }).modal('show');
-})
+
 $(function(){
   var destDOM= $('.ui.dropdown.destination');
+      signUpDialog=$('.ui.modal.signup-dialog');
+      signInDialog=$('.ui.modal.login-dialog');
     destDOM.dropdown({  
       direction: 'updown',
       transition:'slide down',
@@ -85,12 +83,12 @@ $(function(){
     className:'date-pick',
     isDisabled: "0"  // isDisabled为可选参数，“0”表示今日之前不可选，“1”标志今日之前可选
   });
-  $('.search-bar input.search').on('input',function(){
+  $('.search-bar input.search').on('input propertychange',function(){
      destDOM.addClass('loading');
       var _this=$(this),word=_this.val(),itemStr='';
       $.getJSON('/destination',{word:word},function(r){
           destDOM.removeClass('loading');
-          if(r){
+          if((r instanceof Array) && r.length>0){
               $(r).each(function(k,v){
                 itemStr+='<div class="item" data-value="'+v+'">'+v+'</div>';
               })
@@ -99,7 +97,19 @@ $(function(){
           }          
       })
   })
+  $('.user.ui.dropdown').dropdown({
+    on:'hover',
+    action:function(){    
+    },
+  });
+ 
 })
+//signin,signup
+$('.ui.modal').on('click','.signin-button',signIn)
+$('.ui.modal').on('click','.signup-button',signUp);
+$('header.ui.bar').on('click','.signin.item',signInAlert);
+$('header.ui.bar').on('click','.signup.item',signUpAlert);
+
 function notice(){
   $('.ui.modal.indev').modal({
     blurring:true
@@ -118,4 +128,63 @@ function search(dest){
      else{
        location.href='/search?destination='+dest+'&date_start='+dateS+'&data_end='+dateE+'&passenger='+passenger;
      }
+}
+function signIn(){
+    // $('header.ui.bar  .right.menu').addClass('signed');
+    // return;
+    var email=$('#signin-email-input').val(),
+        password=$('#signin-password-input').val();
+        if(email&&password){
+            $.get('/user/login/',{email:email,password:password},function(r){
+                console.log(r);
+                if(r.user){
+                    $('header.ui.bar  .right.menu').addClass('signed');
+                    signInDialog.modal('hide');  
+                }           
+            })
+        }else{
+            alert('Please fill in all options ~');
+        }
+    
+}
+function signUp(){
+    var email=$('#signup-email-input').val(),
+        password=$('#signup-password-input').val(),
+        name=$('#signup-name-input').val();
+    if(email&&password&&name){
+        $.get('/user/register',
+          {email:email,
+            password:password,
+            name:name
+          },
+          function(r){
+                    console.log(r);
+                    alert('registration succeeded!');
+                    signInAlert();
+          })
+    }else{
+      alert('Please fill in all options ~');
+    }
+   
+}
+function signOut(){
+  //  $('header.ui.bar  .right.menu').removeClass('signed'); 
+  // return;
+   $.get('/user/logout',function(r){
+            console.log(r);
+            $('header.ui.bar  .right.menu').removeClass('signed'); 
+            signUpDialog.modal('hide');    
+      })
+}
+function signInAlert(){  
+  signInDialog.modal({
+        blurring:true,
+        transition:'fade up'
+    }).modal('show');
+}
+function signUpAlert(){
+  signUpDialog.modal({
+        blurring:true,
+        transition:'fade up'
+    }).modal('show');
 }

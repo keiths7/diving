@@ -61,6 +61,27 @@
 #diving header .right.menu{
     cursor: pointer;
     margin-top: -20px;
+    .user{
+        display: none;
+    }
+    &.signed{
+      .user{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        margin-right: 1rem!important;
+        .text{
+            font-size: 1.1em;
+        }
+        a{
+          color: #444;
+        }
+      }
+      .signup,.signin{
+        display: none;
+      }
+    }
 }
 /*移动端header*/
 @media only screen and (max-width: 768px){
@@ -510,4 +531,7 @@
       height: 50px;
     }
   }
+}
+.signup-dialog{
+  @extend .login-dialog;
 }
