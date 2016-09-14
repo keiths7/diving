@@ -249,7 +249,13 @@
                        </div>
                      </div>
                    </div>
+                  @if($v[0]->city_info->image)
+                  @foreach($v[0]->city_info->image as $val)
+                  <img src="{{ $val }}" alt="">
+                  @endforeach
+                  @else
                   <img src="/images/search/list_1.jpg" alt="">
+                  @endif
                </div>
             </div>
             <div class="w33 wide column">
@@ -272,7 +278,7 @@
                 <div class="ui image">
                   <img src="{{ $val->position_image }}" alt="">
                   <aside class="">$ {{ $val->price }}  </aside>
-                  <p>A description of this dive center</p>
+                  <p>{{ $val->name }}</p>
                   <p><span>tags</span></p>
                 </div>
               </div>

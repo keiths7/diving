@@ -47,8 +47,8 @@ class IndexController extends Controller
         $params['date_start'] = $request->input('date_start', '');
         $params['date_end'] = $request->input('date_end', '');
         $params['dive_type'] = $request->input('dive_type', '');
-        $params['price_start'] = $request->input('price_start', '');
-        $params['price_end'] = $request->input('price_end', '');
+        $params['price_start'] = $request->input('price_start', 0);
+        $params['price_end'] = $request->input('price_end', 99999);
         $params['lang'] = $request->input('lang', '');
         $params['dest'] = $request->input('dest', '');
         $params['offer'] = $request->input('offer', '');
