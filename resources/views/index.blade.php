@@ -672,7 +672,11 @@
         <i class="mail icon"></i>
       </div>
       <div class="ui fluid icon input">
-        <input type="text" id="signup-password-input" placeholder="type your password ...">
+        <input type="text" id="signup-password-input" placeholder="type your password between 6 and 12 characters ...">
+        <i class="lock icon"></i>
+      </div>
+      <div class="ui fluid icon input">
+        <input type="text" id="signup-confirm-password-input" placeholder="type your password again ...">
         <i class="lock icon"></i>
       </div>
       <div class="ui fluid icon input">
