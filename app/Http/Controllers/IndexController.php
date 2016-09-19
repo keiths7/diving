@@ -15,6 +15,7 @@ use App\UserOrder;
 
 use Auth;
 use DB;
+use Mail;
 
 class IndexController extends Controller
 {
@@ -129,12 +130,26 @@ class IndexController extends Controller
         {
             $params['page'] = 0;
         }
-        $params['per_page'] = 10;
+        $params['per_page'] = 9;
 
         $products = new DivingProduct();
         $result = $products->get_more_product($params);
 //         print_r($result);
         return view('search', ['result'=>$result]);
+    }
+
+    public function test_mail(Request $request)
+    {
+        $name = '王宝花';
+        $flag = Mail::send('emails.test',['name'=>$name],function($message){
+            $to = '53307709@qq.com';
+            $message ->to($to)->subject('53307709de邮件测试');
+        });
+        if($flag){
+            echo '发送邮件成功，请查收！';
+        }else{
+            echo '发送邮件失败，请重试！';
+        }
     }
 
     // public function test(Request $request)
