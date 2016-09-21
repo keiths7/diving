@@ -38,10 +38,14 @@ Route::get('/user/update_pay_info', 'UserController@update_user_pay');
 Route::get('/user/init_password', 'UserController@init_password');
 Route::get('/search/get_more', 'IndexController@get_more_product');
 
+Route::get('/order/new', 'IndexController@new_order');
+
 Route::group([/*'middleware' => 'auth'*/], function () {
 	Route::get('/user/info', 'UserController@get_user_info');
 	Route::get('/user/info/update', 'UserController@update_user_info');
 });
+
+Route::get('email/', 'IndexController@test_mail');
 
 Event::listen('illuminate.query', function($query,$binding,$time,$connections){
 

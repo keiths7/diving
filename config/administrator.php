@@ -78,7 +78,8 @@ return array(
 			'diving_product',
 			'country',
 			'language',
-			'city'
+			'city',
+			'user_order'
 		),
 		'Settings' => array(
 			'settings.site'

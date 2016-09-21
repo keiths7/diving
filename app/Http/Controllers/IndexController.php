@@ -17,6 +17,9 @@ use Auth;
 use DB;
 use Mail;
 
+use Validator;
+use Illuminate\Support\Facades\Input;
+
 class IndexController extends Controller
 {
     //
@@ -103,12 +106,15 @@ class IndexController extends Controller
 
         if($validator->passes()) {
             $order = new UserOrder;
-            $result = $order->new_order(Input::all());
+            $params = array_merge(Input::all(), $request->user()->toArray());
+            // print_r($params);
+            $result = $order->new_order($params);
             if($result) {
-                return;
+                return json_encode(['code'=>0, 'message'=>'success']);
             }
+            return json_encode(['code'=>1, 'message'=>'failed']);
         }
-        return;
+        return json_encode(['code'=>1, 'message'=>$validator->messages()->first()]);
 
     }
 
