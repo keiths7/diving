@@ -137,10 +137,14 @@ function signIn(){
         if(email&&password){
             $.get('/user/login/',{email:email,password:password},function(r){
                 console.log(r);
-                if(r.user){
+                if(r.message=="success"){
                     $('header.ui.bar  .right.menu').addClass('signed');
+                    $('header.ui.bar  .right.menu').text(r.user)
                     signInDialog.modal('hide');  
-                }           
+                }else{
+                    alert('sorry , someting wrong ')
+                }
+
             })
         }else{
             alert('Please fill in all options ~');
@@ -173,7 +177,7 @@ function signOut(){
    $.get('/user/logout',function(r){
             console.log(r);
             $('header.ui.bar  .right.menu').removeClass('signed'); 
-            signUpDialog.modal('hide');    
+            alert('logout succeeded')   
       })
 }
 function signInAlert(){  

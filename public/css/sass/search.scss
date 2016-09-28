@@ -205,11 +205,17 @@ body{
       }
       p{
         padding-left: 1em;
-        margin-bottom:-.8rem;
-        margin-top: 1rem;
+        margin-top: .8rem;
+        margin-bottom: .2rem;
         color: #565a5c;
+        font-size: 1.1em;
         span{
           color:#82888a;
+        }
+        &:last-child{
+          font-size: 1em;
+          margin-top:0;
+          margin-bottom: 1rem;
         }
       }
     }
