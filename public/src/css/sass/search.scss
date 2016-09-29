@@ -95,6 +95,11 @@ body{
         padding-bottom: 0;
       }
     }
+    .ui.dropdown.passengers {
+      .menu{
+        height: 110px; 
+      }
+    }
 }
 .s-condition.open+.filter-buttons {
   .filter{
@@ -177,10 +182,17 @@ body{
       }
       p{
         font-size: 16px;
+        max-height: 132px;
+        overflow-y: auto;
+        overflow-x: hidden;
       }
       .ui.image{
         margin-top: .52rem;
+        img{
+          max-height: 214px;
+        }
       }
+      
     }
   }
   .diving-sites.row{

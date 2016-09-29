@@ -45,41 +45,59 @@
         <div class="ui form">
             <div class="inline four fields">
                 <div class=" four wide field"><label for="">Dates</label></div>
-                <div class=" four wide field"><input type="text" placeholder="From"></div>
-                <div class=" four wide field"><input type="text" placeholder="To"></div>
-                <div class="four wide field"><input type="text"></div>
+                <div class=" four wide field "><input type="text" class="date-pick dateS" placeholder="From"></div>
+                <div class=" four wide field "><input type="text"  class="date-pick dateE" placeholder="To"></div>
+                <div class="four wide field"><div class="ui fluid input">
+                <div class="ui fluid  selection dropdown passengers">
+                    <input type="hidden" name="passenger">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Passengers</div>
+                    <div class="menu">
+                        <div class="item" data-value='1'>1 passenger</div>
+                        <div class="item" data-value='2'>2 passengers</div>
+                        <div class="item" data-value='3'>3 passengers</div>
+                        <div class="item" data-value='4'>4 passengers</div>
+                        <div class="item" data-value='5'>5 passengers</div>
+                        <div class="item" data-value='6'>6 passengers</div>
+                        <div class="item" data-value='7'>7 passengers</div>
+                        <div class="item" data-value='8'>8 passengers</div>
+                        <div class="item" data-value='9'>9 passengers</div>
+                        <div class="item" data-value='10'>10 passengers</div>
+                    </div>
+                </div>
+              </div></div>
             </div>
             <div class="ui divider"></div>
-            <div class="inline four fields">
+            <div class="inline four fields divingtype">
                 <div class=" four wide field"><label for="">Dive type</label></div>
                 <div class=" four wide field">
                   <div class="ui radio checkbox">
-                    <input type="radio" tabindex="0" name="Dive type" class="hidden">
+                    <input type="radio" tabindex="0" name="Dive type" value="1" class="hidden">
                     <label>1DAYS/2DIVES</label>
                   </div>
                 </div>
                 <div class=" four wide field">
                   <div class="ui radio checkbox">
-                    <input type="radio" tabindex="1" name="Dive type" class="hidden">
+                    <input type="radio" tabindex="1" name="Dive type" value="2" class="hidden">
                     <label>5DAYS/10DIVES</label>
                   </div>
                 </div>
                 <div class="four wide field">
                   <div class="ui radio checkbox">
-                    <input type="radio" tabindex="2" name="Dive type" class="hidden">
+                    <input type="radio" tabindex="2" name="Dive type" value="3" class="hidden">
                     <label>FULL EQUIPMENT RENTAL</label>
                   </div>
                 </div>
             </div>
             <div class="ui divider"></div>
             <div class="inline two fields">
-                <div class=" four wide field"><label for="">Dates</label></div>
+                <div class=" four wide field"><label for="">Price Range</label></div>
                 <div class="one wide field"> <label for="">$1000</label></div>
-                <div class=" ten wide field"><input type="range" placeholder="From"></div>
+                <div class=" ten wide field"><input type="range" name="pricerange" placeholder="From"></div>
                 <div class="one wide field"> <label for="">$10000</label></div>
             </div>
             <div class="ui divider"></div>
-            <div class="inline four fields">
+            <div class="inline four fields lang">
                 <div class=" four wide field"><label for="">Language</label></div>
                 <div class=" four wide  field">
                   <div class="ui  checkbox">
@@ -89,13 +107,13 @@
                 </div>
                 <div class=" four wide field">
                   <div class="ui checkbox">
-                    <input type="checkbox" tabindex="1" name="Dive type" class="hidden">
+                    <input type="checkbox" tabindex="1" name="Dive type" class="hidden ">
                     <label>French</label>
                   </div>
                 </div>
                 <div class="four wide field">
                   <div class="ui checkbox">
-                    <input type="checkbox" tabindex="2" name="Dive type" class="hidden">
+                    <input type="checkbox" tabindex="2" name="Dive type" class="hidden ">
                     <label>中文</label>
                   </div>
                 </div>
@@ -106,9 +124,9 @@
                     <div class="four wide column">
                       <div class=" four wide field"><label for=""></label></div>
                     </div>
-                    <div class="twelve wide column">
+                    <div class="twelve wide column ">
                         <div class="row">
-                          <div class="inline fields">
+                          <div class="inline fields lang">
                             <div class="w33 wide field">
                               <div class="ui  checkbox">
                                 <input type="checkbox" tabindex="0" name="Dive type" class="hidden">
@@ -130,7 +148,7 @@
                           </div>
                         </div>
                         <div class="row">
-                          <div class="inline fields">
+                          <div class="inline fields lang">
                             <div class="w33 wide field">
                               <div class="ui  checkbox">
                                 <input type="checkbox" tabindex="0" name="Dive type" class="hidden">
@@ -155,11 +173,11 @@
                   </div>
             </div>
             <div class="ui divider"></div>
-            <div class="inline three fields">
+            <div class="inline three fields course">
                 <div class=" four wide field"><label for="">Course</label></div>
                 <div class=" four wide  field">
                   <div class="ui  checkbox">
-                    <input type="checkbox" tabindex="0" name="Dive type" class="hidden">
+                    <input type="checkbox" tabindex="0" name="Dive type" class="hiddens">
                     <label>OW</label>
                   </div>
                 </div>
@@ -171,11 +189,12 @@
                 </div>
             </div>
             <div class="ui divider"></div>
-            <div class="inline three fields">
+            <div class="inline three fields divingcenter">
                 <div class=" four wide field"><label for="">Diving Center Offer</label></div>
                 <div class=" four wide  field">
                   <div class="ui  checkbox">
-                    <input type="checkbox" tabindex="0" name="Dive type" class="hidden">
+                    <input type="checkbox" tabindex="0" name="Dive type" class="hidden
+                    ">
                     <label>Nitrox</label>
                   </div>
                 </div>
@@ -193,7 +212,7 @@
                 </div>
             </div>
             <div class="ui divider"></div>
-            <div class="inline three fields">
+            <div class="inline three fields dest">
                 <div class=" four wide field"><label for="">Destination</label></div>
                 <div class=" four wide  field">
                   <div class="ui  checkbox">
