@@ -136,9 +136,9 @@
                     <div class="ui container">
                       <h3 class="ui header">BECOME A PADI DIVIER</h3>
                       <div class="ui bulleted list">
-                        <div class="item">Discover Scuba Dving</div>
-                        <div class="item">Bubblemaker</div>
-                        <div class="item">PADI Seal Team</div>
+                          <a class="item" href="#">Discover Scuba Dving</a>
+                          <a class="item" href="#">Bubblemaker</a>
+                          <a class="item" href="#">PADI Seal Team</a>
                       </div>
                       <div class="image">
                         <!--课程 img  -->
@@ -153,9 +153,9 @@
                   <div class="column">
                     <div class="ui container">
                       <h3 class="ui header">I’M A PADI DIVER</h3>
-                      <div class="ui bulleted list">
-                        <div class="item">S T A R T H E R E </div>
-                        <div class="item">PADI Scuba Diver</div>
+                      <div class="ui bulleted link list">
+                        <a class="item" href="#">S T A R T H E R E</a>
+                        <a class="item" href="#">PADI Scuba Diver</a>
                       </div>
                       <div class="image">
                         @if(!empty($course[1]))
@@ -170,9 +170,9 @@
                     <div class="ui container">
                       <h3 class="ui header">PADI TECHNICAL AND FREEDIVER</h3>
                       <div class="ui bulleted list">
-                        <div class="item">ReActivate-Scuba Refresher   </div>
-                        <div class="item">Adventure Diver</div>
-                        <div class="item">Advanced Open Water</div>
+                        <a class="item" href="#">ReActivate-Scuba Refresher</a>
+                        <a class="item" href="#">Adventure Diver</a>
+                        <a class="item" href="#">Advanced Open Water</a>
                       </div>
                       <div class="image">
                         @if(!empty($course[2]))
@@ -197,7 +197,7 @@
           <h2 class="ui header center aligned ">Popular Destinations</h2>
           <div class="ui divider hidden"></div>
             <div class="ui special cards">
-                <div class="card">
+                <a class="card" href="#">
                     <div class="ui  image">
                       <div class="ui dimmer visible active">
                         <div class="content">
@@ -218,8 +218,8 @@
                       <img src="/images/course/1.png">
                       @endif
                     </div>
-                </div>
-                <div class="card">
+                </a>
+                <a class="card" href="#">
                     <div class="ui  image">
                       <div class="ui dimmer visible active">
                         <div class="content">
@@ -239,8 +239,8 @@
                       <img src="/images/course/1.png">
                       @endif
                     </div>
-                </div>
-                <div class="card">
+                </a>
+                <a class="card" href="">
                     <div class="ui image">
                       <div class="ui dimmer visible active">
                         <div class="content">
@@ -260,7 +260,7 @@
                       <img src="/images/course/1.png">
                       @endif
                     </div>
-                </div>
+                </a>
             </div>
     </section>
     <div class=" ui vertical see-more-button more-destination">
@@ -275,7 +275,7 @@
           <div class="ui divider hidden"></div>
           <div class="ui centered stackable internally grid">
                 <div class="row">
-                  <div class="eight wide  column">
+                  <a class="eight wide  column" href="#">
                     <div class="ui image">
                       <div class="ui dimmer visible active ">
                           <div class="content">
@@ -297,8 +297,8 @@
                       @endif
                     </div>
 
-                  </div>
-                  <div class="four wide column">
+                  </a>
+                  <a class="four wide column" href="#">
                     <div class="ui image">
                       <div class="ui dimmer visible active ">
                           <div class="content">
@@ -318,10 +318,10 @@
                       <img   src="/images/course/1.png" ></img>
                       @endif
                     </div>
-                  </div>
+                  </a>
                 </div>
                 <div class="row">
-                  <div class="four wide column">
+                  <a class="four wide column" href="#">
                     <div class="ui image">
                       <div class="ui dimmer visible active ">
                           <div class="content">
@@ -341,8 +341,8 @@
                       <img   src="/images/course/1.png" ></img>
                       @endif
                     </div>
-                  </div>
-                  <div class="four wide column">
+                  </a>
+                  <a class="four wide column" href="#">
                     <div class="ui image">
                       <div class="ui dimmer visible active ">
                           <div class="content">
@@ -362,8 +362,8 @@
                       <img   src="/images/course/1.png" ></img>
                       @endif
                     </div>
-                  </div>
-                  <div class="four wide column">
+                  </a>
+                  <a class="four wide column" href="#">
                     <div class="ui image">
                       <div class="ui dimmer visible active ">
                           <div class="content">
@@ -383,10 +383,10 @@
                       <img   src="/images/course/1.png" ></img>
                       @endif
                     </div>
-                  </div>
+                  </a>
                 </div>
                 <div class="row">
-                  <div class="four wide column">
+                  <a class="four wide column" href="#">
                     <div class="ui image">
                       <div class="ui dimmer visible active ">
                           <div class="content">
@@ -406,8 +406,8 @@
                       <img   src="/images/course/1.png" ></img>
                       @endif
                     </div>
-                  </div>
-                  <div class="eight wide column">
+                  </a>
+                  <a class="eight wide column" href="#">
                     <div class="ui image">
                       <div class="ui dimmer visible active ">
                           <div class="content">
@@ -427,10 +427,10 @@
                       <img   src="/images/course/1.png" ></img>
                       @endif
                     </div>
-                  </div>
+                  </a>
                 </div>
                 <div class="row">
-                  <div class="four wide column">
+                  <a class="four wide column" href="#">
                     <div class="ui image">
                       <div class="ui dimmer visible active ">
                           <div class="content">
@@ -450,8 +450,8 @@
                       <img   src="/images/course/1.png" ></img>
                       @endif
                     </div>
-                  </div>
-                  <div class="four wide column">
+                  </a>
+                  <a class="four wide column" href="#">
                     <div class="ui image">
                       <div class="ui dimmer visible active ">
                           <div class="content">
@@ -471,8 +471,8 @@
                       <img   src="/images/course/1.png" ></img>
                       @endif
                     </div>
-                  </div>
-                  <div class="four wide column">
+                  </a>
+                  <a class="four wide column" href="#">
                     <div class="ui image">
                       <div class="ui dimmer visible active ">
                           <div class="content">
@@ -492,7 +492,7 @@
                       <img   src="/images/course/1.png" ></img>
                       @endif
                     </div>
-                  </div>
+                  </a>
                 </div>
           </div>
       </div>
@@ -543,22 +543,22 @@
         <h4 class="ui inverted header">Dream Scubatrip</h4>
         <div class="ui inverted bolded divider "></div>
         <div class="ui inverted link list">
-          <a class="item" href="https://www.transifex.com/organization/semantic-org/" target="_blank">
+          <a class="item" href="#">
             <i class="marker icon"></i>
             BEIJING
           </a>
           <div class="ui inverted divider"></div>
-          <a class="item" href="https://github.com/Semantic-Org/Semantic-UI/issues" target="_blank">
+          <a class="item" href="#">
             <i class="phone icon"></i>
             +86 18911189901
           </a>
           <div class="ui inverted divider"></div>
-          <a class="item" href="https://gitter.im/Semantic-Org/Semantic-UI" target="_blank">
+          <a class="item" href="#">
             <i class="mail outline icon"></i>
             market@dreamdivingtrip.com
           </a>
+          </div>
         </div>
-      </div>
       <div class="column">
         <h4 class="ui inverted header">TAG</h4>
         <div class="ui inverted bolded divider"></div>

@@ -52,7 +52,7 @@ $('.apply-buttons').on('click','.ok',function(){
       language:lang,
       course:course,
       divingcenter:divingcenter,
-      dest:dest,
+      destination:dest,
     }
     location.href='/search?'+$.param(paramData);
 })

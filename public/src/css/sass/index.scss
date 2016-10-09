@@ -154,6 +154,7 @@
 }
 #diving .first-sec{
   position: relative;
+  z-index: 2;
 }
 #diving .first-sec-bg{
     /*height: 490px;*/
@@ -237,7 +238,7 @@
 }
 #diving .second-sec{
   position: relative;
-  z-index:-1;
+  z-index:0;
 }
 #diving .second-sec .ui.list{
     height: 74px;
@@ -274,6 +275,9 @@
    padding: 2em 0;
    background-color: #edefed;
 }
+.second-sec .row{
+    cursor:pointer;
+}
 .grid-sec .row .column .ui.container{
    background-color: #fff;
    padding: 0;
@@ -288,6 +292,7 @@
    color: #00a2d7;
    margin-top: .5em;
    cursor: pointer;
+   z-index: 100;
 }
 #diving  .grid-sec .row .column .ui.list .item:hover{
    color: #67bce1;
@@ -312,6 +317,9 @@
       text-align: center;;
 }
 #diving .grid-sec h2.ui.header,#diving .third-sec h2.ui.header{
+      color:#4f5154;
+}
+#diving .grid-sec .ui.header{
       color:#4f5154;
 }
 #diving .see-more-button{
