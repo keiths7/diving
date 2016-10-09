@@ -1,4 +1,4 @@
-var paramData='';
+var paramData={};
 $(function(){
     $('.ui.checkbox').checkbox();
     $('.ui.dropdown').dropdown();
@@ -56,10 +56,39 @@ $('.apply-buttons').on('click','.ok',function(){
     }
     location.href='/search?'+$.param(paramData);
 })
-$('.see-mor-button').on('click',function(){
-    paramData.city_id='';
-    paramData.diving_id='';
-    // $.get('/search/get_more',paramData,function(r){
-
+$('.see-more-button').on('click',function(){
+  var $currentSite=$(this).siblings('.current-site');
+  var $moreSite=$(this).siblings('.diving-sites');
+    paramData.city_id=$currentSite.data('cityid');
+    paramData.diving_id=$currentSite.data('positionid')
+    // $.ajax({
+    //           url:'/search/get_more',
+    //           type:'GET',
+    //           data:paramData,
+    //           success:function(r){
+    //                       console.log(r);
+                           
+    //           },
+    //           error:function(err){
+                     
+    //           }
     // })
+    var html='<div class="row">';
+    var tpl=[
+              '<div class="column">',
+              '<div class="ui image">',
+              '<img src="/images/search/list_1.jpg" alt="">',
+              '<aside class="">$ 2300 </aside>',
+              '<p>标题</p>',
+              '<p><span>tags</span></p>',
+              '</div></div>',
+            ].join('');
+    var arrs=[];
+    arrs.push(tpl);arrs.push(tpl);arrs.push(tpl);
+    $(arrs).each(function(k,v){
+        html+=v;
+    })
+    html+'</div>';
+    $moreSite.find('.ui.grid').append(html);
+    
 })

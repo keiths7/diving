@@ -255,7 +255,7 @@
     <!-- 第一条 -->
     <div class="ui container result-item">
       @if(isset($v[0]->city_info))
-      <div class="current-site">
+      <div class="current-site" data-cityid="29" data-positionid="281">
         <div class="ui grid">
             <div class="w67 wide column">
                <h2 class="ui header">{{ $v[0]->city_info->name }}</h2>
@@ -290,7 +290,7 @@
       <!-- 更多潜水点 -->
       <div class="row diving-sites">
           <h4 class="ui header">Locate Dive Sites</h4>
-        <div class="ui three column grid">
+        <div class="ui three column grid" >
           <div class="row">
             @foreach($v as $num => $val)
               <div class="column">
