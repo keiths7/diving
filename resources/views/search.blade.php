@@ -255,6 +255,7 @@
     <!-- 第一条 -->
     <div class="ui container result-item">
       @if(isset($v[0]->city_info))
+      <!--这里 data-cityid标识city_id  (2016-10-09)-->
       <div class="current-site" data-cityid="29" data-positionid="281">
         <div class="ui grid">
             <div class="w67 wide column">
