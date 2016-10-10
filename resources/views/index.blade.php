@@ -197,7 +197,11 @@
           <h2 class="ui header center aligned ">Popular Destinations</h2>
           <div class="ui divider hidden"></div>
             <div class="ui special cards">
-                <a class="card" href="#">
+                @if(!empty($dest[0]))
+                <a class="card" href="{{ $dest[0]['url'] }}">
+                @else
+                <a class="card" href="">
+                @endif
                     <div class="ui  image">
                       <div class="ui dimmer visible active">
                         <div class="content">
@@ -219,7 +223,11 @@
                       @endif
                     </div>
                 </a>
-                <a class="card" href="#">
+                @if(!empty($dest[1]))
+                <a class="card" href="{{ $dest[1]['url'] }}">
+                @else
+                <a class="card" href="">
+                @endif
                     <div class="ui  image">
                       <div class="ui dimmer visible active">
                         <div class="content">
@@ -240,7 +248,11 @@
                       @endif
                     </div>
                 </a>
+                @if(!empty($dest[1]))
+                <a class="card" href="{{ $dest[2]['url'] }}">
+                @else
                 <a class="card" href="">
+                @endif
                     <div class="ui image">
                       <div class="ui dimmer visible active">
                         <div class="content">
@@ -275,7 +287,11 @@
           <div class="ui divider hidden"></div>
           <div class="ui centered stackable internally grid">
                 <div class="row">
-                  <a class="eight wide  column" href="#">
+                  @if(!empty($pop[0]))
+                  <a class="eight wide  column" href="{{ $pop[0]['url'] }}">
+                  @else
+                  <a class="eight wide  column" href="">
+                  @endif
                     <div class="ui image">
                       <div class="ui dimmer visible active ">
                           <div class="content">
@@ -298,7 +314,11 @@
                     </div>
 
                   </a>
-                  <a class="four wide column" href="#">
+                  @if(!empty($pop[1]))
+                  <a class="four wide column" href="{{ $pop[1]['url'] }}">
+                  @else
+                  <a class="four wide column" href="">
+                  @endif
                     <div class="ui image">
                       <div class="ui dimmer visible active ">
                           <div class="content">
@@ -321,7 +341,11 @@
                   </a>
                 </div>
                 <div class="row">
-                  <a class="four wide column" href="#">
+                  @if(!empty($pop[2]))
+                  <a class="four wide column" href="{{ $pop[2]['url'] }}">
+                  @else
+                  <a class="four wide column" href="">
+                  @endif
                     <div class="ui image">
                       <div class="ui dimmer visible active ">
                           <div class="content">
@@ -342,7 +366,11 @@
                       @endif
                     </div>
                   </a>
-                  <a class="four wide column" href="#">
+                  @if(!empty($pop[3]))
+                  <a class="four wide column" href="{{ $pop[3]['url'] }}">
+                  @else
+                  <a class="four wide column" href="">
+                  @endif
                     <div class="ui image">
                       <div class="ui dimmer visible active ">
                           <div class="content">
@@ -363,7 +391,11 @@
                       @endif
                     </div>
                   </a>
-                  <a class="four wide column" href="#">
+                  @if(!empty($pop[4]))
+                  <a class="four wide column" href="{{ $pop[4]['url'] }}">
+                  @else
+                  <a class="four wide column" href="">
+                  @endif
                     <div class="ui image">
                       <div class="ui dimmer visible active ">
                           <div class="content">
@@ -386,7 +418,11 @@
                   </a>
                 </div>
                 <div class="row">
-                  <a class="four wide column" href="#">
+                  @if(!empty($pop[5]))
+                  <a class="four wide column" href="{{ $pop[5]['url'] }}">
+                  @else
+                  <a class="four wide column" href="">
+                  @endif
                     <div class="ui image">
                       <div class="ui dimmer visible active ">
                           <div class="content">
@@ -407,7 +443,11 @@
                       @endif
                     </div>
                   </a>
-                  <a class="eight wide column" href="#">
+                  @if(!empty($pop[6]))
+                  <a class="eight wide column" href="{{ $pop[6]['url'] }}">
+                  @else
+                  <a class="eight wide column" href="">
+                  @endif
                     <div class="ui image">
                       <div class="ui dimmer visible active ">
                           <div class="content">
@@ -430,7 +470,11 @@
                   </a>
                 </div>
                 <div class="row">
-                  <a class="four wide column" href="#">
+                  @if(!empty($pop[7]))
+                  <a class="four wide column" href="{{ $pop[7]['url'] }}">
+                  @else
+                  <a class="four wide column" href="">
+                  @endif
                     <div class="ui image">
                       <div class="ui dimmer visible active ">
                           <div class="content">
@@ -451,7 +495,11 @@
                       @endif
                     </div>
                   </a>
-                  <a class="four wide column" href="#">
+                  @if(!empty($pop[8]))
+                  <a class="four wide column" href="{{ $pop[8]['url'] }}">
+                  @else
+                  <a class="four wide column" href="">
+                  @endif
                     <div class="ui image">
                       <div class="ui dimmer visible active ">
                           <div class="content">
@@ -472,7 +520,11 @@
                       @endif
                     </div>
                   </a>
-                  <a class="four wide column" href="#">
+                  @if(!empty($pop[9]))
+                  <a class="four wide column" href="{{ $pop[9]['url'] }}">
+                  @else
+                  <a class="four wide column" href="">
+                  @endif
                     <div class="ui image">
                       <div class="ui dimmer visible active ">
                           <div class="content">

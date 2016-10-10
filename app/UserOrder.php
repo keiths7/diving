@@ -53,6 +53,13 @@ class UserOrder extends Model
         return true;
     }
 
+    public function get_order($uid)
+    {
+        $user_order = new UserOrder;
+        $query = $user_order->where('uid', $uid)->orderBy('created_at', 'desc')->get();
+        return $query->toArray();
+    }
+
     public function calculate_money($params)
     {
         return $params['divers'] * $params['type'];
