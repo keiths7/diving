@@ -57,7 +57,14 @@ class UserOrder extends Model
     {
         $user_order = new UserOrder;
         $query = $user_order->where('uid', $uid)->orderBy('created_at', 'desc')->get();
-        return $query->toArray();
+        if($query)
+        {
+            return $query->toArray();
+        }
+        else
+        {
+            return array();
+        }
     }
 
     public function calculate_money($params)
