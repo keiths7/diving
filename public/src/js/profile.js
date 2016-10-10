@@ -6,8 +6,15 @@ $('.profile-tab .row').on('click','.column',function(){
     history.replaceState({title:'switch',url:url,otherKey:''},'',url);
 });
 (function(){
+    alert();
     var tabName=location.hash.substr(1);
     $('.'+tabName).addClass('sel').siblings().removeClass('sel');
     console.log($('.column[data-tab='+tabName+']'))
     $('.column[data-tab='+tabName+']').addClass('sel').siblings().removeClass('sel');
 }())
+
+//reset页重置密码
+function resetPwd(){
+    alert('暂缺少接口');
+}
+    

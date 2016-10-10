@@ -5,7 +5,12 @@ var sass = require('gulp-sass');
 var cssmin = require('gulp-cssmin');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
-// var livereload = require('gulp-livereload');
+
+//TODO：路径监听，监听新增文件，autoprefixer以及sourcemap
+var sourcemaps = require('gulp-sourcemaps');  
+var autoprefixer = require('gulp-autoprefixer')
+var watchPath = require('gulp-watch-path')
+
 var htmlmin = require('gulp-htmlmin');
 var minify = require('gulp-minify');// https://www.npmjs.com/package/gulp-minify
 var connect = require('gulp-connect'); //https://www.npmjs.com/package/gulp-connect
@@ -38,22 +43,28 @@ var browser = os.platform() === 'linux' ? 'Google chrome' : (
   os.platform() === 'darwin' ? 'Google chrome' : (
   os.platform() === 'win32' ? 'chrome' : 'firefox'));
 
-var watchJS = function(e){
-    gulp.src(e.path)
+var watchJS = function(file){
+    gulp.src(file.srcPath)
         .pipe(babel())
-        .pipe(gulp.dest('build/js'))
+        .pipe(gulp.dest(file.distDir))
         .pipe(connect.reload());
 }
-var watchCSS = function(e){
-    gulp.src(e.path)
+var watchCSS = function(file){
+    gulp.src(file.srcPath)
         .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('build/css'))
-        // .pipe(gulp.dest('./build/css'))
+        .pipe(autoprefixer({
+                browsers: 'last 3 versions'
+        }))
+        .pipe(gulp.dest(file.distDir))
         .pipe(connect.reload());
 }
-var watchHTML = function(e){
-    gulp.src(e.path)
-        .pipe(gulp.dest('build'))
+var watchHTML = function(file){
+    gulp.src(file.srcPath)
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: '@file'
+        }))
+        .pipe(gulp.dest(file.distDir))
         .pipe(connect.reload());
 }
 
@@ -66,13 +77,18 @@ var devTasks = options.has('open')?['connect','imagemin','sass:dev','js:dev','ht
 
 //dev环境下的任务
 gulp.task('sass:dev',['copy:css'],function () {
-    return gulp.src('build/css/sass/*.scss')
+    return gulp.src('build/css/sass/*.scss')               
                 .pipe(sass().on('error', sass.logError))
+                .pipe(autoprefixer({
+                        browsers: 'last 3 versions'
+                 }))
                 .pipe(gulp.dest('build/css'))
 });
 gulp.task('js:dev',['copy:js'],function (done) {   
     return gulp.src(buildJsList)
+                // .pipe(sourcemaps.init())
                 .pipe(babel())
+                // .pipe(sourcemaps.write('./'))
                 .pipe(gulp.dest('./build/js'))
 });
 gulp.task('jshint:dev',function(){
@@ -83,12 +99,11 @@ gulp.task('jshint:dev',function(){
 gulp.task('html:dev',['clean'], function (done) {
     
     return gulp.src(['./src/*.html'])
-                // .pipe(fileinclude({ //用于在html文件中直接include文件
-                //       prefix: '@@',
-                //       basepath: '@file'
-                // }))
+                .pipe(fileinclude({ //用于在html文件中直接include文件
+                      prefix: '@@',
+                      basepath: '@file'
+                }))
                 .pipe(gulp.dest('build'))
-                // .pipe(gulp.dest('./build/'))
 });
 //公共任务
 gulp.task('imagemin',['clean'], function (done) {
@@ -99,7 +114,6 @@ gulp.task('imagemin',['clean'], function (done) {
                     use: [pngquant()] //使用pngquant深度压缩png图片的imagemin插件
                 })))
                 .pipe(gulp.dest('build/images'))
-                // .pipe(gulp.dest('build/images'))
 });
 gulp.task('clean', function (done) {
    return  gulp.src(['build'])
@@ -116,10 +130,12 @@ gulp.task('copy:js',['clean'],function(){
 /*
 **  生产环境任务
 */
-
 gulp.task('sass',['copy:css'],function () {
     return gulp.src('build/css/sass/*.scss')
                 .pipe(sass().on('error', sass.logError))
+                .pipe(autoprefixer({
+                        browsers: 'last 2 versions'
+                 }))
                 .pipe(gulp.dest('build/css'))
 });
 //雪碧图操作，应该先拷贝图片并压缩合并css
@@ -163,10 +179,10 @@ gulp.task('md5:js', ['jsmin','copy:html'], function (done) {
 
 gulp.task('copy:html',['clean'],function(){
   return gulp.src(['./src/*.html'])
-    // .pipe(fileinclude({ //用于在html文件中直接include文件
-    //       prefix: '@@',
-    //       basepath: '@file'
-    // }))
+    .pipe(fileinclude({ //用于在html文件中直接include文件
+          prefix: '@@',
+          basepath: '@file'
+    }))
     .pipe(gulp.dest('build'))
 })
 gulp.task('htmlmin',['md5:css','md5:js'],function(){
@@ -194,9 +210,24 @@ gulp.task('open',[buildEND],function (done) {
 });
 
 gulp.task('watch',function () {
-  gulp.watch('./src/css/sass/*.scss',watchCSS);
-  gulp.watch('./src/js/**/*.js',watchJS);
-  gulp.watch('./src/*.html',watchHTML);
+  gulp.watch('./src/css/sass/*.scss',function(event){
+        var paths = watchPath(event,'src/css/sass/','build/css/');
+        gutil.log('sass '+gutil.colors.green(event.type) + ': ' + paths.srcPath)
+        gutil.log('Dest Path : ' + paths.distPath)
+        watchCSS(paths);
+  });
+  gulp.watch('./src/js/**/*.js',function(event){
+        var paths = watchPath(event,'src/js/','build/js/');
+        gutil.log('js '+gutil.colors.green(event.type) + ': ' + paths.srcPath)
+        gutil.log('Dest Path: ' + paths.distPath)
+        watchJS(paths);
+  });
+  gulp.watch('./src/*.html',function(event){
+        var paths = watchPath(event,'src/','build/');
+        gutil.log('html '+gutil.colors.green(event.type) + ': ' + paths.srcPath)
+        gutil.log('Dest Path: ' + paths.distPath)
+        watchHTML(paths);   
+  });
 });
 //将编译到build的文件以及文件夹copy到public目录待发布
 gulp.task('copyto:public',['htmlmin'],function(){
