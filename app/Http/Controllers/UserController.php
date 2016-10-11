@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\User;
+use App\UserOrder;
 use Auth;
 use Validator;
 use Illuminate\Support\Facades\Input;
@@ -88,7 +89,13 @@ class UserController extends Controller
 
     public function get_user_order(Request $request)
     {
-
+        if (!Auth::check()) {
+            return json_encode(['code'=>3, 'message'=>'not logined']);
+        }
+        $user = $request->user();
+        $user_order = new UserOrder();
+        $orders = $user_order->get_order($user['id']);
+        return json_encode(['code'=>0, 'message'=>'success', 'orders'=>$orders]);
     }
 
     public function login(Request $request)

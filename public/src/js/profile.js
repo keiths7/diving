@@ -13,7 +13,7 @@ $('.profile-tab .row').on('click','.column',function(){
 }())
 
 //reset页重置密码
-function resetPwd(){
+function resetPwd(){ 
     alert('暂缺少接口');
 }
     

@@ -39,6 +39,7 @@ Route::get('/user/init_password', 'UserController@init_password');
 Route::get('/search/get_more', 'IndexController@get_more_product');
 
 Route::get('/order/new', 'IndexController@new_order');
+Route::get('/user/order', 'UserController@get_user_order');
 
 Route::group([/*'middleware' => 'auth'*/], function () {
 	Route::get('/user/info', 'UserController@get_user_info');
