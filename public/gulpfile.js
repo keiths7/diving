@@ -45,7 +45,9 @@ var browser = os.platform() === 'linux' ? 'Google chrome' : (
 
 var watchJS = function(file){
     gulp.src(file.srcPath)
+        .pipe(sourcemaps.init())
         .pipe(babel())
+        .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(file.distDir))
         .pipe(connect.reload());
 }
