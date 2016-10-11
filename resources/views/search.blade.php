@@ -2,16 +2,16 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- <meta name="viewport"
-          content="width=device-width,initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no"> -->
     <meta name="format-detection" content="telephone=no,email=no">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="full-screen" content="yes">
+     <title>Dreamdivingtrip.com: Online Booking for Scuba Diving,Liveaboard and Courses all around the world</title>
     <meta name="description" content="Book your best diving trip，every diving trip with Dreamdivingtrip,the world’s best diving booking site.Your free personal diving assistant.">
     <meta name="keywords" content="diving vacation, diving vacations, diving vacation packages, diving vacation package, diving travel package, diving travel packages, diving travel, diving trip package, diving trip packages, diving trip,planning, hotel, hotels, motel, bed and breakfast, inn, guidebook, review, reviews, popular, plan, airfare, cheap, discount, map, maps, golf, ski, articles, attractions, advice, restaurants">
+    <link href="/css/datePick.css" rel="stylesheet">
     <link href="/css/semantic.min.css" rel="stylesheet">
-    <link href="/css/search.css" rel="stylesheet">
-    <title>Dreamdivingtrip.com: Online Booking for Scuba Diving,Liveaboard and Courses all around the world</title>
+   
+<link href="/css/search.css" rel="stylesheet">
 </head>
 <body id="search">
   <!-- header bar -->
@@ -90,10 +90,10 @@
                 </div>
             </div>
             <div class="ui divider"></div>
-            <div class="inline two fields">
+            <div class="inline two fields pricerange">
                 <div class=" four wide field"><label for="">Price Range</label></div>
                 <div class="one wide field"> <label for="">$1000</label></div>
-                <div class=" ten wide field"><input type="range" name="pricerange" placeholder="From"></div>
+<div class="ten wide field"><input type="range"   placeholder="From"></div>
                 <div class="one wide field"> <label for="">$10000</label></div>
             </div>
             <div class="ui divider"></div>
@@ -398,7 +398,7 @@
     </div> -->
 </section>
 <!-- footer -->
-<section class="footer-sec ui black inverted vertical footer segment">
+<footer class="footer-sec ui black inverted vertical footer segment">
   <div class="ui center aligned container">
     <div class="ui stackable inverted centered four column grid">
       <div class="row">
@@ -486,9 +486,78 @@
       </div>
     </div>
   </div>
-</section>
+</footer>
+<div class="ui inverted modal login-dialog"  >
+  <i class="close icon"></i>
+  <div class="top-header">
+    <div class="logo"><img src="/images/logo-black.png" alt=""></div>
+    <h3>Book your diving trips all in one place</h3>
+  </div>
+  <div class=" loginby-facebook">
+    <button class="ui blue button fluid"><i class="ui facebook icon"></i>Sign In With Facebook</button>
+  </div>
+  <div class="ui horizontal divider mt-4">or</div>
+  <div class="forms">
+      <div class="ui fluid icon input">
+        <input type="text" id="sign-email-input" placeholder="type your email address...">
+        <i class="mail icon"></i>
+      </div>
+      <div class="ui fluid icon input">
+        <input type="text" id="sign-password-input" placeholder="type your password ...">
+        <i class="lock icon"></i>
+      </div>
+      <div class="tr mt-2 mb-4">Forgot?</div>
+      <button class="ui button teal fluid signin-button"> SIGN IN</button>
+  </div>
+  <div class="ui divider"></div>
+  <div class="new-user-tip">
+      <span class="left floated mt-1">New to super diving trip?</span>
+      <div class="right floated">
+        <button class="ui button inverted red" onclick="signUpAlert()">sign up</button>
+      </div>
+  </div>
+</div>
+<div class="ui inverted modal signup-dialog"  >
+  <i class="close icon"></i>
+  <div class="top-header">
+    <div class="logo"><img src="/images/logo-black.png" alt=""></div>
+    <h3>Book your diving trips all in one place</h3>
+  </div>
+  <div class=" loginby-facebook">
+    <button class="ui blue button fluid"><i class="ui facebook icon"></i>Sign In With Facebook</button>
+  </div>
+  <div class="ui horizontal divider mt-4">or</div>
+  <div class="forms">
+      <div class="ui fluid icon input">
+        <input type="text" id="sign-email-input" placeholder="type your email address...">
+        <i class="mail icon"></i>
+      </div>
+      <div class="ui fluid icon input">
+        <input type="text" id="sign-password-input" placeholder="type your password between 6 and 12 characters ...">
+        <i class="lock icon"></i>
+      </div>
+      <div class="ui fluid icon input">
+        <input type="text" id="signup-confirm-password-input" placeholder="type your password again ...">
+        <i class="lock icon"></i>
+      </div>
+      <div class="ui fluid icon input">
+        <input type="text" id="sign-name-input" placeholder="type your nickname ...">
+        <i class="user icon"></i>
+      </div>
+      <a href=""></a><div class="tr mt-2 mb-4">Forgot?</div>
+      <button class="ui button teal fluid signup-button"> SIGN UP</button>
+  </div>
+  <div class="ui divider"></div>
+  <div class="new-user-tip clearfix">
+      <span class="left floated mt-1">Already have an account?</span>
+      <div class="right floated">
+        <button class="ui button inverted red" onclick="signInAlert()">sign in</button>
+      </div>
+  </div>
+</div>
 <script src="/js/jquery.min.js" charset="utf-8"></script>
 <script src="/js/semantic.min.js" charset="utf-8"></script>
+<script src="/js/datePick.js"></script>
 <script src="/js/search.js" charset="utf-8"></script>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -499,7 +568,20 @@
         ga('send', 'pageview');
     </script>
   </body>
-
+  <script type='text/javascript'>
+     (function(m, ei, q, i, a, j, s) {
+         m[a] = m[a] || function() {
+             (m[a].a = m[a].a || []).push(arguments)
+         };
+         j = ei.createElement(q),
+             s = ei.getElementsByTagName(q)[0];
+         j.async = true;
+         j.charset = 'UTF-8';
+         j.src = i + '?v=' + new Date().getUTCDate();
+         s.parentNode.insertBefore(j, s);
+     })(window, document, 'script', '//static.meiqia.com/dist/meiqia.js', '_MEIQIA');
+     _MEIQIA('entId', 17368);
+</script>  
   <script type="text/javascript">
       var _mfq = _mfq || [];
       (function() {

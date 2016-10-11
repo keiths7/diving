@@ -11,7 +11,7 @@ body{
     position: fixed;
     top: 0px;
     z-index: 901;
-    left: 0%;
+    left: 0%; 
     width: 100%;
     box-shadow: 0px 0px 0px 0px transparent;
     border-bottom: 1px solid transparent;
@@ -215,7 +215,8 @@ body{
     }
     .ui.header{
       margin-top: 2rem;
-      margin-bottom: .6rem;
+      margin-bottom: 2rem;
+      font-size: 18px;
     }
     .row{
       padding-top: 0;
