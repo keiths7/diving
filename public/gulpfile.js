@@ -88,9 +88,9 @@ gulp.task('sass:dev',['copy:css'],function () {
 });
 gulp.task('js:dev',['copy:js'],function (done) {   
     return gulp.src(buildJsList)
-                // .pipe(sourcemaps.init())
+                .pipe(sourcemaps.init())
                 .pipe(babel())
-                // .pipe(sourcemaps.write('./'))
+                .pipe(sourcemaps.write('./'))
                 .pipe(gulp.dest('./build/js'))
 });
 gulp.task('jshint:dev',function(){
