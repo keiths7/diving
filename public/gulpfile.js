@@ -79,11 +79,13 @@ var devTasks = options.has('open')?['connect','imagemin','sass:dev','js:dev','ht
 
 //dev环境下的任务
 gulp.task('sass:dev',['copy:css'],function () {
-    return gulp.src('build/css/sass/*.scss')               
+    return gulp.src('build/css/sass/*.scss')
+                .pipe(sourcemaps.init())               
                 .pipe(sass().on('error', sass.logError))
                 .pipe(autoprefixer({
                         browsers: 'last 3 versions'
                  }))
+                 .pipe(sourcemaps.write('./'))
                 .pipe(gulp.dest('build/css'))
 });
 gulp.task('js:dev',['copy:js'],function (done) {   
@@ -224,7 +226,7 @@ gulp.task('watch',function () {
         gutil.log('Dest Path: ' + paths.distPath)
         watchJS(paths);
   });
-  gulp.watch('./src/*.html',function(event){
+  gulp.watch('./src/**/*.html',function(event){
         var paths = watchPath(event,'src/','build/');
         gutil.log('html '+gutil.colors.green(event.type) + ': ' + paths.srcPath)
         gutil.log('Dest Path: ' + paths.distPath)

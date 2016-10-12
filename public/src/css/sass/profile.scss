@@ -4,7 +4,7 @@ body{
    background-color: #F5F5F5;
 }
 #profile {
-.profile-tab{
+.profile-tab{ 
     margin-top: 1rem;
     background-color: #565A5D;  
     .ui.grid{
@@ -12,7 +12,7 @@ body{
         line-height: 40px;
         padding-bottom: 0;
         .row{
-            padding-bottom:0;
+            padding-bottom:0; 
         }
         .column{
             display: inline-block;

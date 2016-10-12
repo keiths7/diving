@@ -14,10 +14,98 @@
             <input type="text" placeholder="Search...">
             <i class="search icon"></i>
           </div>
-        </div>
-        <div class="right  menu">
-          <div class="item">Sign Up</div>
-          <div class="item">Sign In</div>
+        </div>       
+        <div class="right  menu signed">
+          <div class="item user ui pointing dropdown">
+                 <div class="text">Welcome</div>
+                 <div class="menu">
+                   <div class="item"><a href="/profile#purchases">Purchases</a></div>
+                   <div class="item"><a href="/profile#setting">Settings</a></div>
+                   <div class="item"><a href="javascript:signOut()">Sign Out</a></div>
+                 </div>         
+          </div>
+          <div class="item ui link signup">Sign Up</div>
+          <div class="item ui link signin">Sign In</div>
         </div>
       </div>
   </header>
+  <script>
+    $(function(){
+        $('.user.ui.dropdown').dropdown({
+            on:'hover',
+            action:function(){    
+            },
+        });
+        alert();
+    })
+var signUpDialog=$('.ui.modal.signup-dialog');
+var signInDialog=$('.ui.modal.login-dialog');
+$('.ui.modal').on('click','.signin-button',signIn)
+$('.ui.modal').on('click','.signup-button',signUp);
+$('header.ui.bar').on('click','.signin.item',signInAlert);
+$('header.ui.bar').on('click','.signup.item',signUpAlert);
+
+    function signIn(){
+    // $('header.ui.bar  .right.menu').addClass('signed');
+    // return;
+    var email=$('#signin-email-input').val(),
+        password=$('#signin-password-input').val();
+        if(email&&password){
+            $.get('/user/login/',{email:email,password:password},function(r){
+                console.log(r);
+                if(r.message=="success"){
+                    $('header.ui.bar  .right.menu').addClass('signed');
+                    $('header.ui.bar  .right.menu').text(r.user)
+                    signInDialog.modal('hide');  
+                }else{
+                    alert('sorry , someting wrong ')
+                }
+
+            })
+        }else{
+            alert('Please fill in all options ~');
+        }
+    
+}
+function signUp(){
+    var email=$('#signup-email-input').val(),
+        password=$('#signup-password-input').val(),
+        name=$('#signup-name-input').val();
+    if(email&&password&&name){
+        $.get('/user/register',
+          {email:email,
+            password:password,
+            name:name
+          },
+          function(r){
+                    console.log(r);
+                    alert('registration succeeded!');
+                    signInAlert();
+          })
+    }else{
+      alert('Please fill in all options ~');
+    }
+   
+}
+function signOut(){
+  //  $('header.ui.bar  .right.menu').removeClass('signed'); 
+  // return;
+   $.get('/user/logout',function(r){
+            console.log(r);
+            $('header.ui.bar  .right.menu').removeClass('signed'); 
+            alert('logout succeeded')   
+      })
+}
+function signInAlert(){  
+  signInDialog.modal({
+        blurring:true,
+        transition:'fade up'
+    }).modal('show');
+}
+function signUpAlert(){
+  signUpDialog.modal({
+        blurring:true,
+        transition:'fade up'
+    }).modal('show');
+}
+  </script>
