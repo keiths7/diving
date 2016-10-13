@@ -168,3 +168,29 @@ h2.ui.header{
     margin-left: 10px;
     margin-right: 10px;
 }
+header .right.menu{
+    .user{
+        display: none;
+    }
+    &.signed{
+          .user{
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            margin-right: 1rem!important;
+            .text{
+                font-size: 1.1em;
+            }
+            a{
+              color: #444;
+            }
+          }
+          .signup{
+            display: none;
+          }
+          .signin{
+            display: none;
+          }
+    }
+}

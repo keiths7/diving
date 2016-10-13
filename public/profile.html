@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- <meta name="viewport"
+    <!-- <meta name="viewport"  
           content="width=device-width,initial-scale=1,minimum-scale=1, maximum-scale=1, user-scalable=no"> -->
     <meta name="format-detection" content="telephone=no,email=no">
     <meta name="apple-touch-fullscreen" content="yes">
@@ -12,9 +12,11 @@
     <link href="/css/semantic.min.css" rel="stylesheet">
     <link href="/css/profile.css" rel="stylesheet">
     <title>Dreamdivingtrip.com: Online Booking for Scuba Diving,Liveaboard and Courses all around the world</title>
+    <script src="/js/jquery.min.js" charset="utf-8"></script>
+    <script src="/js/semantic.min.js" charset="utf-8"></script>    
 </head>
-<body id="profile">
-  <!-- header bar -->
+<body id="profile">  
+  <!-- header bar --> 
 <header class="ui following bar sticky">
       <div class="ui  menu ">
         <div class="item">
@@ -31,13 +33,101 @@
             <input type="text" placeholder="Search...">
             <i class="search icon"></i>
           </div>
-        </div>
-        <div class="right  menu">
-          <div class="item">Sign Up</div>
-          <div class="item">Sign In</div>
+        </div>       
+        <div class="right  menu signed">
+          <div class="item user ui pointing dropdown">
+                 <div class="text">Welcome</div>
+                 <div class="menu">
+                   <div class="item"><a href="/profile#purchases">Purchases</a></div>
+                   <div class="item"><a href="/profile#setting">Settings</a></div>
+                   <div class="item"><a href="javascript:signOut()">Sign Out</a></div>
+                 </div>         
+          </div>
+          <div class="item ui link signup">Sign Up</div>
+          <div class="item ui link signin">Sign In</div>
         </div>
       </div>
   </header>
+  <script>
+    $(function(){
+        $('.user.ui.dropdown').dropdown({
+            on:'hover',
+            action:function(){    
+            },
+        });
+        alert();
+    })
+var signUpDialog=$('.ui.modal.signup-dialog');
+var signInDialog=$('.ui.modal.login-dialog');
+$('.ui.modal').on('click','.signin-button',signIn)
+$('.ui.modal').on('click','.signup-button',signUp);
+$('header.ui.bar').on('click','.signin.item',signInAlert);
+$('header.ui.bar').on('click','.signup.item',signUpAlert);
+
+    function signIn(){
+    // $('header.ui.bar  .right.menu').addClass('signed');
+    // return;
+    var email=$('#signin-email-input').val(),
+        password=$('#signin-password-input').val();
+        if(email&&password){
+            $.get('/user/login/',{email:email,password:password},function(r){
+                console.log(r);
+                if(r.message=="success"){
+                    $('header.ui.bar  .right.menu').addClass('signed');
+                    $('header.ui.bar  .right.menu').text(r.user)
+                    signInDialog.modal('hide');  
+                }else{
+                    alert('sorry , someting wrong ')
+                }
+
+            })
+        }else{
+            alert('Please fill in all options ~');
+        }
+    
+}
+function signUp(){
+    var email=$('#signup-email-input').val(),
+        password=$('#signup-password-input').val(),
+        name=$('#signup-name-input').val();
+    if(email&&password&&name){
+        $.get('/user/register',
+          {email:email,
+            password:password,
+            name:name
+          },
+          function(r){
+                    console.log(r);
+                    alert('registration succeeded!');
+                    signInAlert();
+          })
+    }else{
+      alert('Please fill in all options ~');
+    }
+   
+}
+function signOut(){
+  //  $('header.ui.bar  .right.menu').removeClass('signed'); 
+  // return;
+   $.get('/user/logout',function(r){
+            console.log(r);
+            $('header.ui.bar  .right.menu').removeClass('signed'); 
+            alert('logout succeeded')   
+      })
+}
+function signInAlert(){  
+  signInDialog.modal({
+        blurring:true,
+        transition:'fade up'
+    }).modal('show');
+}
+function signUpAlert(){
+  signUpDialog.modal({
+        blurring:true,
+        transition:'fade up'
+    }).modal('show');
+}
+  </script>
 <section class="profile-tab">
     <div class="ui container">
         <div class="ui four column grid">
@@ -341,11 +431,11 @@
   <div class="ui horizontal divider mt-4">or</div>
   <div class="forms">
       <div class="ui fluid icon input">
-        <input type="text" id="sign-email-input" placeholder="type your email address...">
+        <input type="text" id="signin-email-input" placeholder="type your email address...">
         <i class="mail icon"></i>
       </div>
       <div class="ui fluid icon input">
-        <input type="text" id="sign-password-input" placeholder="type your password ...">
+        <input type="text" id="signin-password-input" placeholder="type your password ...">
         <i class="lock icon"></i>
       </div>
       <div class="tr mt-2 mb-4">Forgot?</div>
@@ -371,11 +461,11 @@
   <div class="ui horizontal divider mt-4">or</div>
   <div class="forms">
       <div class="ui fluid icon input">
-        <input type="text" id="sign-email-input" placeholder="type your email address...">
+        <input type="text" id="signup-email-input" placeholder="type your email address...">
         <i class="mail icon"></i>
       </div>
       <div class="ui fluid icon input">
-        <input type="text" id="sign-password-input" placeholder="type your password between 6 and 12 characters ...">
+        <input type="text" id="signup-password-input" placeholder="type your password between 6 and 12 characters ...">
         <i class="lock icon"></i>
       </div>
       <div class="ui fluid icon input">
@@ -383,7 +473,7 @@
         <i class="lock icon"></i>
       </div>
       <div class="ui fluid icon input">
-        <input type="text" id="sign-name-input" placeholder="type your nickname ...">
+        <input type="text" id="signup-name-input" placeholder="type your nickname ...">
         <i class="user icon"></i>
       </div>
       <a href=""></a><div class="tr mt-2 mb-4">Forgot?</div>
@@ -397,8 +487,7 @@
       </div>
   </div>
 </div>
-<script src="/js/jquery.min.js" charset="utf-8"></script>
-<script src="/js/semantic.min.js" charset="utf-8"></script>
+
 <script src="/js/profile.js" charset="utf-8"></script>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
