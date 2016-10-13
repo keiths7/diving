@@ -123,6 +123,7 @@ function signIn(){
     // return;
     var email=$('#signin-email-input').val(),
         password=$('#signin-password-input').val();
+        console.log(email,password)
         if(email&&password){
             $.get('/user/login/',{email:email,password:password},function(r){
                 console.log(r);
@@ -143,11 +144,13 @@ function signIn(){
 function signUp(){
     var email=$('#signup-email-input').val(),
         password=$('#signup-password-input').val(),
-        name=$('#signup-name-input').val();
-    if(email&&password&&name){
+        name=$('#signup-name-input').val(),
+        password_confirmation=$('#signup-confirm-password-input').val();
+    if(email&&password&&name&&password_confirmation){
         $.get('/user/register',
           {email:email,
             password:password,
+            password_confirmation:password_confirmation,
             name:name
           },
           function(r){
