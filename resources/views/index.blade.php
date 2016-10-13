@@ -189,7 +189,7 @@
     </section>
     <!-- 课程 结束-->
     <div class=" ui vertical see-more-button more-course">
-      <div class="ui center aligned container "><button class="ui basic button">    See more courses    </button></div>
+      <div class="ui center aligned container "><a class="ui basic button" href="#see-more-course">    See more courses    </a></div>
     </div>
     <!-- 热门目的地开始  -->
     <section class="third-sec ui vertical ">
@@ -276,7 +276,7 @@
             </div>
     </section>
     <div class=" ui vertical see-more-button more-destination">
-      <div class="ui center aligned container "><button class="ui basic button">    See All Destination     </button></div>
+      <div class="ui center aligned container "><a class="ui basic button" href="#see-more-dest">    See All Destination     </a></div>
     </div>
       <!-- 热门目的地  结束  -->
       <!--探索世界 开始  -->
@@ -558,26 +558,26 @@
           <div class="ui centered stackable internally three column grid">
             <div class="row">
               <div class="column">
-                <h2 class="ui icon header">
+                <a class="ui icon large header" href="#book1">
                   <img class="ui icon image" src="/images/index/how_to_book_1.png">
                   Find a dive site
-                </h2>
+                </a>
                 <p>Just enter your dates and destination. Then refine your search and compare choices. On DDT.COM, info about location, products, prices, cancellation & booking policies and reviews by other divers are all in one place!
                 </p>
               </div>
               <div class="column">
-                <h2 class="ui icon header">
+                <a class="ui icon large header" href="#book2">
                   <img class="ui icon image" src="/images/index/how_to_book_2.png">
                   Book right now
-                </h2>
+                </a>
                 <p>Easily book online with our best price guarantee and no booking fees. Get email confirmation instantly. Most bookings don`t require any deposit and offer free cancellation. Credit card details are sent directly to dive center through a secure channel.
                 </p>
               </div>
               <div class="column">
-                <h2 class="ui icon header">
+                <a class="ui icon large header" href="#book3">
                   <img class="ui icon image" src="/images/index/how_to_book_3.png">
                   Get travel-ready
-                </h2>
+                </a>
                 <p>We get in touch with your dive center as soon as you book to verify all the details such as transfer, language of course materials & more! Prior to your arrival we will contact dive center with a friendly reminder. Divebooker.com is here to serve you 24/7!
                 </p>
               </div>
