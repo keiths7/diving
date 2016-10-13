@@ -31,7 +31,7 @@
             <i class="search icon"></i>
           </div>
         </div>       
-        <div class="right  menu signed">
+        <div class="right  menu">
           <div class="item user ui pointing dropdown">
                  <div class="text">Welcome</div>
                  <div class="menu">
@@ -40,8 +40,8 @@
                    <div class="item"><a href="javascript:signOut()">Sign Out</a></div>
                  </div>         
           </div>
-          <div class="item ui link signup">Sign Up</div>
-          <div class="item ui link signin">Sign In</div>
+          <div class="item ui link signup" onclick="signUpAlert()">Sign Up</div>
+          <div class="item ui link signin" onclick="signInAlert()">Sign In</div>
         </div>
       </div>
   </header>
@@ -52,20 +52,17 @@
             action:function(){    
             },
         });
-        alert();
+        $('.ui.modal').on('click','.signin-button',signIn)
+        $('.ui.modal').on('click','.signup-button',signUp);
     })
-var signUpDialog=$('.ui.modal.signup-dialog');
-var signInDialog=$('.ui.modal.login-dialog');
-$('.ui.modal').on('click','.signin-button',signIn)
-$('.ui.modal').on('click','.signup-button',signUp);
-$('header.ui.bar').on('click','.signin.item',signInAlert);
-$('header.ui.bar').on('click','.signup.item',signUpAlert);
 
-    function signIn(){
+
+function signIn(){
     // $('header.ui.bar  .right.menu').addClass('signed');
     // return;
     var email=$('#signin-email-input').val(),
         password=$('#signin-password-input').val();
+        console.log(email,password)
         if(email&&password){
             $.get('/user/login/',{email:email,password:password},function(r){
                 console.log(r);
@@ -86,11 +83,13 @@ $('header.ui.bar').on('click','.signup.item',signUpAlert);
 function signUp(){
     var email=$('#signup-email-input').val(),
         password=$('#signup-password-input').val(),
-        name=$('#signup-name-input').val();
-    if(email&&password&&name){
+        name=$('#signup-name-input').val(),
+        password_confirmation=$('#signup-confirm-password-input').val();
+    if(email&&password&&name&&password_confirmation){
         $.get('/user/register',
           {email:email,
             password:password,
+            password_confirmation:password_confirmation,
             name:name
           },
           function(r){
@@ -112,14 +111,15 @@ function signOut(){
             alert('logout succeeded')   
       })
 }
-function signInAlert(){  
-  signInDialog.modal({
+function signInAlert(){   
+  
+  $('.ui.modal.login-dialog').modal({
         blurring:true,
         transition:'fade up'
     }).modal('show');
 }
 function signUpAlert(){
-  signUpDialog.modal({
+  $('.ui.modal.signup-dialog').modal({
         blurring:true,
         transition:'fade up'
     }).modal('show');
