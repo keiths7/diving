@@ -61,13 +61,14 @@ var watchCSS = function(file){
         .pipe(connect.reload());
 }
 var watchHTML = function(file){
-    gulp.src(file.srcPath)
+    gulp.src('./src/*.html')
         .pipe(fileinclude({
             prefix: '@@',
             basepath: '@file'
         }))
         .pipe(gulp.dest(file.distDir))
         .pipe(connect.reload());
+        
 }
 
 var jsList=['src/js/*.js','!src/js/*.min.js','!src/js/iScroll.js','!src/js/datePick.js'];

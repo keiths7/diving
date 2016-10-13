@@ -116,25 +116,30 @@ function loadPayInfo(){
 }
 function loadUserInfo(){
     
-    // ajax('/user/info',{},fillForm);
+    ajax('/user/info',{},fillForm);
     fillForm();
     function fillForm(r){
-         $('#firstname').val('jhon');   
-         $('#lastname').val('klin');  
-         $('#email').val('xxxxx@xxx.com');  
-         $('#phone').val('xxxxxxxxxxx');  
-         $('#height').val('133');  
-         $('#weight').val('212');  
-         $('#shoes_size').val('44');
+         $('#firstname').val(r.name);   
+         $('#lastname').val('lack');  
+         $('#email').val('lack');  
+         $('#phone').val(r.phone);  
+         $('#height').val(r.height);  
+         $('#weight').val(r.weight);  
+         $('#shoes_size').val(r.shoes_size);
          var selIndex=1;
          $('#gender')[0].selectedIndex=selIndex;
     }
 }
 function updatePayInfo(){
-      var data={};
-     // ajax('/user/update_pay_info',data,function(r){
-
-    //  });
+      var data={
+          card_number:$('#cardnumber').val(),
+          valid_thru:$('#valid_date').val(),
+          cvc:('#cvc').val()
+      };
+     ajax('/user/update_pay_info',data,function(r){
+         alert('update successfully!');
+         $('#paybtn').text('Save');
+     });
 }
 function changePwd(){
       var data={
