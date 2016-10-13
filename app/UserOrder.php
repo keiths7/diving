@@ -56,10 +56,18 @@ class UserOrder extends Model
     public function get_order($uid)
     {
         $user_order = new UserOrder;
-        $query = $user_order->where('uid', $uid)->orderBy('created_at', 'desc')->get();
+        $query = $user_order->where('uid', $uid)
+                        ->join('diving_product', 'diving_product.id', '=', 'user_order.pid')
+                        ->orderBy('user_order.created_at', 'desc')
+                        ->select('user_order.*', 'diving_product.name', 'diving_product.description')
+                        ->get();
         if($query)
         {
-            return $query->toArray();
+            $ret = $query->toArray();
+            foreach($ret as $k => $v) {
+                $ret[$k]['description'] = strip_tags($v['description']);
+            }
+            return $ret;
         }
         else
         {

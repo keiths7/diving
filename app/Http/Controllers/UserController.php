@@ -30,7 +30,7 @@ class UserController extends Controller
         $user = $request->user();
         $u = new User;
         $user_info = $u->get_user_info($user['id']);
-        return $user_info;
+        return $user_info->toArray();
     }
 
     public function update_user_info(Request $request)
