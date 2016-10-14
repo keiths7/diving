@@ -109,7 +109,7 @@ class UserController extends Controller
             $u = new User;
             $user_info = $u->get_user_info($user['id']);
             // print_r($user_info);
-            return json_encode(['code'=>0, 'message'=>'success', 'user'=>$user_info]);
+            return json_encode(['code'=>0, 'message'=>'success', 'user'=>$user_info->toArray()]);
         }
         else
         {
@@ -129,7 +129,7 @@ class UserController extends Controller
             $user = Auth::user();
             $u = new User;
             $user_info = $u->get_user_info($user['id']);
-            return json_encode(['code'=>0, 'message'=>'yes', 'user'=>$user_info]);
+            return json_encode(['code'=>0, 'message'=>'yes', 'user'=>$user_info->toArray()]);
         }
         return json_encode(['code'=>1, 'message'=>'no']);
     }
