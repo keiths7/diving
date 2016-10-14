@@ -177,4 +177,24 @@ class UserController extends Controller
     {
         return view('profile');
     }
+
+
+    public function reset_email(Request $request)
+    {
+        $name = '重置密码邮件';
+        $flag = Mail::send('emails.reset_email',['name'=>$name],function($message){
+            $to = '53307709@qq.com';
+            $message ->to($to)->subject('重置密码邮件');
+        });
+        if($flag){
+            return json_encode(['code'=>0, 'message'=>'sucess']);
+        }else{
+            return json_encode(['code'=>1, 'message'=>'failed']);
+        }
+    }
+
+    public function reset_password(Request $request)
+    {
+        return view('resetpwd');
+    }
 }

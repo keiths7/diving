@@ -96,6 +96,15 @@ class IndexController extends Controller
         return json_encode($result);
     }
 
+    public function get_order()
+    {
+        if (!Auth::check()) {
+            return '{}';
+        }
+        $user = $request->user();
+        
+    }
+
     public function new_order(Request $request)
     {
         if (!Auth::check()) {
@@ -141,7 +150,8 @@ class IndexController extends Controller
         $products = new DivingProduct();
         $result = $products->get_more_product($params);
 //         print_r($result);
-        return view('search', ['result'=>$result]);
+        // return view('search', ['result'=>$result]);
+        return $result;
     }
 
     public function test_mail(Request $request)

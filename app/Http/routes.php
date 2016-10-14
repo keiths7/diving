@@ -37,6 +37,9 @@ Route::get('/user/pay_info', 'UserController@get_user_credit');
 Route::get('/user/update_pay_info', 'UserController@update_user_pay');
 Route::get('/user/init_password', 'UserController@init_password');
 Route::get('/search/get_more', 'IndexController@get_more_product');
+Route::get('/user/reset_email', 'UserController@reset_email');
+Route::get('/user/reset_password', 'UserController@reset_password');
+
 
 Route::get('/order/new', 'IndexController@new_order');
 Route::get('/user/order', 'UserController@get_user_order');
