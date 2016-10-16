@@ -14,6 +14,8 @@ use Auth;
 use Validator;
 use Illuminate\Support\Facades\Input;
 use Hash;
+use Crypt;
+use Mail;
 
 class UserController extends Controller
 {
@@ -169,7 +171,7 @@ class UserController extends Controller
             $user->save();
             return json_encode(['code'=>0, 'message'=>'success']);
         } else {
-            return $validator->messages();
+            return json_encode(['code'=>1, 'message'=>$validator->messages()->first()]);
         }
     }
 
@@ -181,11 +183,20 @@ class UserController extends Controller
 
     public function reset_email(Request $request)
     {
+        $email = $request->input('email', '');
+        $user = User::where('email', $email)->first();
+        if(!$user) {
+            return json_encode(['code'=>2, 'message'=>'user not found']);
+        }
+        $rand_str = time();
+        $encrypt_str = Crypt::encrypt($email.':'.$rand_str);
         $name = '重置密码邮件';
-        $flag = Mail::send('emails.reset_email',['name'=>$name],function($message){
-            $to = '53307709@qq.com';
-            $message ->to($to)->subject('重置密码邮件');
+        $flag = Mail::send('emails.reset_email',['user'=>$user, 'secret'=>$encrypt_str],function($message) use ($user){
+            $to = $user->email;
+            $message ->to($to)->subject('dreamdivingtrip重置密码邮件');
         });
+        // echo $user->email;
+        // var_dump($flag);
         if($flag){
             return json_encode(['code'=>0, 'message'=>'sucess']);
         }else{
@@ -195,6 +206,34 @@ class UserController extends Controller
 
     public function reset_password(Request $request)
     {
-        return view('resetpwd');
+        $pwd = $request->input('password', '');
+        $repeat_pwd = $request->input('password_confirmation', '');
+        $token = $request->input('token', '');
+        if(!$token) {
+            return json_encode(['code'=>3, 'message'=>'params error']);
+        }
+
+        $decode_str = Crypt::decrypt($token);
+        if(!$decode_str) {
+            return json_encode(['code'=>4, 'message'=>'token error']);
+        }
+
+        $decode_arr = explode(':', $decode_str);
+
+        if($pwd && $repeat_pwd && $pwd == $repeat_pwd) {
+            $validator = Validator::make(Input::all(), User::$reset_pwd_rules);
+            if($validator->passes()) {
+                $user = User::where('email', $decode_arr[0])->first();
+                if(!$user) {
+                    return json_encode(['code'=>4, 'message'=>'token error']);
+                }
+                $user->password = Hash::make($pwd);
+                $user->save();
+                return json_encode(['code'=>0, 'message'=>'sucess']);
+            }
+            return json_encode(['code'=>1, 'message'=>'failed']);
+        } else {
+            return view('resetpwd', ['token'=>$token]);
+        }
     }
 }

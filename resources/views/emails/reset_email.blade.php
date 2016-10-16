@@ -1,0 +1,2 @@
+<a href="http://www.dreamdivingtrip.com:8008/user/reset_password?token={{ $secret }}"><h1>{{ $user->email }} 重置密码邮件:</h1></a>
+<a href="http://www.dreamdivingtrip.com:8008/user/reset_password?token={{ $secret }}">http://www.dreamdivingtrip.com:8008/user/reset_password?token={{ $secret }}</a>
