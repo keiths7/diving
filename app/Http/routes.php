@@ -27,6 +27,7 @@ Route::get('/destination', 'IndexController@country_word');
 
 Route::auth();
 
+Route::get('/popular/more', 'IndexController@more_popular');
 
 Route::get('/user/login', 'UserController@login');
 Route::get('/user/logout', 'UserController@logout');

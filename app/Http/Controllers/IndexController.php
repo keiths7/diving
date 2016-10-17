@@ -16,6 +16,7 @@ use App\UserOrder;
 use Auth;
 use DB;
 use Mail;
+use Crypt;
 
 use Validator;
 use Illuminate\Support\Facades\Input;
@@ -154,18 +155,12 @@ class IndexController extends Controller
         return $result;
     }
 
-    public function test_mail(Request $request)
+
+    public function more_popular(Request $request)
     {
-        $name = '王宝花';
-        $flag = Mail::send('emails.test',['name'=>$name],function($message){
-            $to = '53307709@qq.com';
-            $message ->to($to)->subject('53307709de邮件测试');
-        });
-        if($flag){
-            echo '发送邮件成功，请查收！';
-        }else{
-            echo '发送邮件失败，请重试！';
-        }
+        $cm = new CustomMeta();
+        $pop = $cm->get_more_populer();
+        return $pop;
     }
 
     // public function test(Request $request)

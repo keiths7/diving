@@ -323,7 +323,11 @@
         </div>
       </div>
       <div class="see-more-button">
-        <div class="ui center aligned container "><button class="ui basic button">    See All Locate Dive Sites    </button></div>
+        @if(isset($v[0]->city_info))
+        <div class="ui center aligned container "><button class="ui basic button" position="" city="{{ $v[0]->city_info->id }}">    See All Locate Dive Sites    </button></div>
+        @else
+        <div class="ui center aligned container "><button class="ui basic button" position="{{ $v[0]->id }}" city="">    See All Locate Dive Sites    </button></div>
+        @endif
       </div>
       <div class="ui divider"> </div>
     </div>

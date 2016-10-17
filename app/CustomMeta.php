@@ -36,4 +36,19 @@ class CustomMeta extends Model
     	}
     	return $result;
     }
+
+    public function get_more_populer()
+    {
+        $ret = CustomMeta::where('is_active', 1)->where('position', 'pop')->orderBy('sort', 'asc')->skip(3)->take(100)->get();
+        $result = array();
+        foreach ($ret as $key => $value) {
+            $result[] = array(
+                'desc' => $value['desc'],
+                'image_url' => '/uploads/originals/'.$value['value'],
+                'sort' => $value['sort'],
+                'url' => $value['url']
+            );
+        }
+        return $result;
+    }
 }
