@@ -10,6 +10,66 @@ $('.ui.left.arrow').on('click',function(){
 $('.ui.right.arrow').on('click',function(){
     myScroll.next()
 })
+$('.row.images').on("click",".ui.image",imgClick);
+$("#pptclose").on("click", destoryPowPoint);
+$(function(){
+    
+ (function(){
+
+      $('.cc-postalcode').payment('restrictNumeric');
+      $('.cc-number').payment('formatCardNumber');
+      $('.cc-exp').payment('formatCardExpiry');
+      $('.cc-cvc').payment('formatCardCVC');
+
+      $.fn.toggleInputError = function(erred) {
+        this.parent('.field').toggleClass('invalid', erred);
+        return this;
+      };
+        var $form = $('#payment-form');
+        $form.submit(function(e) {
+            e.preventDefault();
+            var cardType = $.payment.cardType($('.cc-number').val());
+            $('.cc-number').toggleInputError(!$.payment.validateCardNumber($('.cc-number').val()));
+            $('.cc-exp').toggleInputError(!$.payment.validateCardExpiry($('.cc-exp').payment('cardExpiryVal')));
+            $('.cc-cvc').toggleInputError(!$.payment.validateCardCVC($('.cc-cvc').val(), cardType));
+            // $('.cc-brand').text(cardType);  //显示卡类型
+            if($('.field.invalid').length>0){
+                $('.payment-errors').text('Your input is incorrect!');
+                return false;
+            }else{
+               // Disable the submit button to prevent repeated clicks:
+                $form.find('.submit').prop('disabled', true);
+                // Request a token from Stripe:
+                Stripe.card.createToken($form, stripeResponseHandler);
+                // Prevent the form from being submitted:
+                return false;     
+            }
+            
+        });
+        function stripeResponseHandler(status, response) {
+            // Grab the form:
+            var $form = $('#payment-form');
+
+            if (response.error) { // Problem!
+                // Show the errors on the form:
+                $form.find('.payment-errors').text(response.error.message);
+                $form.find('.submit').prop('disabled', false); // Re-enable submission
+            } else { // Token was created!
+                // Get the token ID:
+                var token = response.id;
+                // Insert the token ID into the form so it gets submitted to the server:
+                $form.append($('<input type="hidden" name="stripeToken">').val(token));
+                // Submit the form:
+                $form.get(0).submit();
+            }
+        };
+ })();
+    
+    $('.date-pick').kuiDate({
+        className:'date-pick',
+        isDisabled: "0"  // isDisabled为可选参数，“0”表示今日之前不可选，“1”标志今日之前可选
+    });
+})
 var myScroll,imgcount=0,curpage=0;
 function registerScroll() {
     myScroll = new IScroll('#maskcontent', { scrollX: true, scrollY: false, mouseWheel: true, momentum: false, snap: true });
@@ -25,8 +85,7 @@ function registerScroll() {
     });
 }
 
-$('.row.images').on("click",".ui.image",imgClick);
-$("#pptclose").on("click", destoryPowPoint);
+
 //点击图片显示大图
 function imgClick(){
 //console.log("00--"+$(this).data("src"));
@@ -102,3 +161,4 @@ function displayImage(obj) {
     img.src = path;
 }
 
+    

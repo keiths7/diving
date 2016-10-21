@@ -184,10 +184,10 @@ gulp.task('md5:js', ['jsmin','copy:html'], function (done) {
 
 gulp.task('copy:html',['clean'],function(){
   return gulp.src(['./src/*.html'])
-    .pipe(fileinclude({ //用于在html文件中直接include文件
-          prefix: '@@',
-          basepath: '@file'
-    }))
+    // .pipe(fileinclude({ //用于在html文件中直接include文件
+    //       prefix: '@@',
+    //       basepath: '@file'
+    // }))
     .pipe(gulp.dest('build'))
 })
 gulp.task('htmlmin',['md5:css','md5:js'],function(){
