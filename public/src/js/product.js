@@ -34,7 +34,7 @@ $(function(){
             $('.cc-cvc').toggleInputError(!$.payment.validateCardCVC($('.cc-cvc').val(), cardType));
             // $('.cc-brand').text(cardType);  //显示卡类型
             if($('.field.invalid').length>0){
-                $('.payment-errors').text('Your input is incorrect!');
+                showError('Your input is incorrect!');
                 return false;
             }else{
                // Disable the submit button to prevent repeated clicks:
@@ -52,7 +52,7 @@ $(function(){
 
             if (response.error) { // Problem!
                 // Show the errors on the form:
-                $form.find('.payment-errors').text(response.error.message);
+                showError(response.error.message);
                 $form.find('.submit').prop('disabled', false); // Re-enable submission
             } else { // Token was created!
                 // Get the token ID:
@@ -63,6 +63,12 @@ $(function(){
                 $form.get(0).submit();
             }
         };
+        function showError(text){
+            $('.payment-errors').text(text).show();
+            setTimeout(function() {
+                $('.payment-errors').hide();
+            }, 3000);
+        }
  })();
     
     $('.date-pick').kuiDate({

@@ -172,22 +172,27 @@
                 </div>
             </div>
             <div class="p30 right column">
-                <div class="ui form">
-                    <span><img src="/images/product/visa.jpg" alt=""></span>
-                    <div class="field">
-                      <input type="text" placeholder="Card Number">
+                <form novalidate autocomplete="on" method="POST" id="payment-form">
+                    <div class="ui form">          
+                        <span><img src="/images/product/visa.jpg" alt=""><em class="payment-errors right floated"></em></span>
+                        <div class="field">
+                            <input type="tel" placeholder="Card Number" data-stripe="number"  class="cc-number" autocomplete="cc-number"  required>
+                        </div>
+                        <div class="two fields">
+                            <div class="field">
+                                <input type="tel" class="cc-exp" autocomplete="cc-exp" placeholder="MM/YY" required>
+                            </div>
+                            <div class="field">
+                                <input type="tel" class="cc-cvc" autocomplete="off" data-stripe="cvc"  placeholder="CVC" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <input type="tel" placeholder="postalcode" data-numeric  class=" cc-postalcode" >
+                        </div>
+                        <button class="ui submit teal fluid button" type="submit">Instant Book</button>
+                        <p>We will recommond a dive center foryou.Or you could <a href="">Pick</a> a dive center toserve your trip</p>                   
                     </div>
-                    <div class="two fields">
-                      <div class="field">
-                        <input type="text" placeholder="MM/YY">
-                      </div>
-                      <div class="field">
-                        <input type="text" placeholder="CVC">
-                      </div>
-                    </div>
-                    <div class="ui submit teal fluid button">Instant Book</div>
-                    <p>We will recommond a dive center foryou.Or you could <a href="">Pick</a> a dive center toserve your trip</p>
-                </div>
+                </form>
             </div>
             <!-- 更多潜水点 -->
             <div class="row diving-sites">

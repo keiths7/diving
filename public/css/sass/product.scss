@@ -291,6 +291,13 @@ body{
        background-color: #fff;
        &>span{
          line-height: 3em;
+         em{
+           color:#F5656E;
+           font-weight: bold;
+         }
+       }
+       .field.invalid input{
+         border-color:orangered!important;
        }
        .ui.submit.button{
          background-color: #1bbc9b;
