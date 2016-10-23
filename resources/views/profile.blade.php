@@ -12,6 +12,8 @@
     <link href="/css/semantic.min.css" rel="stylesheet">
     <link href="/css/profile.css" rel="stylesheet">
     <title>Dreamdivingtrip.com: Online Booking for Scuba Diving,Liveaboard and Courses all around the world</title>
+    <script src="/js/jquery.min.js" charset="utf-8"></script>
+    <script src="/js/semantic.min.js" charset="utf-8"></script>
 </head>
 <body id="profile">
   <!-- header bar -->
@@ -39,60 +41,7 @@
                            <div class="three wide column">Purchase Date</div>
                            <div class="three wide column">Schedule</div>
                            <div class="two wide column">Invoice</div>
-                       </div>
-                       <!--第一条-->
-                       <div class="row list-item">
-                           <div class="six wide column">
-                               <div class="ui middle aligned list">
-                                    <div class="item">
-                                        <img class="ui large image" src="/images/course/1.png">
-                                        <div class=" content">
-                                        <a class="header">this is most popular destination</a>
-                                        <div class="description">oh hoho  ,that is not the best choice</div>
-                                        </div>
-                                    </div>
-                                </div>
-                           </div>
-                           <div class="two wide column ">$1900</div>
-                           <div class="three wide column">May,5,2016</div>
-                           <div class="three wide column">Save</div>
-                           <div class="two wide column"><i class="edit icon"></i></div>
-                       </div>
-                       <!--purchase第二条-->
-                       <div class="row list-item">
-                           <div class="six wide column">
-                               <div class="ui middle aligned list">
-                                    <div class="item">
-                                        <img class="ui large image" src="/images/course/1.png">
-                                        <div class=" content">
-                                        <a class="header">this is most popular destination</a>
-                                        <div class="description">oh hoho  ,that is not the best choice</div>
-                                        </div>
-                                    </div>
-                                </div>
-                           </div>
-                           <div class="two wide column ">$1900</div>
-                           <div class="three wide column">May,5,2016</div>
-                           <div class="three wide column">Save</div>
-                           <div class="two wide column"><i class="edit icon"></i></div>
-                       </div>
-                       <div class="row list-item">
-                           <div class="six wide column">
-                               <div class="ui middle aligned list">
-                                    <div class="item">
-                                        <img class="ui large image" src="/images/course/1.png">
-                                        <div class=" content">
-                                        <a class="header">this is most popular destination</a>
-                                        <div class="description">oh hoho  ,that is not the best choice</div>
-                                        </div>
-                                    </div>
-                                </div>
-                           </div>
-                           <div class="two wide column ">$1900</div>
-                           <div class="three wide column">May,5,2016</div>
-                           <div class="three wide column">Save</div>
-                           <div class="two wide column"><i class="edit icon"></i></div>
-                       </div>
+                       </div>                      
                    </div>
               </div>  
               <div class="profile">  
@@ -105,7 +54,7 @@
                                 <label for="">First Name</label>
                             </div>
                             <div class=" eight wide field">
-                                <input type="text" placeholder="">
+                                <input type="text" id="firstname" placeholder="">
                             </div>
                         </div>
                         <div class="inline  fields">
@@ -113,7 +62,7 @@
                                 <label for="">Last Name</label>
                             </div>
                             <div class=" eight wide field">
-                                <input type="text" placeholder="">
+                                <input type="text" id="lastname" placeholder="">
                             </div>
                         </div>
                         <div class="inline  fields">
@@ -121,7 +70,7 @@
                                 <label for="">Gender</label>
                             </div>
                             <div class=" eight wide field">
-                               <select name="" id="">
+                               <select name="" id="gender">
                                    <option value="">man</option>
                                    <option value="">woman</option>
                                </select>
@@ -132,7 +81,7 @@
                                 <label for="">Email</label>
                             </div>
                             <div class=" eight wide field">
-                                <input type="text" placeholder="">
+                                <input type="text" id="email" placeholder="">
                             </div>
                         </div>
                         <div class="inline  fields">
@@ -140,15 +89,15 @@
                                 <label for="">Phone Number</label>
                             </div>
                             <div class=" eight wide field">
-                                <input type="text" placeholder="">
+                                <input type="text" id="phone" placeholder="">
                             </div>
                         </div>
                         <div class="inline  fields">
                             <div class="two wide field">
-                                <label for="">Hight</label>
+                                <label for="">Height</label>
                             </div>
                             <div class=" eight wide field">
-                                <input type="text" placeholder="">
+                                <input type="text" id="height" placeholder="">
                             </div>
                         </div>
                         <div class="inline  fields">
@@ -156,7 +105,7 @@
                                 <label for="">Weight</label>
                             </div>
                             <div class=" eight wide field">
-                                <input type="text" placeholder="">
+                                <input type="text" id="weight" placeholder="">
                             </div>
                         </div>
                         <div class="inline  fields">
@@ -164,7 +113,7 @@
                                 <label for="">Shoes Size</label>
                             </div>
                             <div class=" eight wide field">
-                                <input type="text" placeholder="">
+                                <input type="text" id="shoes_size" placeholder="">
                             </div>
                         </div>
                         <div class="inline  fields">
@@ -185,7 +134,7 @@
                                 <label for="">old password</label>
                             </div>
                             <div class=" eight wide field">
-                                <input type="text" placeholder="">
+                                <input type="text" id="oldpwd" placeholder="">
                             </div>
                         </div>
                         <div class="inline  fields">
@@ -193,7 +142,7 @@
                                 <label for="">new password</label>
                             </div>
                             <div class=" eight wide field">
-                                <input type="text" placeholder="">
+                                <input type="text" id="newpwd" placeholder="">
                             </div>
                         </div>
                         <div class="inline  fields">
@@ -201,7 +150,7 @@
                                 <label for="">verify password</label>
                             </div>
                             <div class=" eight wide field">
-                                <input type="text" placeholder="">
+                                <input type="text" id="cfmpwd" placeholder="">
                             </div>
                         </div>
                         <div class="inline  fields">
@@ -222,7 +171,7 @@
                                 <label for="">Card Number</label>
                             </div>
                             <div class=" eight wide field">
-                                <input type="text" placeholder="type your credit card number">
+                                <input type="text" id="cardnumber" placeholder="type your credit card number">
                             </div>
                         </div>
                         <div class="inline  fields">
@@ -230,7 +179,7 @@
                                 <label for="">MM/YY</label>
                             </div>
                             <div class=" eight wide field">
-                                <input type="text" placeholder="type your credit card effective dates">
+                                <input type="text" id="valid_date" placeholder="type your credit card effective dates">
                             </div>
                         </div>
                         <div class="inline  fields">
@@ -238,13 +187,13 @@
                                 <label for="">CVC</label>
                             </div>
                             <div class=" eight wide field">
-                                <input type="text" placeholder="type your credit card  cerification code">
+                                <input type="text" id="cvc" placeholder="type your credit card  cerification code">
                             </div>
                         </div>
                         <div class="inline  fields">
                             <div class="two wide field"></div>
                             <div class="five wide field">
-                                <div class="ui submit teal large fluid button">Add  New  Card</div>
+                                <div class="ui submit teal large fluid button " id="paybtn">Add  New  Card</div>
                             </div>
                         </div>
                     </div>
@@ -255,8 +204,7 @@
 <!-- footer -->
 @include('layout.footer')
 @include('layout.loginer');
-<script src="/js/jquery.min.js" charset="utf-8"></script>
-<script src="/js/semantic.min.js" charset="utf-8"></script>
+
 <script src="/js/profile.js" charset="utf-8"></script>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
