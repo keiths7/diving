@@ -21,7 +21,7 @@
       <button class="ui button teal fluid signin-button"> SIGN IN</button>
   </div>
   <div class="ui divider"></div>
-  <div class="new-user-tip">
+  <div class="new-user-tip clearfix">
       <span class="left floated mt-1">New to super diving trip?</span>
       <div class="right floated">
         <button class="ui button inverted red" onclick="signUpAlert()">sign up</button>

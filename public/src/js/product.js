@@ -28,6 +28,10 @@ $(function(){
         var $form = $('#payment-form');
         $form.submit(function(e) {
             e.preventDefault();
+            if(!verifyOrder()) { 
+                alert('Please fill out the order form information.'); 
+                return;
+            }            
             var cardType = $.payment.cardType($('.cc-number').val());
             $('.cc-number').toggleInputError(!$.payment.validateCardNumber($('.cc-number').val()));
             $('.cc-exp').toggleInputError(!$.payment.validateCardExpiry($('.cc-exp').payment('cardExpiryVal')));
@@ -68,6 +72,26 @@ $(function(){
             setTimeout(function() {
                 $('.payment-errors').hide();
             }, 3000);
+        }
+        function verifyOrder(){
+            var orderForm={ 
+                passengers:$('#passengers option:selected').val(),
+                dateS:$('#input_start_date').val(),
+                dateE:$('#input_end_date').val(),
+                divers:$('#diviers option:selected').val(),
+                productId:$('#product').attr('productid')
+            },checkthrough;
+            for(var o  in orderForm){
+                if(!orderForm[o]){
+                    checkthrough=false;
+                    return;
+                }else{
+                    checkthrough=true;
+                    $('#payment-form').append($('<input type="hidden" name="'+o+'">').val(orderForm[o])) 
+                }
+                             
+            }
+            return checkthrough;
         }
  })();
     
@@ -137,19 +161,6 @@ function initMask(obj) {
     displayImage($("#scroller li").children("div").eq(curpage));
     // $("#mask").addClass("active");//css版动画
 }
-
-// function setImgSrc(obj) {
-//     var img = new Image();
-//     img.onload = function () {
-//         img.onload = null;
-//         //模拟延迟用
-//         setTimeout(function () {
-//             $(obj).get(0).src = $(obj).data("src");
-//         }, 1000);
-//     };
-//    console.log($(obj).data("src"));
-//     img.src = $(obj).data("src");
-// }
 
 function displayImage(obj) {
     var path = $(obj).data('img');

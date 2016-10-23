@@ -15,7 +15,7 @@
     <script src="/js/jquery.min.js" charset="utf-8"></script>
     <script src="/js/semantic.min.js" charset="utf-8"></script>
 </head>
-<body id="product">
+<body id="product" productid='{{ $product->id }}'>
   @include('layout.header');
   <section class="first-sec">
     <img src="/images/index/top_bg.jpg" alt="">
@@ -42,18 +42,24 @@
                 <div class="ui form">
                   <div class="field">
                     <label>Product</label>
-                    <select class="ui search dropdown">
+                    <select class="ui search dropdown" id="passengers">
                         <option value="">1Day/2Divers</option>
                         <option value="">3Day/2Divers</option>
                         <option value="">5Day/2Divers</option>
                     </select>
                   </div>
                   <div class="three fields">
-                      <div class="field"><label for="">Start Date</label><input type="text" id="input_start_date" value="{{ $params['date_start'] }}"></div>
-                      <div class="field"><label for="">End Date</label><input type="text" id="input_end_date" value="{{ $params['date_end'] }}"></div>
+                      <div class="field">
+                        <label for="">Start Date</label>
+                        <input type="text" id="input_start_date" class="date-pick" value="{{ $params['date_start'] }}">
+                      </div>
+                      <div class="field">
+                        <label for="">End Date</label>
+                        <input type="text" id="input_end_date" class="date-pick" value="{{ $params['date_end'] }}">
+                      </div>
                       <div class="field">
                         <label for="">Divers</label>
-                        <select class="ui dropdown" name="" id="" >
+                        <select class="ui dropdown" name="" id="divers" >
                           @for($i=1;$i<=10;$i++)
                           @if(isset($params['passenger']) && $i == $params['passenger'])
                           <option value="{{$i}}" selected>{{$i}}</option>
@@ -247,8 +253,12 @@
   <!--footer  -->
   @include('layout.footer')
   @include('layout.loginer');
-
+<script type="text/javascript">
+    Stripe.setPublishableKey('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+</script>
+<script src="/js/payment.min.js"></script>
 <script src="/js/iScroll.min.js" charset="utf-8"></script>
+<script src="/js/datePick.js" charset="utf-8"></script>
 <script src="/js/product.js" charset="utf-8"></script>
   <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -16,7 +16,7 @@
     <script src="/js/semantic.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 </head>
-<body id="product">
+<body id="product" productid='{{ $product->id }}'>
   @@include('component/header.html')
   <section class="first-sec">
     <img src="/images/index/top_bg.jpg" alt="">
@@ -43,18 +43,24 @@
                 <div class="ui form">
                   <div class="field">
                     <label>Product</label>
-                    <select class="ui search dropdown">
+                    <select class="ui search dropdown" id="passengers">
                         <option value="">1Day/2Divers</option>
                         <option value="">3Day/2Divers</option>
                         <option value="">5Day/2Divers</option>
                     </select>
                   </div>
                   <div class="three fields">
-                      <div class="field"><label for="">Start Date</label><input type="text" id="input_start_date"></div>
-                      <div class="field"><label for="">End Date</label><input type="text" id="input_end_date"></div>
+                      <div class="field">
+                        <label for="">Start Date</label>
+                        <input type="text" class="date-pick" id="input_start_date">
+                      </div>
+                      <div class="field">
+                        <label for="">End Date</label>
+                        <input type="text" class="date-pick" id="input_end_date">
+                      </div>
                       <div class="field">
                         <label for="">Divers</label>
-                        <select class="ui dropdown" name="" id="" >
+                        <select class="ui dropdown" name="" id="divers" >
                           <option value="">1</option>
                           <option value="">2</option>
                           <option value="">3</option>
@@ -174,7 +180,7 @@
             <div class="p30 right column">
                 <form novalidate autocomplete="on" method="POST" id="payment-form">
                     <div class="ui form">          
-                        <span><img src="/images/product/visa.jpg" alt=""><em class="payment-errors right floated">error</em></span>
+                        <span><img src="/images/product/visa.jpg" alt=""><em class="payment-errors right floated"></em></span>
                         <div class="field">
                             <input type="tel" placeholder="Card Number" data-stripe="number"  class="cc-number" autocomplete="cc-number"  required>
                         </div>
