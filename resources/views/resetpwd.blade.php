@@ -9,9 +9,10 @@
     <meta name="description" content="Book your best diving trip，every diving trip with Dreamdivingtrip,the world’s best diving booking site.Your free personal diving assistant.">
     <meta name="keywords" content="diving vacation, diving vacations, diving vacation packages, diving vacation package, diving travel package, diving travel packages, diving travel, diving trip package, diving trip packages, diving trip,planning, hotel, hotels, motel, bed and breakfast, inn, guidebook, review, reviews, popular, plan, airfare, cheap, discount, map, maps, golf, ski, articles, attractions, advice, restaurants">
     <link href="/css/datePick.css" rel="stylesheet">
-    <link href="/css/semantic.min.css" rel="stylesheet">
-   
-<link href="/css/profile.css" rel="stylesheet">
+    <link href="/css/semantic.min.css" rel="stylesheet"> 
+    <link href="/css/profile.css" rel="stylesheet">
+    <script src="/js/jquery.min.js" charset="utf-8"></script>
+    <script src="/js/semantic.min.js" charset="utf-8"></script>
 </head>
 <body id="profile" >
     @include('layout.header');
@@ -59,8 +60,6 @@
 @include('layout.footer')
 @include('layout.loginer');
 
-<script src="/js/jquery.min.js" charset="utf-8"></script>
-<script src="/js/semantic.min.js" charset="utf-8"></script>
 <script src="/js/profile.js" charset="utf-8"></script>
 </body>
 <script>

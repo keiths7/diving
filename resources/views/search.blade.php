@@ -11,6 +11,8 @@
     <link href="/css/datePick.css" rel="stylesheet">
     <link href="/css/semantic.min.css" rel="stylesheet">
     <link href="/css/search.css" rel="stylesheet">
+    <script src="/js/jquery.min.js" charset="utf-8"></script>
+    <script src="/js/semantic.min.js" charset="utf-8"></script>
 </head>
 <body id="search">
   <!-- header bar -->
@@ -469,8 +471,7 @@
 </footer>
 @include('layout.footer')
 @include('layout.loginer');
-<script src="/js/jquery.min.js" charset="utf-8"></script>
-<script src="/js/semantic.min.js" charset="utf-8"></script>
+
 <script src="/js/datePick.js"></script>
 <script src="/js/search.js" charset="utf-8"></script>
     <script>

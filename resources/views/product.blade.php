@@ -12,6 +12,8 @@
     <link href="/css/semantic.min.css" rel="stylesheet">
     <link href="/css/product.css" rel="stylesheet">
     <title>Dreamdivingtrip.com: Online Booking for Scuba Diving,Liveaboard and Courses all around the world</title>
+    <script src="/js/jquery.min.js" charset="utf-8"></script>
+    <script src="/js/semantic.min.js" charset="utf-8"></script>
 </head>
 <body id="product">
   @include('layout.header');
@@ -245,8 +247,7 @@
   <!--footer  -->
   @include('layout.footer')
   @include('layout.loginer');
-<script src="/js/jquery.min.js" charset="utf-8"></script>
-<script src="/js/semantic.min.js" charset="utf-8"></script>
+
 <script src="/js/iScroll.min.js" charset="utf-8"></script>
 <script src="/js/product.js" charset="utf-8"></script>
   <script>
