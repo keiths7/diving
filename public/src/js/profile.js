@@ -19,60 +19,8 @@ $('.forms-wrap ').on('click','.profile .ui.submit.button',updateUserInfo);
 //reset页重置密码
 function loadOrderList(){
     var data={};
-    var r={
-code: 0,
-message: "success",
-orders: [
-{
-id: 1,
-pid: 1,
-uid: 1,
-type: 0,
-start_date: "2016-09-21",
-end_date: "2016-09-21",
-divers: 1,
-money: 0,
-is_paid: 0,
-paytime: "2016-09-20 15:50:50",
-discount: "",
-need_pay: "0",
-created_at: "2016-09-20 15:50:50",
-updated_at: "2016-09-20 15:50:50"
-},{
-id: 1,
-pid: 1,
-uid: 1,
-type: 0,
-start_date: "2016-09-21",
-end_date: "2016-09-21",
-divers: 1,
-money: 0,
-is_paid: 0,
-paytime: "2016-09-20 15:50:50",
-discount: "",
-need_pay: "0",
-created_at: "2016-09-20 15:50:50",
-updated_at: "2016-09-20 15:50:50"
-},
-{
-id: 1,
-pid: 1,
-uid: 1,
-type: 0,
-start_date: "2016-09-21",
-end_date: "2016-09-21",
-divers: 1,
-money: 0,
-is_paid: 0,
-paytime: "2016-09-20 15:50:50",
-discount: "",
-need_pay: "0",
-created_at: "2016-09-20 15:50:50",
-updated_at: "2016-09-20 15:50:50"
-}
-]
-};
-    // ajax('/user/order',data,function(r){
+    
+    ajax('/user/order',data,function(r){
 
         if(r.message=='success'){
             let tpl='';
@@ -83,8 +31,8 @@ updated_at: "2016-09-20 15:50:50"
                                 <div class="item">
                                     <img class="ui large image" src="/images/course/1.png">
                                     <div class=" content">
-                                    <a class="header"> destination name(lack of api data)</a>
-                                    <div class="description">the description(lack of api data)</div>
+                                    <a class="header">${v.name}</a>
+                                    <div class="description">${v.description}</div>
                                     </div>
                                 </div>
                             </div>
@@ -96,9 +44,8 @@ updated_at: "2016-09-20 15:50:50"
                     </div>`;
              })
              $('.forms-wrap').find('.purchases .ui.grid').append(tpl);
-        }
-       
-    // })
+        }       
+    })
 }
 function loadPayInfo(){
     ajax('/user/pay_info',{},function(r){
@@ -119,15 +66,19 @@ function loadUserInfo(){
     ajax('/user/info',{},fillForm);
     fillForm();
     function fillForm(r){
-         $('#firstname').val(r.name);   
-         $('#lastname').val('lack');  
-         $('#email').val('lack');  
-         $('#phone').val(r.phone);  
-         $('#height').val(r.height);  
-         $('#weight').val(r.weight);  
-         $('#shoes_size').val(r.shoes_size);
-         var selIndex=1;
-         $('#gender')[0].selectedIndex=selIndex;
+        if(r.message=='success'){
+            $('#firstname').val(r.name);   
+            $('#lastname').val('lack');  
+            $('#email').val('lack');  
+            $('#phone').val(r.phone);  
+            $('#height').val(r.height);  
+            $('#weight').val(r.weight);  
+            $('#shoes_size').val(r.shoes_size);
+            var selIndex=r.gender=='男'?0:1;
+            $('#gender')[0].selectedIndex=selIndex;
+        }else{
+            alert(r.message);
+        }         
     }
 }
 function updatePayInfo(){
@@ -160,20 +111,25 @@ function changePwd(){
 }
 function updateUserInfo(){
      var data={
-          gender:'',
-          phone:'',
-          height:'',
-          weight:'',
-          shoes_size:'',
-          name:'',
-      };
-     // ajax('/user/info/update',data,function(r){
-
-    //  });   
-    
+          gender:$('#gender option:selected').val(),
+          phone:$('#phone').val(),
+          height:$('#height').val(),
+          weight:$('#weight').val(),
+          shoes_size:$('#shoes_size').val(),
+          name:$('#firstname').val(),
+     };
+     ajax('/user/info/update',data,function(r){
+            if(r.message=='success'){
+                alert('Your information has been updated successfully');
+            }else{
+                alert('sorry,something went wrong');
+            }
+     });      
 }
-function resetPwd(){ 
-    alert('暂缺少接口');
+function resetPwd(){
+    //TODO:  loacation to resetPage to send mail 
+    
+    // location.href='/resetPwd?cf=sendmail'
 }
 function ajax(url,data,succb,errcb,method){
     var method=method||'GET';

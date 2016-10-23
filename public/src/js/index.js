@@ -14,10 +14,8 @@ $(window).scroll(function(){
        $('.menu').addClass('inverted');
    }
 })
- console.log($('.search-bar input[name=country]'));
 
 $('.search-bar').on('click','.search-btn',function(){
-      // notice();
       var text='';
       if(window.screenSize=="PC"){
         text=$(this).siblings('.four.wide').find('input[name=country]').val();
@@ -103,10 +101,8 @@ $('.ui.modal').on('click','.signin-button',signIn)
 $('.ui.modal').on('click','.signup-button',signUp);
 $('header.ui.bar').on('click','.signin.item',signInAlert);
 $('header.ui.bar').on('click','.signup.item',signUpAlert);
+$('.more-destination').on('click','.ui.button',seeMoreDestination);
 
-function notice(){
-  
-}
 function search(dest){
      var dateS=$('.search-bar .from').find('input').val();
      var dateE=$('.search-bar .to').find('input').val();
@@ -118,6 +114,35 @@ function search(dest){
        location.href='/search?destination='+dest+'&date_start='+dateS+'&data_end='+dateE+'&passenger='+passenger;
      }
 }
+function seeMoreDestination(){
+    $.ajax({
+        url:'/popular/more',
+        type:'GET',
+        data:{},
+        success:function(r){
+            var tpl=''
+            r.forEach((v,k)=>{
+                tpl+=`<a class="card" href="${v.url?v.url:'#'}">
+                    <div class="ui  image">
+                      <div class="ui dimmer visible active">
+                        <div class="content">
+                          <div class="center">
+                            <div class="ui header">${v.desc}</div>
+                          </div>
+                        </div>
+                      </div>
+                      <img src="${v.image_url}">
+                    </div>
+                </a>`;
+            })
+            $('.third-sec .cards').append(tpl);
+        },
+        error:function(err){
+              
+        }
+    })
+}
+
 function signIn(){
     // $('header.ui.bar  .right.menu').addClass('signed');
     // return;

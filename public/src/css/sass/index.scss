@@ -349,6 +349,23 @@
    margin: .5em .55em 0;
    width: 31.7%;
 }
+@keyframes showIn{
+    0%{
+        opacity: 0.6;
+        transform: translateY(50%);  
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);  
+    }
+} 
+#diving .third-sec .cards{
+    @for  $i from 1 through 3{
+      .card:nth-last-child(#{$i}){      
+        animation: showIn 320ms*(4-$i) cubic-bezier(0.01, 0.36, 0.21, 1);
+      }
+  }
+}
 @media only screen and (max-width: 767px){
   #diving .third-sec .cards>.card{
      margin: 1rem;
