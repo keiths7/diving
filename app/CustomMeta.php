@@ -37,9 +37,9 @@ class CustomMeta extends Model
     	return $result;
     }
 
-    public function get_more_populer()
+    public function get_more_popular()
     {
-        $ret = CustomMeta::where('is_active', 1)->where('position', 'pop')->orderBy('sort', 'asc')->skip(3)->take(100)->get();
+        $ret = CustomMeta::where('is_active', 1)->where('position', 'pop')->orderBy('sort', 'asc')->skip(0)->take(100)->get();
         $result = array();
         foreach ($ret as $key => $value) {
             $result[] = array(

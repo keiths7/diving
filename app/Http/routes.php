@@ -41,6 +41,8 @@ Route::get('/search/get_more', 'IndexController@get_more_product');
 Route::get('/user/reset_email', 'UserController@reset_email');
 Route::get('/user/reset_password', 'UserController@reset_password');
 
+Route::get('/user/pay', 'UserController@deal_payment');
+
 
 Route::get('/order/new', 'IndexController@new_order');
 Route::get('/user/order', 'UserController@get_user_order');

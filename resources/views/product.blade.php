@@ -16,7 +16,7 @@
     <script src="/js/semantic.min.js" charset="utf-8"></script>
 </head>
 <body id="product" productid='{{ $product->id }}'>
-  @include('layout.header');
+  @include('layouts.header');
   <section class="first-sec">
     <img src="/images/index/top_bg.jpg" alt="">
   </section>
@@ -251,8 +251,8 @@
       <div class="ui right arrow"><i class="angle right icon"></i></div>
   </div>
   <!--footer  -->
-  @include('layout.footer')
-  @include('layout.loginer');
+  @include('layouts.footer')
+  @include('layouts.loginer');
 <script type="text/javascript">
     Stripe.setPublishableKey('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
 </script>

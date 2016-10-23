@@ -159,8 +159,57 @@ class IndexController extends Controller
     public function more_popular(Request $request)
     {
         $cm = new CustomMeta();
-        $pop = $cm->get_more_populer();
+        $pop = $cm->get_more_popular();
         return $pop;
+    }
+
+    public function deal_payment(Request $request)
+    {
+        if (!Auth::check()) {
+            return '{}';
+        }
+        $user = $request->user();
+        $validator = Validator::make(Input::all(), UserOrder::$rules);
+
+        if($validator->passes()) {
+            $order = new UserOrder;
+            $params = array_merge(Input::all(), $request->user()->toArray());
+            // print_r($params);
+            $order_id = $order->new_order($params);
+            if(!$order_id) {
+                return json_encode(['code'=>1, 'message'=>'failed']);
+            }
+        }
+
+        \Stripe\Stripe::setApiKey("sk_test_BQokikJOvBiI2HlWgH4olfQ2");
+
+        // Get the credit card details submitted by the form
+        $token = $request->input('stripeToken', '');
+
+        
+        // Create a charge: this will charge the user's card
+        try {
+            $charge = \Stripe\Charge::create(array(
+                "amount" => $user_order['money'], // Amount in cents
+                "currency" => "usd",
+                "source" => $token,
+                "description" => "",
+                "metadata" => array("order_id" => $order_id)
+            ));
+        } catch(\Stripe\Error\Card $e) {
+            // The card has been declined
+            return json_encode(['code'=>1, 'message'=>$e]);
+        }
+
+        $order = new UserOrder;
+        $user_order = $order->get_order_info($order_id);
+        if($user_order && $user_order->uid == $user['id'])
+        {
+            $user_order->is_paid = 1;
+            $user_order->save();
+            return json_encode(['code'=>0, 'message'=>'success']);
+        }
+        return json_encode(['code'=>1, 'message'=>'failed']);
     }
 
     // public function test(Request $request)
