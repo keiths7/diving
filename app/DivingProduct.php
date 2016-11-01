@@ -44,7 +44,7 @@ class DivingProduct extends Model
                     ->where('sid', '=', $product->shop_id)->get();
         foreach($query as $k => $v)
         {
-            $lang_str .= ','.$v->name;
+            $lang_str .= ','.$v['name'];
         }
         $lang_str = trim($lang_str, ',');
         $product->lang_str = $lang_str;
@@ -162,17 +162,17 @@ class DivingProduct extends Model
             // var_dump($queries); // 即可查看执行的sql，传入的参数等等
             $ret = array();
             foreach ($result as $key => $val) {
-                $pos_info = $this->get_positions_by_id($val->id);
+                $pos_info = $this->get_positions_by_id($val['id']);
                 // print_r($pos_info);
                 foreach($pos_info as $k => $v)
                 {
-                    $val->city_info = City::where('id', '=', $v->city_id)->first();
-                    $val->position_image = $this->get_position_image($v->id);
-                    if(array_key_exists($v->city_id, $ret)){
-                        $ret[$v->city_id][] = $val;
+                    $val['city_info'] = City::where('id', '=', $v['city_id'])->first()->toArray();
+                    $val['position_image'] = $this->get_position_image($v['id']);
+                    if(array_key_exists($v['city_id'], $ret)){
+                        $ret[$v['city_id']][] = $val;
                     }else{
-                        $ret[$v->city_id]  = array();
-                        $ret[$v->city_id][] = $val;
+                        $ret[$v['city_id']]  = array();
+                        $ret[$v['city_id']][] = $val;
                     }
                 }
                 
@@ -193,7 +193,7 @@ class DivingProduct extends Model
         $query = DB::table('country')->where('name', $params['content'])->first();
         if($query)
         {
-            $result = array('type'=>1, 'ret'=>$query->id);
+            $result = array('type'=>1, 'ret'=>$query['id']);
             return $result;
         }
         //city
@@ -204,14 +204,14 @@ class DivingProduct extends Model
 //            foreach ($query as $key => $value) {
 //                $result[] = $value->id;
 //            }
-            $ret = array('type'=>2, 'ret'=>$query->id);
+            $ret = array('type'=>2, 'ret'=>$query['id']);
             return $ret;
         }
         //position
         $query = DB::table('diving_position')->where('name', $params['content'])->first();
         if($query)
         {
-            $result = array('type'=>3, 'ret'=>$query->id);
+            $result = array('type'=>3, 'ret'=>$query['id']);
             return $result;
         }
     }
@@ -246,6 +246,25 @@ class DivingProduct extends Model
             $query = $query->whereIn('shop_dive_offer.offer', $dests);
         }
         $query = $query->groupBy('diving_product.id')->skip($params['page']*$params['per_page'])->take($params['per_page']);;
+//         $result = $query->get();
+//         $ret = array();
+//         foreach ($result as $key => $val) {
+// //            $pos_info = $this->get_positions_by_id($val->id);
+//             // print_r($pos_info);
+
+//             $pos_info = DivingPosition::where('id', '=', $params['position_id'])->first();
+//             $val->position_image = $this->get_position_image($pos_info->city_id);
+//             if(array_key_exists($pos_info->city_id, $ret)){
+//                 $ret[$pos_info->city_id][] = $val;
+//             }else{
+//                 $ret[$pos_info->city_id]  = array();
+//                 $ret[$pos_info->city_id][] = $val;
+//             }
+            
+//         }
+//         // $ret = array(0=>$result);
+//         return $ret;
+        //============================================ new version =========================================
         $result = $query->get();
         $ret = array();
         foreach ($result as $key => $val) {
@@ -253,17 +272,18 @@ class DivingProduct extends Model
             // print_r($pos_info);
 
             $pos_info = DivingPosition::where('id', '=', $params['position_id'])->first();
-            $val->position_image = $this->get_position_image($pos_info->city_id);
-            if(array_key_exists($pos_info->city_id, $ret)){
-                $ret[$pos_info->city_id][] = $val;
+            $val['position_image'] = $this->get_position_image($pos_info['city_id']);
+            if(array_key_exists($pos_info['city_id'], $ret)){
+                $ret[$pos_info['city_id']][] = $val;
             }else{
-                $ret[$pos_info->city_id]  = array();
-                $ret[$pos_info->city_id][] = $val;
+                $ret[$pos_info['city_id']]  = array();
+                $ret[$pos_info['city_id']][] = $val;
             }
             
         }
         // $ret = array(0=>$result);
         return $ret;
+        //============================================ new version =========================================
     }
 
     public function get_city_product($params)
@@ -305,45 +325,62 @@ class DivingProduct extends Model
             $query = $query->whereIn('shop_dive_offer.offer', $dests);
         }
         $query = $query->groupBy('diving_product.id')->skip($params['page']*$params['per_page'])->take($params['per_page']);;
-        $result = $query->get();
-        // print_r($result);
-        // if ($result){
-        //     $city = City::where('name', '=', $params['content'])->first();
-        //     foreach($result as $k => $v){
-        //         $v[0]->position_image = $this->get_position_image($v->id);
-        //     }
+//         $result = $query->get();
+//         // print_r($result);
+//         // if ($result){
+//         //     $city = City::where('name', '=', $params['content'])->first();
+//         //     foreach($result as $k => $v){
+//         //         $v[0]->position_image = $this->get_position_image($v->id);
+//         //     }
             
-        //     $result[0]->city_info = $city;
-        // }
+//         //     $result[0]->city_info = $city;
+//         // }
+//         $ret = array();
+//         foreach ($result as $key => $val) {
+//             $pos_info = DB::table('diving_position')->where('city_id', '=', $params['city_id'])->first();
+//             // print_r($pos_info);
+// //            var_dump($params['city_id']);
+//             if(!isset($ret[$params['city_id']])) {
+//                 $ret[$params['city_id']]  = array();
+//             }
+            
+//             $val->city_info = City::where('id', '=', $params['city_id'])->first();
+//             $val->position_image = $this->get_position_image($pos_info->id);
+//             $ret[$params['city_id']][] = $val;
+// //            $ret = array($params['city_id'] => $val);
+// //            foreach($pos_info as $k => $v)
+// //            {
+// //                $val->city_info = City::where('id', '=', $params['city_id'])->first();
+// //                $val->position_image = $this->get_position_image($v->id);
+// //                if(array_key_exists($v->city_id, $ret)){
+// //                    $ret[$v->city_id][] = $val;
+// //                }else{
+// //                    $ret[$v->city_id]  = array();
+// //                    $ret[$v->city_id][] = $val;
+// //                }
+// //            }
+            
+//         }
+//           // var_dump($ret);  
+//         // $ret = array($city->id => $result);
+//         return $ret;
+        //============================================ new version =========================================
+        $result = $query->get();
         $ret = array();
         foreach ($result as $key => $val) {
             $pos_info = DB::table('diving_position')->where('city_id', '=', $params['city_id'])->first();
-            // print_r($pos_info);
-//            var_dump($params['city_id']);
             if(!isset($ret[$params['city_id']])) {
                 $ret[$params['city_id']]  = array();
             }
             
-            $val->city_info = City::where('id', '=', $params['city_id'])->first();
-            $val->position_image = $this->get_position_image($pos_info->id);
+            $val['city_info'] = City::where('id', '=', $params['city_id'])->first()->toArray();
+            $val['position_image'] = $this->get_position_image($pos_info['id']);
             $ret[$params['city_id']][] = $val;
-//            $ret = array($params['city_id'] => $val);
-//            foreach($pos_info as $k => $v)
-//            {
-//                $val->city_info = City::where('id', '=', $params['city_id'])->first();
-//                $val->position_image = $this->get_position_image($v->id);
-//                if(array_key_exists($v->city_id, $ret)){
-//                    $ret[$v->city_id][] = $val;
-//                }else{
-//                    $ret[$v->city_id]  = array();
-//                    $ret[$v->city_id][] = $val;
-//                }
-//            }
-            
         }
           // var_dump($ret);  
-        // $ret = array($city->id => $result);
         return $ret;
+        
+        //============================================ new version =========================================
     }
 
     /**
@@ -391,38 +428,56 @@ class DivingProduct extends Model
             $query = $query->whereIn('shop_dive_offer.offer', $dests);
         }
         $query = $query->groupBy('diving_product.id')->skip($params['page']*$params['per_page'])->take($params['per_page']);;
+//         $result = $query->get();
+        
+//         $ret = array();
+//         foreach ($result as $key => $val) {
+// //            $pos_info = $this->get_positions_by_id($val->id);
+// //            $city_info = DB::table('diving_position')->where('country_id', '=', $params['country_id'])->groupBy('city_id')->get();
+// //            print_r($city_info);
+//             $val->city_info = City::where('id', '=', $val->city_id)->first();
+//             $val->city_info->image = $this->get_city_image($val->city_id);
+//             $val->position_image = $this->get_position_image($val->pos_id);
+//             if(array_key_exists($val->city_id, $ret)){
+//                 $ret[$val->city_id][] = $val;
+//             }else{
+//                 $ret[$val->city_id]  = array();
+//                 $ret[$val->city_id][] = $val;
+//             }
+//             // print_r($pos_info);
+// //            foreach($city_info as $k => $v)
+// //            {
+// //                $val->city_info = City::where('id', '=', $v->city_id)->first();
+// //                $val->position_image = $this->get_position_image($v->id);
+// //                if(array_key_exists($v->city_id, $ret)){
+// //                    $ret[$v->city_id][] = $val;
+// //                }else{
+// //                    $ret[$v->city_id]  = array();
+// //                    $ret[$v->city_id][] = $val;
+// //                }
+// //            }
+            
+//         }
+
+//         return $ret;
+        //============================================ new version =========================================
         $result = $query->get();
         
         $ret = array();
         foreach ($result as $key => $val) {
-//            $pos_info = $this->get_positions_by_id($val->id);
-//            $city_info = DB::table('diving_position')->where('country_id', '=', $params['country_id'])->groupBy('city_id')->get();
-//            print_r($city_info);
-            $val->city_info = City::where('id', '=', $val->city_id)->first();
-            $val->city_info->image = $this->get_city_image($val->city_id);
-            $val->position_image = $this->get_position_image($val->pos_id);
-            if(array_key_exists($val->city_id, $ret)){
-                $ret[$val->city_id][] = $val;
+            $val['city_info'] = City::where('id', '=', $val['city_id'])->first()->toArray();
+            $val['city_info']['image'] = $this->get_city_image($val['city_id']);
+            $val['position_image'] = $this->get_position_image($val['pos_id']);
+            if(array_key_exists($val['city_id'], $ret)){
+                $ret[$val['city_id']][] = $val;
             }else{
-                $ret[$val->city_id]  = array();
-                $ret[$val->city_id][] = $val;
+                $ret[$val['city_id']]  = array();
+                $ret[$val['city_id']][] = $val;
             }
-            // print_r($pos_info);
-//            foreach($city_info as $k => $v)
-//            {
-//                $val->city_info = City::where('id', '=', $v->city_id)->first();
-//                $val->position_image = $this->get_position_image($v->id);
-//                if(array_key_exists($v->city_id, $ret)){
-//                    $ret[$v->city_id][] = $val;
-//                }else{
-//                    $ret[$v->city_id]  = array();
-//                    $ret[$v->city_id][] = $val;
-//                }
-//            }
-            
         }
 
         return $ret;
+        //============================================ new version =========================================
     }
 
     public function get_country_city_id($cid, $offset=0, $limit=20) {
@@ -472,7 +527,7 @@ class DivingProduct extends Model
                     ->where('diving_position.city_id', '=', $city_id)->take(3)->get();
         foreach($query as $k => $v)
         {
-            $query[$k]->position_image = $this->get_position_image($v->pos_id);
+            $query[$k]['position_image'] = $this->get_position_image($v['pos_id']);
         }
         return $query;
     }
@@ -484,7 +539,7 @@ class DivingProduct extends Model
         $images = array();
         foreach($query as $val)
         {
-            array_push($images, '/uploads/originals/'.$val->file);
+            array_push($images, '/uploads/originals/'.$val['file']);
         }
 
         return $images;
@@ -547,7 +602,7 @@ class DivingProduct extends Model
         // $result = array();
         foreach ($query as $key => $val) {
             $pos_info = $this->get_positions_by_id($val['id']);
-            $query[$key]['position_image'] = $this->get_position_image($pos_info[0]->id);
+            $query[$key]['position_image'] = $this->get_position_image($pos_info[0]['id']);
         }
         // print_r($query);
         // $result = array();

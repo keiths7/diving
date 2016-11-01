@@ -68,7 +68,10 @@ class IndexController extends Controller
 
         $products = new DivingProduct();
         $result = $products->search($params);
-//         print_r($result);
+
+        if($request->ajax()) {
+            return $result;
+        }
         return view('search', ['result'=>$result]);
     }
 
@@ -212,15 +215,16 @@ class IndexController extends Controller
         return json_encode(['code'=>1, 'message'=>'failed']);
     }
 
-    // public function test(Request $request)
-    // {
-    //     $products = DivingProduct::all();
-    //     foreach ($products as $key => $val) {
-    //         $country = Country::where('name', $val['country'])->first();
-    //         $products[$key]->country_id = $country->id;
-    //     }
-    // 	$php_info = phpinfo();
-    //     return view('test', ['php_info' => $php_info]);
-    // }
-    // 
+    public function test(Request $request)
+    {
+     //    $products = DivingProduct::all();
+     //    foreach ($products as $key => $val) {
+     //        $country = Country::where('name', $val['country'])->first();
+     //        $products[$key]->country_id = $country->id;
+     //    }
+    	// $php_info = phpinfo();
+     //    return view('test', ['php_info' => $php_info]);
+        return view('test');
+    }
+    
 }
