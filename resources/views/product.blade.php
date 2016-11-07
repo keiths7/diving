@@ -14,6 +14,7 @@
     <title>Dreamdivingtrip.com: Online Booking for Scuba Diving,Liveaboard and Courses all around the world</title>
     <script src="/js/jquery.min.js" charset="utf-8"></script>
     <script src="/js/semantic.min.js" charset="utf-8"></script>
+     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 </head>
 <body id="product" productid='{{ $product->id }}'>
   @include('layout.header');
@@ -269,7 +270,20 @@
       ga('send', 'pageview');
   </script>
 </body>
-
+<script type='text/javascript'>
+     (function(m, ei, q, i, a, j, s) {
+         m[a] = m[a] || function() {
+             (m[a].a = m[a].a || []).push(arguments)
+         };
+         j = ei.createElement(q),
+             s = ei.getElementsByTagName(q)[0];
+         j.async = true;
+         j.charset = 'UTF-8';
+         j.src = i + '?v=' + new Date().getUTCDate();
+         s.parentNode.insertBefore(j, s);
+     })(window, document, 'script', '//static.meiqia.com/dist/meiqia.js', '_MEIQIA');
+     _MEIQIA('entId', 17368);
+</script>
 <script type="text/javascript">
     var _mfq = _mfq || [];
     (function() {
