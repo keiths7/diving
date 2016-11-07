@@ -182,7 +182,7 @@
                 </div>
             </div>
             <div class="p30 right column">
-                <form novalidate autocomplete="on" method="POST" id="payment-form">
+                <form novalidate action="/user/pay" autocomplete="on" method="POST" id="payment-form">
                     <div class="ui form">          
                         <span><img src="/images/product/visa.jpg" alt=""><em class="payment-errors right floated"></em></span>
                         <div class="field">

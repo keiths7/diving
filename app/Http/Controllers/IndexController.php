@@ -183,29 +183,33 @@ class IndexController extends Controller
                 return json_encode(['code'=>1, 'message'=>'failed']);
             }
         }
+        else
+        {
+            return json_encode(['code'=>1, 'message'=>$validator->messages()->first()]);
+        }
 
         \Stripe\Stripe::setApiKey("sk_test_BQokikJOvBiI2HlWgH4olfQ2");
 
         // Get the credit card details submitted by the form
         $token = $request->input('stripeToken', '');
 
+        $order = new UserOrder;
+        $user_order = $order->get_order_info($order_id);
         
         // Create a charge: this will charge the user's card
         try {
             $charge = \Stripe\Charge::create(array(
-                "amount" => $user_order['money'], // Amount in cents
+                "amount" => $user_order->money, // Amount in cents
                 "currency" => "usd",
                 "source" => $token,
                 "description" => "",
-                "metadata" => array("order_id" => $order_id)
+                "metadata" => array("order_id" => $user_order->order_id)
             ));
         } catch(\Stripe\Error\Card $e) {
             // The card has been declined
             return json_encode(['code'=>1, 'message'=>$e]);
         }
 
-        $order = new UserOrder;
-        $user_order = $order->get_order_info($order_id);
         if($user_order && $user_order->uid == $user['id'])
         {
             $user_order->is_paid = 1;

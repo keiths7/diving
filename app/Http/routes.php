@@ -17,7 +17,7 @@ Route::get('/', 'IndexController@index');
 
 Route::get('/index', 'IndexController@index');
 
-Route::get('/product/{id}', 'IndexController@product');
+Route::any('/product/{id}', 'IndexController@product');
 
 Route::any('/search/', 'IndexController@search');
 
