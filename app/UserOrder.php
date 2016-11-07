@@ -50,7 +50,7 @@ class UserOrder extends Model
         $user_order->is_paid = 0;
         $user_order->need_pay = $user_order->money;
         $user_order->save();
-        return true;
+        return $user_order->id;
     }
 
     public function get_order($uid)
@@ -73,6 +73,19 @@ class UserOrder extends Model
         {
             return array();
         }
+    }
+
+    public function get_order_info($pid, $to_array=false)
+    {
+        $order = UserOrder::find($pid);
+        if($order)
+        {
+            if($to_array){
+                return $order->toArray();
+            }
+            return $order;
+        }
+        return array();
     }
 
     public function calculate_money($params)

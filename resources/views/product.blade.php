@@ -16,8 +16,8 @@
     <script src="/js/semantic.min.js" charset="utf-8"></script>
      <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 </head>
-<body id="product" productid='{{ $product->id }}'>
-  @include('layout.header');
+<body id="product" productid='{{ $product['id'] }}'>
+  @include('layouts.header');
   <section class="first-sec">
     <img src="/images/index/top_bg.jpg" alt="">
   </section>
@@ -32,14 +32,14 @@
                   <i class="right chevron icon divider"></i>
                   <div class="active section">Setting</div>
                 </div>
-                <h2 class="ui header">{{ $product->name }}</h2>
+                <h2 class="ui header">{{ $product['name'] }}</h2>
                 <div class="ui icon">
-                  <i class="marker icon"></i><span>{{ $product->positions[0]->country->name }},{{ $product->positions[0]->city->name }}</span>
+                  <i class="marker icon"></i><span>{{ $product['positions'][0]['country']['name'] }},{{ $product['positions'][0]['city']['name'] }}</span>
                   <div class="ui large star rating" data-max-rating="5" data-rating="3"></div>
                 </div>
             </div>
             <div class="p30 right column">
-              <div class="ui label">${{ $product->price }}</div>
+              <div class="ui label">${{ $product['price'] }}</div>
                 <div class="ui form">
                   <div class="field">
                     <label>Product</label>
@@ -86,7 +86,7 @@
                             <p>Main characteristics</p>
                         </div>
                         <div class=" p70 character column ">
-                          @foreach($product->main_info[0] as $key => $val)
+                          @foreach($product['main_info'][0] as $key => $val)
                             <p>{{ $key }} : {{ $val }}</p>
                           @endforeach
                             <!-- <p>Access：Boat</p>
@@ -109,10 +109,10 @@
                           <P>Diving types</P>
                         </div>
                         <div class="p70 column">
-                          <p>{{ $product->lang_str }}</p>
-                          <p>{{ $product->shop->associated_with }}</p>
-                          <p>{{ $product->shop->general_facilities }}</p>
-                          <P>{{ $product->type }}</P>
+                          <p>{{ $product['lang_str'] }}</p>
+                          <p>{{ $product['shop']['associated_with'] }}</p>
+                          <p>{{ $product['shop']['general_facilities'] }}</p>
+                          <P>{{ $product['type'] }}</P>
                         </div>
                     </div>
                     <div class="row">
@@ -121,16 +121,16 @@
                         </div>
                         <div class="p70 description column">
                           <p class="content">
-                            {{ strip_tags($product->description) }}
+                            {{ strip_tags($product['description']) }}
                           </P>
                           <p class="more"><i>+</i> More</p>
                         </div>
                     </div>
                     <div class=" one column row images">
                       <div class="column">
-                          @foreach($product->positions[0]->source as $key => $val)
+                          @foreach($product['positions'][0]['source'] as $key => $val)
                             @if($key == 3)
-                              <div class="ui image more" data-img="/uploads/originals/{{ $val->file }}">
+                              <div class="ui image more" data-img="/uploads/originals/{{ $val['file'] }}">
                                 <div class="ui dimmer visible active">
                                   <div class="content">
                                     <div class="center">
@@ -138,11 +138,11 @@
                                     </div>
                                   </div>
                                 </div>
-                                <img  src="/uploads/originals/{{ $val->file }}" alt="">
+                                <img  src="/uploads/originals/{{ $val['file'] }}" alt="">
                               </div>
                             @else
-                              <div class="ui image " data-img="/uploads/originals/{{ $val->file }}">
-                                  <img src="/uploads/originals/{{ $val->file }}" alt="">
+                              <div class="ui image " data-img="/uploads/originals/{{ $val['file'] }}">
+                                  <img src="/uploads/originals/{{ $val['file'] }}" alt="">
                               </div>
                             @endif
                           
@@ -173,7 +173,7 @@
                               height="450"
                               frameborder="0" style="border:0"
                               src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDpAZPEL4ft0aDFecsqzDO-irOoXs2x5TA
-                                &q={{ $product->positions[0]->city->name }},{{ $product->positions[0]->city->name }}+{{ $product->positions[0]->country->name }}," allowfullscreen>
+                                &q={{ $product['positions'][0]['city']['name'] }},{{ $product['positions'][0]['city']['name'] }}+{{ $product['positions'][0]['country']['name'] }}," allowfullscreen>
                             </iframe>
                         </div>
                       </div>
@@ -208,12 +208,12 @@
               <div class="ui three column grid">
                 <h3 class="ui header">Some related diving sites</h3>
                 <div class="row">
-                    @foreach($product->releated_product as $k => $v)
+                    @foreach($product['releated_product'] as $k => $v)
                     <div class="column">
                       <div class="ui image">
-                        <img src="{{ $v->position_image }}" alt="">
-                        <aside class="">$ {{ $v->price }}  </aside>
-                        <p>{{ $v->name }}</p>
+                        <img src="{{ $v['position_image'] }}" alt="">
+                        <aside class="">$ {{ $v['price'] }}  </aside>
+                        <p>{{ $v['name'] }}</p>
                         <p><span>tags</span></p>
                       </div>
                     </div>
@@ -252,8 +252,8 @@
       <div class="ui right arrow"><i class="angle right icon"></i></div>
   </div>
   <!--footer  -->
-  @include('layout.footer')
-  @include('layout.loginer');
+  @include('layouts.footer')
+  @include('layouts.loginer');
 <script type="text/javascript">
     Stripe.setPublishableKey('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
 </script>

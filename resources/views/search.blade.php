@@ -16,7 +16,7 @@
 </head>
 <body id="search">
   <!-- header bar -->
-  @include('layout.header');
+  @include('layouts.header');
 
   <section class="s-condition">
     <div class="ui container">
@@ -232,12 +232,12 @@
     @foreach($result as $k => $v)
     <!-- 第一条 -->
     <div class="ui container result-item">
-      @if(isset($v[0]->city_info))
+      @if(isset($v[0]['city_info']))
       <!--这里 data-cityid标识city_id  (2016-10-09)-->
       <div class="current-site" data-cityid="29" data-positionid="281">
         <div class="ui grid">
             <div class="w67 wide column">
-               <h2 class="ui header">{{ $v[0]->city_info->name }}</h2>
+               <h2 class="ui header">{{ $v[0]['city_info']['name'] }}</h2>
                <div class="ui image">
                    <div class="ui dimmer active">
                      <div class="content">
@@ -247,8 +247,8 @@
                        </div>
                      </div>
                    </div>
-                  @if($v[0]->city_info->image)
-                  @foreach($v[0]->city_info->image as $val)
+                  @if($v[0]['city_info']['image'])
+                  @foreach($v[0]['city_info']['image'] as $val)
                   <img src="{{ $val }}" alt="">
                   @endforeach
                   @else
@@ -258,7 +258,7 @@
             </div>
             <div class="w33 wide column">
                   <h4 class="ui header">palo alto</h4>
-                  <p>{{ $v[0]->city_info->description }}</p>
+                  <p>{{ $v[0]['city_info']['description'] }}</p>
                   <div class="ui image">
                     <img src="/images/search/map.jpg" alt="">
                   </div>
@@ -274,9 +274,9 @@
             @foreach($v as $num => $val)
               <div class="column">
                 <div class="ui image">
-                  <img src="{{ $val->position_image }}" alt="">
-                  <aside class="">$ {{ $val->price }}  </aside>
-                  <p>{{ $val->name }}</p>
+                  <img src="{{ $val['position_image'] }}" alt="">
+                  <aside class="">$ {{ $val['price'] }}  </aside>
+                  <p>{{ $val['name'] }}</p>
                   <p><span>tags</span></p>
                 </div>
               </div>
@@ -301,10 +301,10 @@
         </div>
       </div>
       <div class="see-more-button">
-        @if(isset($v[0]->city_info))
-        <div class="ui center aligned container "><button class="ui basic button" position="" city="{{ $v[0]->city_info->id }}">    See All Locate Dive Sites    </button></div>
+        @if(isset($v[0]['city_info']))
+        <div class="ui center aligned container "><button class="ui basic button" position="" city="{{ $v[0]['city_info']['id'] }}">    See All Locate Dive Sites    </button></div>
         @else
-        <div class="ui center aligned container "><button class="ui basic button" position="{{ $v[0]->id }}" city="">    See All Locate Dive Sites    </button></div>
+        <div class="ui center aligned container "><button class="ui basic button" position="{{ $v[0]['id'] }}" city="">    See All Locate Dive Sites    </button></div>
         @endif
       </div>
       <div class="ui divider"> </div>
@@ -469,8 +469,8 @@
     </div>
   </div>
 </footer>
-@include('layout.footer')
-@include('layout.loginer');
+@include('layouts.footer')
+@include('layouts.loginer');
 
 <script src="/js/datePick.js"></script>
 <script src="/js/search.js" charset="utf-8"></script>

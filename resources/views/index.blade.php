@@ -587,9 +587,9 @@
     </section>
     <!-- how to book  结束 -->
     <!-- footer 开始 -->
-@include('layout.footer')
+@include('layouts.footer');
 </div>
-@include('layout.loginer');
+@include('layouts.loginer');
 <div class="ui basic inverted small modal indev">
   <h2 class="ui icon header">
     <img class="ui icon image" src="/images/index/logo.png">

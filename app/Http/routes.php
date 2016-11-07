@@ -19,7 +19,7 @@ Route::get('/index', 'IndexController@index');
 
 Route::get('/product/{id}', 'IndexController@product');
 
-Route::get('/search/', 'IndexController@search');
+Route::any('/search/', 'IndexController@search');
 
 Route::get('/home', 'HomeController@index');
 
@@ -40,6 +40,8 @@ Route::get('/user/init_password', 'UserController@init_password');
 Route::get('/search/get_more', 'IndexController@get_more_product');
 Route::get('/user/reset_email', 'UserController@reset_email');
 Route::get('/user/reset_password', 'UserController@reset_password');
+
+Route::post('/user/pay', 'IndexController@deal_payment');
 
 
 Route::get('/order/new', 'IndexController@new_order');
