@@ -9,6 +9,7 @@
     <meta name="full-screen" content="yes">
     <meta name="description" content="Book your best diving trip，every diving trip with Dreamdivingtrip,the world’s best diving booking site.Your free personal diving assistant.">
     <meta name="keywords" content="diving vacation, diving vacations, diving vacation packages, diving vacation package, diving travel package, diving travel packages, diving travel, diving trip package, diving trip packages, diving trip,planning, hotel, hotels, motel, bed and breakfast, inn, guidebook, review, reviews, popular, plan, airfare, cheap, discount, map, maps, golf, ski, articles, attractions, advice, restaurants">
+    <link href="/css/datePick.css" rel="stylesheet">
     <link href="/css/semantic.min.css" rel="stylesheet">
     <link href="/css/product.css" rel="stylesheet">
     <title>Dreamdivingtrip.com: Online Booking for Scuba Diving,Liveaboard and Courses all around the world</title>
@@ -52,11 +53,11 @@
                   <div class="three fields">
                       <div class="field">
                         <label for="">Start Date</label>
-                        <input type="text" class="date-pick" id="input_start_date">
+                        <input type="text" class="date-pick " id="input_start_date">
                       </div>
                       <div class="field">
                         <label for="">End Date</label>
-                        <input type="text" class="date-pick" id="input_end_date">
+                        <input type="text" class="date-pick " id="input_end_date">
                       </div>
                       <div class="field">
                         <label for="">Divers</label>
@@ -186,14 +187,14 @@
                         </div>
                         <div class="two fields">
                             <div class="field">
-                                <input type="tel" class="cc-exp" autocomplete="cc-exp" placeholder="MM/YY" required>
+                                <input type="tel" class="cc-exp" autocomplete="cc-exp" data-stripe="exp" placeholder="MM/YY" required>
                             </div>
                             <div class="field">
                                 <input type="tel" class="cc-cvc" autocomplete="off" data-stripe="cvc"  placeholder="CVC" required>
                             </div>
                         </div>
                         <div class="field">
-                            <input type="tel" placeholder="postalcode" data-numeric  class=" cc-postalcode" >
+                            <input type="tel" placeholder="postalcode" data-numeric data-stripe="address_zip"  class=" cc-postalcode" >
                         </div>
                         <button class="ui submit teal fluid button" type="submit">Instant Book</button>
                         <p>We will recommond a dive center foryou.Or you could <a href="">Pick</a> a dive center toserve your trip</p>                   

@@ -13,8 +13,8 @@ $('.ui.right.arrow').on('click',function(){
 $('.row.images').on("click",".ui.image",imgClick);
 $("#pptclose").on("click", destoryPowPoint);
 $(function(){
-    
- (function(){
+
+    (function(){
 
       $('.cc-postalcode').payment('restrictNumeric');
       $('.cc-number').payment('formatCardNumber');
@@ -66,30 +66,30 @@ $(function(){
                 // Submit the form:
                 $form.get(0).submit();
             }
-        };
+        }
         function showError(text){
             $('.payment-errors').text(text).show();
             setTimeout(function() {
                 $('.payment-errors').hide();
-            }, 3000);
+            }, 10000);
         }
         function verifyOrder(){
-            var orderForm={ 
-                passengers:$('#passengers option:selected').val(),
-                dateS:$('#input_start_date').val(),
-                dateE:$('#input_end_date').val(),
-                divers:$('#diviers option:selected').val(),
-                productId:$('#product').attr('productid')
+            $('#payment-form').find('input[type=hidden]').remove();           
+            var orderForm={
+                start_date:$('#input_start_date').val(),
+                end_date:$('#input_end_date').val(),
+                divers:$('#divers')[0].selectedOptions[0].innerText,
+                type:$('#passengers')[0].selectedOptions[0].innerText,
+                pid:$('#product').attr('productid')
             },checkthrough;
             for(var o  in orderForm){
                 if(!orderForm[o]){
                     checkthrough=false;
-                    return;
+                    return checkthrough;
                 }else{
                     checkthrough=true;
                     $('#payment-form').append($('<input type="hidden" name="'+o+'">').val(orderForm[o])) 
-                }
-                             
+                }                            
             }
             return checkthrough;
         }
