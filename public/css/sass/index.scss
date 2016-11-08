@@ -347,7 +347,10 @@
 }
 #diving .third-sec .cards>.card{
    margin: .5em .55em 0;
-   width: 31.7%;
+   width: 31.7%; 
+}
+#diving .third-sec .cards>.card:nth-child(n+3){
+   margin-top: 1.1rem;
 }
 @keyframes showIn{
     0%{
@@ -365,6 +368,7 @@
         animation: showIn 320ms*(4-$i) cubic-bezier(0.01, 0.36, 0.21, 1);
       }
   }
+      
 }
 @media only screen and (max-width: 767px){
   #diving .third-sec .cards>.card{

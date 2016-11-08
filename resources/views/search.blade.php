@@ -234,7 +234,7 @@
     <div class="ui container result-item">
       @if(isset($v[0]['city_info']))
       <!--这里 data-cityid标识city_id  (2016-10-09)-->
-      <div class="current-site" data-cityid="29" data-positionid="281">
+      <div class="current-site" data-cityid="" data-positionid="">
         <div class="ui grid">
             <div class="w67 wide column">
                <h2 class="ui header">{{ $v[0]['city_info']['name'] }}</h2>
@@ -302,9 +302,9 @@
       </div>
       <div class="see-more-button">
         @if(isset($v[0]['city_info']))
-        <div class="ui center aligned container "><button class="ui basic button" position="" city="{{ $v[0]['city_info']['id'] }}">    See All Locate Dive Sites    </button></div>
+        <div class="ui center aligned container "><button class="ui basic button" position="" city="{{ $v[0]['city_info']['id'] }}">    See More Locate Dive Sites    </button></div>
         @else
-        <div class="ui center aligned container "><button class="ui basic button" position="{{ $v[0]['id'] }}" city="">    See All Locate Dive Sites    </button></div>
+        <div class="ui center aligned container "><button class="ui basic button" position="{{ $v[0]['id'] }}" city="">    See More Locate Dive Sites    </button></div>
         @endif
       </div>
       <div class="ui divider"> </div>
@@ -374,7 +374,7 @@
         </div>
       </div>
       <div class="see-more-button">
-        <div class="ui center aligned container "><button class="ui basic button">    See All Locate Dive Sites    </button></div>
+        <div class="ui center aligned container "><button class="ui basic button">    See More Locate Dive Sites    </button></div>
       </div>
       <div class="ui divider"> </div>
     </div> -->

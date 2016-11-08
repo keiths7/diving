@@ -18,7 +18,7 @@
      <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 </head>
 <body id="product" productid='{{ $product['id'] }}'>
-  @include('layouts.header');
+  @include('layouts.header')
   <section class="first-sec">
     <img src="/images/index/top_bg.jpg" alt="">
   </section>
@@ -36,7 +36,7 @@
                 <h2 class="ui header">{{ $product['name'] }}</h2>
                 <div class="ui icon">
                   <i class="marker icon"></i><span>{{ $product['positions'][0]['country']['name'] }},{{ $product['positions'][0]['city']['name'] }}</span>
-                  <div class="ui large star rating" data-max-rating="5" data-rating="3"></div>
+                  <div class="ui large star rating" data-max-rating="5" data-rating="5"></div>
                 </div>
             </div>
             <div class="p30 right column">
@@ -254,7 +254,7 @@
   </div>
   <!--footer  -->
   @include('layouts.footer')
-  @include('layouts.loginer');
+  @include('layouts.loginer')
 <script type="text/javascript">
     Stripe.setPublishableKey('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
 </script>

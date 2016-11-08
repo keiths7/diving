@@ -57,10 +57,9 @@ $('.apply-buttons').on('click','.ok',function(){
     location.href='/search?'+$.param(paramData);
 })
 $('.see-more-button').on('click',function(){
-  var $currentSite=$(this).siblings('.current-site');
   var $moreSite=$(this).siblings('.diving-sites');
-    paramData.city_id=$currentSite.data('cityid');
-    paramData.diving_id=$currentSite.data('positionid')
+    paramData.city_id=$(this).attr('city');
+    paramData.diving_id=$(this).attr('position')
     // $.ajax({
     //           url:'/search/get_more',
     //           type:'GET',
@@ -79,7 +78,7 @@ $('.see-more-button').on('click',function(){
               '<div class="ui image">',
               '<img src="/images/search/list_1.jpg" alt="">',
               '<aside class="">$ 2300 </aside>',
-              '<p>标题</p>',
+              '<p>Crynoid Canyon</p>',
               '<p><span>tags</span></p>',
               '</div></div>',
             ].join('');
@@ -89,6 +88,13 @@ $('.see-more-button').on('click',function(){
         html+=v;
     })
     html+'</div>';
-    $moreSite.find('.ui.grid').append(html);
-    
+    $moreSite.find('.ui.grid').append(html);   
 })
+function parseParam(name){
+  var queryReg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+  var queryStr = location.search.substr(1).match(queryReg);
+  if(queryStr !== null){
+      return decodeURIComponent(queryStr[2]);
+  }
+  return null;
+}

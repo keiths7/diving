@@ -55,7 +55,7 @@ function signIn(){
                     $('header.ui.bar  .right.menu').text(r.user)
                     signInDialog.modal('hide');  
                 }else{
-                    alert('sorry , someting wrong ')
+                    alert('sorry , someting went wrong ')
                 }
 
             })
@@ -78,8 +78,12 @@ function signUp(){
           },
           function(r){
                     console.log(r);
-                    alert('registration succeeded!');
-                    signInAlert();
+                    if(r.message=='success'){
+                      alert('registration succeeded!');
+                      signInAlert();
+                    }else{
+                      alert(r.message);
+                    }                
           })
     }else{
       alert('Please fill in all options ~');

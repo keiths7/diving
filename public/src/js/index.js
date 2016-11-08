@@ -115,6 +115,7 @@ function search(dest){
      }
 }
 function seeMoreDestination(){
+    var $this=$(this);
     $.ajax({
         url:'/popular/more',
         type:'GET',
@@ -136,6 +137,7 @@ function seeMoreDestination(){
                 </a>`;
             })
             $('.third-sec .cards').append(tpl);
+            $this.remove();
         },
         error:function(err){
               
