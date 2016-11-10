@@ -274,9 +274,9 @@
             @foreach($v as $num => $val)
               <div class="column">
                 <div class="ui image">
-                  <img src="{{ $val['position_image'] }}" alt="">
+                  <a href="/product/{{ $val['id'] }}"><img src="{{ $val['position_image'] }}" alt=""></a>
                   <aside class="">$ {{ $val['price'] }}  </aside>
-                  <p>{{ $val['name'] }}</p>
+                  <a href="/product/{{ $val['id'] }}"><p>{{ $val['name'] }}</p></a>
                   <p><span>tags</span></p>
                 </div>
               </div>
