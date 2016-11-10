@@ -60,35 +60,35 @@ $('.see-more-button').on('click',function(){
   var $moreSite=$(this).siblings('.diving-sites');
     paramData.city_id=$(this).attr('city');
     paramData.diving_id=$(this).attr('position')
-    // $.ajax({
-    //           url:'/search/get_more',
-    //           type:'GET',
-    //           data:paramData,
-    //           success:function(r){
-    //                       console.log(r);
-                           
-    //           },
-    //           error:function(err){
-                     
-    //           }
-    // })
-    var html='<div class="row">';
-    var tpl=[
-              '<div class="column">',
-              '<div class="ui image">',
-              '<img src="/images/search/list_1.jpg" alt="">',
-              '<aside class="">$ 2300 </aside>',
-              '<p>Crynoid Canyon</p>',
-              '<p><span>tags</span></p>',
-              '</div></div>',
-            ].join('');
-    var arrs=[];
-    arrs.push(tpl);arrs.push(tpl);arrs.push(tpl);
-    $(arrs).each(function(k,v){
-        html+=v;
+    $.ajax({
+              url:'/search/get_more',
+              type:'GET',
+              data:paramData,
+              success:function(r){
+                if(r instanceof Array && r.length>0){
+                    var tpls='<div class="row">';
+                    r.forEach(function(v,k){
+                        tpls+=[
+                                '<div class="column">',
+                                '<div class="ui image">',
+                                '<img src="'+v.position_image+'" alt="">',
+                                '<aside class="">$ '+v.price+' </aside>',
+                                '<p>'+v.name+'</p>',
+                                '<p><span>tags</span></p>',
+                                '</div></div>',
+                              ].join('')
+                    })
+                    tpls+='</div>';
+                    $moreSite.find('.ui.grid').append(html); 
+                }else{
+                    alert('Did not get more data..');  
+                }                  
+              },
+              error:function(err){
+                   alert('sorry ,someting went wrong..')  
+              }
     })
-    html+'</div>';
-    $moreSite.find('.ui.grid').append(html);   
+       
 })
 function parseParam(name){
   var queryReg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
