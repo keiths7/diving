@@ -16,7 +16,7 @@
 </head>
 <body id="search">
   <!-- header bar -->
-  @include('layouts.header');
+  @include('layouts.header')
 
   <section class="s-condition">
     <div class="ui container">
@@ -470,7 +470,7 @@
   </div>
 </footer>
 @include('layouts.footer')
-@include('layouts.loginer');
+@include('layouts.loginer')
 
 <script src="/js/datePick.js"></script>
 <script src="/js/search.js" charset="utf-8"></script>
