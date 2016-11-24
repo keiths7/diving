@@ -85,7 +85,7 @@
             <div class="two wide column">
                <div class="ui fluid input">
                 <div class="ui fluid  selection dropdown passengers">
-                    <input type="hidden" name="country">
+                    <input type="hidden" name="passenger">
                     <i class="dropdown icon"></i>
                     <div class="default text">Passengers</div>
                     <div class="menu">
@@ -578,7 +578,7 @@
                   <img class="ui icon image" src="/images/index/how_to_book_3.png">
                   Get travel-ready
                 </a>
-                <p>We get in touch with your dive center as soon as you book to verify all the details such as transfer, language of course materials & more! Prior to your arrival we will contact dive center with a friendly reminder. Divebooker.com is here to serve you 24/7!
+                <p>We get in touch with your dive center as soon as you book to verify all the details such as transfer, language of course materials & more! Prior to your arrival we will contact dive center with a friendly reminder. dreamdivingtrip.com is here to serve you 24/7!
                 </p>
               </div>
             </div>
@@ -587,9 +587,9 @@
     </section>
     <!-- how to book  结束 -->
     <!-- footer 开始 -->
-@include('layouts.footer');
+@include('layouts.footer')
 </div>
-@include('layouts.loginer');
+@include('layouts.loginer')
 <div class="ui basic inverted small modal indev">
   <h2 class="ui icon header">
     <img class="ui icon image" src="/images/index/logo.png">

@@ -2,16 +2,16 @@
       <div class="ui  menu ">
         <div class="item">
           <div class="ui logo shape">
-            <div class="sides">
-              <div class="active ui side">
+            <div class="sides"> 
+              <a class="active ui side" href="/">
                 <img class="ui  image"  src="/images/logo-black.png">
-              </div>
+              </a>
             </div>
           </div>
         </div>
         <div class="item">
           <div class="ui transparent left icon input">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="Search..." id="top_search_input">
             <i class="search icon"></i>
           </div>
         </div>       
@@ -38,6 +38,16 @@
         });
         $('.ui.modal').on('click','.signin-button',signIn)
         $('.ui.modal').on('click','.signup-button',signUp);
+        $('#top_search_input').on('keydown',function(e){
+            if(e.keyCode==13){
+              var val=$(this).val().trim();
+              if(val){
+                var href=/destination\=\w*/.test(location.href)?
+                location.href.replace(/destination\=\w*/,'destination='+$(this).val()):location.href+'?destination='+$(this).val()
+                location.href=href;
+              }
+            }
+        })
     })
 
 
@@ -55,7 +65,7 @@ function signIn(){
                     $('header.ui.bar  .right.menu').text(r.user)
                     signInDialog.modal('hide');  
                 }else{
-                    alert('sorry , someting wrong ')
+                    alert('sorry , someting went wrong ')
                 }
 
             })
@@ -78,8 +88,12 @@ function signUp(){
           },
           function(r){
                     console.log(r);
-                    alert('registration succeeded!');
-                    signInAlert();
+                    if(r.message=='success'){
+                      alert('registration succeeded!');
+                      signInAlert();
+                    }else{
+                      alert(r.message);
+                    }                
           })
     }else{
       alert('Please fill in all options ~');

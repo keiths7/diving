@@ -259,8 +259,14 @@
             <div class="w33 wide column">
                   <h4 class="ui header">palo alto</h4>
                   <p>{{ $v[0]['city_info']['description'] }}</p>
-                  <div class="ui image">
-                    <img src="/images/search/map.jpg" alt="">
+                  <div class="map">                         
+                          <iframe
+                              width="100%"
+                              height="214"
+                              frameborder="0" style="border:0"
+                              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDpAZPEL4ft0aDFecsqzDO-irOoXs2x5TA
+                                &q={{ $v[0]['city_info']['name'] }},{{ $v[0]['city_info']['name'] }}+," allowfullscreen>
+                            </iframe>
                   </div>
             </div>
         </div>
@@ -277,29 +283,13 @@
                   <a href="/product/{{ $val['id'] }}"><img src="{{ $val['position_image'] }}" alt=""></a>
                   <aside class="">$ {{ $val['price'] }}  </aside>
                   <a href="/product/{{ $val['id'] }}"><p>{{ $val['name'] }}</p></a>
-                  <p><span>tags</span></p>
                 </div>
               </div>
               @endforeach
-              <!-- <div class="column">
-                <div class="ui image">
-                  <img src="/images/product/bottom_2.jpg" alt="">
-                  <aside class="">$ 1029  </aside>
-                  <p>Lorem ipsum dolor sit amet, sapien</p>
-                  <p><span>wreck/big animal  Luxury PADI</span></p>
-                </div>
-              </div>
-              <div class="column">
-                <div class="ui image">
-                  <img src="/images/product/bottom_3.jpg" alt="">
-                  <aside class="">$ 1029  </aside>
-                  <p>A description of this dive center</p>
-                  <p><span>tags</span></p>
-                </div>
-              </div> -->
           </div>
         </div>
       </div>
+      <!-- 查看更多locate sites-->
       <div class="see-more-button">
         @if(isset($v[0]['city_info']))
         <div class="ui center aligned container "><button class="ui basic button" position="" city="{{ $v[0]['city_info']['id'] }}">    See More Locate Dive Sites    </button></div>
@@ -307,168 +297,12 @@
         <div class="ui center aligned container "><button class="ui basic button" position="{{ $v[0]['id'] }}" city="">    See More Locate Dive Sites    </button></div>
         @endif
       </div>
-      <div class="ui divider"> </div>
-    </div>
+
+    <div class="ui divider"> </div>
     @endforeach
     @endif
-    <!-- 第二条 -->
-    <!-- <div class="ui container result-item">
-      <div class="current-site">
-        <div class="ui grid">
-            <div class="w67 wide column">
-               <h2 class="ui header">Pataya</h2>
-               <div class="ui image">
-                   <div class="ui dimmer active">
-                     <div class="content">
-                       <div class="center">
-                         <div class="ui icon left floated"><i class="angle left icon"></i></div>
-                         <div class="ui icon right floated"><i class="angle right icon"></i></div>
-                       </div>
-                     </div>
-                   </div>
-                  <img src="/images/search/list_2.jpg" alt="">
-               </div>
-            </div>
-            <div class="w33 wide column">
-                  <h4 class="ui header">palo alto</h4>
-                  <p>sapien etiam, nunc amet dolor ac odio mauris justo. Luctus arcu,
-                    urna praesent at id quisque ac. Arcu es massa vestibulum malesuada,
-                    integer sapien etiam, nunc amet dolor ac odio mauris justo.
-                    Luctus arcu, urna praesent at.
-                  </p>
-                  <div class="ui image">
-                    <img src="/images/search/map.jpg" alt="">
-                  </div>
-            </div>
-        </div>
-      </div>
-      <div class="row diving-sites">
-          <h4 class="ui header">Locate Dive Sites</h4>
-        <div class="ui three column grid">
-          <div class="row">
-              <div class="column">
-                <div class="ui image">
-                  <img src="/images/product/bottom_1.jpg" alt="">
-                  <aside class="">$ 1029  </aside>
-                  <p>A description of this dive center</p>
-                  <p><span>tags</span></p>
-                </div>
-              </div>
-              <div class="column">
-                <div class="ui image">
-                  <img src="/images/product/bottom_2.jpg" alt="">
-                  <aside class="">$ 1029  </aside>
-                  <p>Lorem ipsum dolor sit amet, sapien</p>
-                  <p><span>wreck/big animal  Luxury PADI</span></p>
-                </div>
-              </div>
-              <div class="column">
-                <div class="ui image">
-                  <img src="/images/product/bottom_3.jpg" alt="">
-                  <aside class="">$ 1029  </aside>
-                  <p>A description of this dive center</p>
-                  <p><span>tags</span></p>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
-      <div class="see-more-button">
-        <div class="ui center aligned container "><button class="ui basic button">    See More Locate Dive Sites    </button></div>
-      </div>
-      <div class="ui divider"> </div>
-    </div> -->
 </section>
 <!-- footer -->
-<footer class="footer-sec ui black inverted vertical footer segment">
-  <div class="ui center aligned container">
-    <div class="ui stackable inverted centered four column grid">
-      <div class="row">
-      <div class="column">
-        <h4 class="ui inverted header">Dream Scubatrip</h4>
-        <div class="ui inverted bolded divider "></div>
-        <div class="ui inverted link list">
-          <a class="item" href="https://www.transifex.com/organization/semantic-org/" target="_blank">
-            <i class="marker icon"></i>
-            BEIJING
-          </a>
-          <div class="ui inverted divider"></div>
-          <a class="item" href="https://github.com/Semantic-Org/Semantic-UI/issues" target="_blank">
-            <i class="phone icon"></i>
-            +86 18911189901
-          </a>
-          <div class="ui inverted divider"></div>
-          <a class="item" href="https://gitter.im/Semantic-Org/Semantic-UI" target="_blank">
-            <i class="mail outline icon"></i>
-            market@dreamdivingtrip.com
-          </a>
-        </div>
-      </div>
-      <div class="column">
-        <h4 class="ui inverted header">TAG</h4>
-        <div class="ui inverted bolded divider"></div>
-        <div class="ui   tiny labels">
-          <div class="ui inverted  label">BIG ANIMAL</div>
-          <div class="ui inverted label">STORE</div>
-          <div class="ui inverted label">HO</div>
-          <div class="ui inverted label">WALL</div>
-          <div class="ui inverted label">GO DIVING</div>
-          <div class="ui inverted label">SHADOW</div>
-          <div class="ui inverted label">FREEEEE</div>
-        </div>
-      </div>
-      <div class="column">
-        <h4 class="ui inverted header">GALLERY</h4>
-        <div class="ui inverted bolded divider"></div>
-        <!-- 底部的图片 -->
-        <div class="ui link three cards">
-            <div class="card">
-              <div class="image"><img src="/images/index/gallery.png" alt=""></div>
-            </div>
-            <div class="card">
-              <div class="image"><img src="/images/index/gallery.png" alt=""></div>
-            </div>
-            <div class="card">
-              <div class="image"><img src="/images/index/gallery.png" alt=""></div>
-            </div>
-            <div class="card">
-              <div class="image"><img src="/images/index/gallery.png" alt=""></div>
-            </div>
-            <div class="card">
-              <div class="image"><img src="/images/index/gallery.png" alt=""></div>
-            </div>
-        </div>
-      </div>
-      <div class="column">
-        <h4 class="ui inverted header">CONTACT US</h4>
-        <div class="ui inverted bolded divider"></div>
-        <form class="ui form" >
-          <div class=" ui field  input ">
-            <input type="text" name="email" placeholder="email">
-          </div>
-          <div class=" ui field  input">
-            <input type="text" name="message" placeholder="message">
-          </div>
-          <button class="ui mini teal button" type="submit">SEND</button>
-        </form>
-      </div>
-      </div>
-    </div>
-    <div class="ui  hidden  divider"></div>
-    <div class="ui two column grid">
-      <div class="seven wide left floated column">
-          <div class="ui inverted link list">
-            <a href="#" class="item">COPY RIGHT 2016 BY DREAMSCUBATRIP</a>
-          </div>
-      </div>
-      <div class="three wide right floated column">
-         <i class="bordered inverted  teal  twitter  icon"></i>&nbsp;
-         <i class="bordered inverted  red  google plus  icon"></i>&nbsp;
-         <i class="bordered inverted  blue facebook  icon"></i>
-      </div>
-    </div>
-  </div>
-</footer>
 @include('layouts.footer')
 @include('layouts.loginer')
 

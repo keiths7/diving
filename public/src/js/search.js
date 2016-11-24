@@ -57,6 +57,7 @@ $('.apply-buttons').on('click','.ok',function(){
     location.href='/search?'+$.param(paramData);
 })
 $('.see-more-button').on('click',function(){
+  
   var $moreSite=$(this).siblings('.diving-sites');
     paramData.city_id=$(this).attr('city');
     paramData.diving_id=$(this).attr('position')

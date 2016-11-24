@@ -5,9 +5,9 @@
     <h3>Book your diving trips all in one place</h3>
   </div>
   <div class=" loginby-facebook">
-    <button class="ui blue button fluid"><i class="ui facebook icon"></i>Sign In With Facebook</button>
+    <!--<button class="ui blue button fluid"><i class="ui facebook icon"></i>Sign In With Facebook</button>-->
   </div>
-  <div class="ui horizontal divider mt-4">or</div>
+  <!--<div class="ui horizontal divider mt-4">or</div>-->
   <div class="forms">
       <div class="ui fluid icon input">
         <input type="text" id="signin-email-input" placeholder="type your email address...">
@@ -35,9 +35,9 @@
     <h3>Book your diving trips all in one place</h3>
   </div>
   <div class=" loginby-facebook">
-    <button class="ui blue button fluid"><i class="ui facebook icon"></i>Sign In With Facebook</button>
+    <!--<button class="ui blue button fluid"><i class="ui facebook icon"></i>Sign In With Facebook</button>-->
   </div>
-  <div class="ui horizontal divider mt-4">or</div>
+  <!--<div class="ui horizontal divider mt-4">or</div>-->
   <div class="forms">
       <div class="ui fluid icon input">
         <input type="text" id="signup-email-input" placeholder="type your email address...">
