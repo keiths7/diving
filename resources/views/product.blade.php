@@ -256,7 +256,7 @@
   @include('layouts.footer')
   @include('layouts.loginer')
 <script type="text/javascript">
-    Stripe.setPublishableKey('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+    Stripe.setPublishableKey('pk_test_2xuU5EtdDAsIvcwLt1MWz91E');
 </script>
 <script src="/js/payment.min.js"></script>
 <script src="/js/iScroll.min.js" charset="utf-8"></script>

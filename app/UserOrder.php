@@ -19,7 +19,7 @@ class UserOrder extends Model
         'start_date'=>'required|date|between:10,10',
         'end_date'=>'required|date|between:10,10',
         'pid'=>'required|alpha_num|between:1,10',
-        'type'=>'required|alpha|between:1,10',
+        // 'type'=>'required|alpha|between:1,10',
     );
 
 
@@ -90,6 +90,7 @@ class UserOrder extends Model
 
     public function calculate_money($params)
     {
+        return 50;
         return $params['divers'] * $params['type'];
     }
 

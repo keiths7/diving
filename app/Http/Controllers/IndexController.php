@@ -188,7 +188,7 @@ class IndexController extends Controller
             return json_encode(['code'=>1, 'message'=>$validator->messages()->first()]);
         }
 
-        \Stripe\Stripe::setApiKey("sk_test_BQokikJOvBiI2HlWgH4olfQ2");
+        \Stripe\Stripe::setApiKey("sk_test_7c5DGQWsdSjJ30rH875Aei34");
 
         // Get the credit card details submitted by the form
         $token = $request->input('stripeToken', '');

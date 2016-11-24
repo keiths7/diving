@@ -289,7 +289,8 @@
           </div>
         </div>
       </div>
-      <!-- 查看更多locate sites-->
+
+      @if(count($v) == 3)
       <div class="see-more-button">
         @if(isset($v[0]['city_info']))
         <div class="ui center aligned container "><button class="ui basic button" position="" city="{{ $v[0]['city_info']['id'] }}">    See More Locate Dive Sites    </button></div>
@@ -297,12 +298,14 @@
         <div class="ui center aligned container "><button class="ui basic button" position="{{ $v[0]['id'] }}" city="">    See More Locate Dive Sites    </button></div>
         @endif
       </div>
-
-    <div class="ui divider"> </div>
+      @endif
+      
+      <div class="ui divider"> </div>
+    </div>
     @endforeach
     @endif
 </section>
-<!-- footer -->
+
 @include('layouts.footer')
 @include('layouts.loginer')
 

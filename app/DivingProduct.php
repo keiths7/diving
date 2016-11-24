@@ -390,44 +390,51 @@ class DivingProduct extends Model
     public function get_country_product($params)
     {
         $city_ids = $this->get_country_city_id($params['country_id'], $params['page'], $params['per_page']);
-        $query = DB::table('diving_product')
-                ->join('diving_shop', 'diving_shop.id', '=', 'diving_product.shop_id')
-                ->leftJoin('product_position', 'product_position.pro_id', '=', 'diving_product.id')
-            ->leftJoin('diving_position', 'diving_position.id', '=', 'product_position.pos_id')
-                ->select('diving_product.*', 'diving_position.city_id', 'diving_position.id as pos_id');
+        $result = array();
+        foreach($city_ids as $c) {
+            $query = DB::table('diving_product')
+                    ->join('diving_shop', 'diving_shop.id', '=', 'diving_product.shop_id')
+                    ->leftJoin('product_position', 'product_position.pro_id', '=', 'diving_product.id')
+                ->leftJoin('diving_position', 'diving_position.id', '=', 'product_position.pos_id')
+                    ->select('diving_product.*', 'diving_position.city_id', 'diving_position.id as pos_id');
 
-//        $query = $query->leftJoin('diving_position', 'diving_position.id', '=', 'product_position.pos_id');
-        // $query = $query->where('diving_position.country_id', '=',$params['country_id']);
-                $query = $query->whereIn('diving_position.city_id', $city_ids);
+    //        $query = $query->leftJoin('diving_position', 'diving_position.id', '=', 'product_position.pos_id');
+            // $query = $query->where('diving_position.country_id', '=',$params['country_id']);
+                    // $query = $query->whereIn('diving_position.city_id', $city_ids);
 
-        if(array_key_exists('price_start', $params))
-        {
-            $query = $query->whereBetween('price', [intval($params['price_start']), intval($params['price_end'])]);
+            if(array_key_exists('price_start', $params))
+            {
+                $query = $query->whereBetween('price', [intval($params['price_start']), intval($params['price_end'])]);
+            }
+            if(array_key_exists('lang', $params) && $params['lang'])
+            {
+                $langs = explode('-', $params['lang']);
+                $query = $query->leftJoin('shop_language', 'shop_language.sid', '=', 'diving_shop.id');
+                $query = $query->whereIn('lid', $langs);
+            }
+            if(array_key_exists('dive_type', $params) && $params['dive_type'])
+            {
+                $query = $query->where('type', $params['dive_type']);
+            }
+            if(array_key_exists('dest', $params) && $params['dest'])
+            {
+                $dests = explode('-', $params['dest']);
+                // $query = $query->leftJoin('product_position', 'product_position.pro_id', '=', 'diving_product.id');
+                $query = $query->whereIn('diving_position.city_id', $dests);
+            }
+            if(array_key_exists('offer', $params) && $params['offer'])
+            {
+                $dests = explode('-', $params['offer']);
+                $dests = array_map(function($val){return intval($val);}, $dests);
+                $query = $query->leftJoin('shop_dive_offer', 'shop_dive_offer.sid', '=', 'diving_shop.id');
+                $query = $query->whereIn('shop_dive_offer.offer', $dests);
+            }
+        
+            $query = $query->where('diving_position.city_id', $c);
+            $query = $query->groupBy('diving_product.id')->take(3);
+            $result = array_merge($result, $query->get());
         }
-        if(array_key_exists('lang', $params) && $params['lang'])
-        {
-            $langs = explode('-', $params['lang']);
-            $query = $query->leftJoin('shop_language', 'shop_language.sid', '=', 'diving_shop.id');
-            $query = $query->whereIn('lid', $langs);
-        }
-        if(array_key_exists('dive_type', $params) && $params['dive_type'])
-        {
-            $query = $query->where('type', $params['dive_type']);
-        }
-        if(array_key_exists('dest', $params) && $params['dest'])
-        {
-            $dests = explode('-', $params['dest']);
-            // $query = $query->leftJoin('product_position', 'product_position.pro_id', '=', 'diving_product.id');
-            $query = $query->whereIn('diving_position.city_id', $dests);
-        }
-        if(array_key_exists('offer', $params) && $params['offer'])
-        {
-            $dests = explode('-', $params['offer']);
-            $dests = array_map(function($val){return intval($val);}, $dests);
-            $query = $query->leftJoin('shop_dive_offer', 'shop_dive_offer.sid', '=', 'diving_shop.id');
-            $query = $query->whereIn('shop_dive_offer.offer', $dests);
-        }
-        $query = $query->groupBy('diving_product.id')->skip($params['page']*$params['per_page'])->take($params['per_page']);;
+
 //         $result = $query->get();
         
 //         $ret = array();
@@ -461,7 +468,7 @@ class DivingProduct extends Model
 
 //         return $ret;
         //============================================ new version =========================================
-        $result = $query->get();
+        // $result = $query->get();
         
         $ret = array();
         foreach ($result as $key => $val) {
