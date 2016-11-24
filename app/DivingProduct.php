@@ -429,7 +429,7 @@ class DivingProduct extends Model
         }
         $result = array();
         foreach($city_ids as $c) {
-            $query = $query->whereIn('diving_position.city_id', $city_ids);
+            $query = $query->where('diving_position.city_id', $c);
             $query = $query->groupBy('diving_product.id')->take(3);
             $result = array_merge($result, $query->get());
         }
