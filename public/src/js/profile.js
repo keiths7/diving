@@ -74,7 +74,7 @@ function loadUserInfo(){
             $('#height').val(r.height);  
             $('#weight').val(r.weight);  
             $('#shoes_size').val(r.shoes_size);
-            var selIndex=r.gender=='男'?0:1;
+            var selIndex=r.gender=='Man'?0:1;
             $('#gender')[0].selectedIndex=selIndex;
         }else{
             alert(r.message);

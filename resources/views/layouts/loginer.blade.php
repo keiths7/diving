@@ -14,7 +14,7 @@
         <i class="mail icon"></i>
       </div>
       <div class="ui fluid icon input">
-        <input type="text" id="signin-password-input" placeholder="type your password ...">
+        <input type="password" id="signin-password-input" placeholder="type your password ...">
         <i class="lock icon"></i>
       </div>
       <div class="tr mt-2 mb-4">Forgot?</div>
@@ -44,11 +44,11 @@
         <i class="mail icon"></i>
       </div>
       <div class="ui fluid icon input">
-        <input type="text" id="signup-password-input" placeholder="type your password between 6 and 12 characters ...">
+        <input type="password" id="signup-password-input" placeholder="type your password between 6 and 12 characters ...">
         <i class="lock icon"></i>
       </div>
       <div class="ui fluid icon input">
-        <input type="text" id="signup-confirm-password-input" placeholder="type your password again ...">
+        <input type="password" id="signup-confirm-password-input" placeholder="type your password again ...">
         <i class="lock icon"></i>
       </div>
       <div class="ui fluid icon input">
