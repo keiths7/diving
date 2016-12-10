@@ -150,25 +150,30 @@ function seeMoreDestination() {
 }
 
 function signIn() {
-    // $('header.ui.bar  .right.menu').addClass('signed');
-    // return;
     var email = $('#signin-email-input').val(),
         password = $('#signin-password-input').val();
-    console.log(email, password)
     if (email && password) {
-        $.get('/user/login/', {
+
+         $.ajax({
+            url: '/user/login/',
+            type: 'GET',
+            data: {
             email: email,
             password: password
-        }, function (r) {
-            console.log(r);
-            if (r.message == "success") {
-                $('header.ui.bar  .right.menu').addClass('signed');
-                $('header.ui.bar  .right.menu').text(r.user)
-                signInDialog.modal('hide');
-            } else {
-                alert('sorry , someting  went wrong ')
+            },
+            success: function (r) {
+                console.log(r);
+                if (r.message == "success") {
+                    $('header.ui.bar  .right.menu').addClass('signed');
+                    $('header.ui.bar  .right.menu').text(r.user)
+                    signInDialog.modal('hide');
+                } else {
+                    alert(r.message);
+                }
+            },
+            error: function (err) {
+                alert('Sorry,the server was wrong')
             }
-
         })
     } else {
         alert('Please fill in all options ~');
@@ -192,7 +197,6 @@ function signUp() {
                 name: name
             },
             success: function (r) {
-                console.log(r);
                 if (r.code == 0) {
                     signInAlert();
                 } else {
@@ -200,7 +204,7 @@ function signUp() {
                 }
             },
             error: function (err) {
-                alert()
+                alert('Sorry,the server was wrong')
             }
         })
 
