@@ -17,7 +17,7 @@
 </head>
 <body id="profile">
   <!-- header bar -->
-@include('layout.header');
+@include('layout.header')
 <section class="profile-tab">
     <div class="ui container">
         <div class="ui four column grid">
@@ -203,7 +203,7 @@
 </section>
 <!-- footer -->
 @include('layout.footer')
-@include('layout.loginer');
+@include('layout.loginer')
 
 <script src="/js/profile.js" charset="utf-8"></script>
     <script>

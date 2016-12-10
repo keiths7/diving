@@ -15,7 +15,7 @@
     <script src="/js/semantic.min.js" charset="utf-8"></script>
 </head>
 <body id="profile" >
-    @include('layout.header');
+    @include('layout.header')
     <section class="profile-tab">
         <div class="ui container">
             <div class="ui four column grid">
@@ -58,7 +58,7 @@
     </div>
 </section>
 @include('layout.footer')
-@include('layout.loginer');
+@include('layout.loginer')
 
 <script src="/js/profile.js" charset="utf-8"></script>
 </body>
