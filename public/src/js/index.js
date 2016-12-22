@@ -3,8 +3,6 @@ if (window.screen && screen.width) {
 } else {
     window.screenSize = 'PC';
 }
-var signUpDialog = '',
-    signInDialog = '';
 $(window).scroll(function () {
     if (window.screenSize == "MOBILE") return;
     if (document.body.scrollTop > 30) {
@@ -57,8 +55,6 @@ $('.ui.mini.teal.button').on('click', function (e) {
 
 $(function () {
         var destDOM = $('.ui.dropdown.destination');
-        signUpDialog = $('.ui.modal.signup-dialog');
-        signInDialog = $('.ui.modal.login-dialog');
         destDOM.dropdown({
             direction: 'updown',
             transition: 'slide down',
@@ -101,10 +97,7 @@ $(function () {
 
     })
     //signin,signup
-$('.ui.modal').on('click', '.signin-button', signIn)
-$('.ui.modal').on('click', '.signup-button', signUp);
-$('header.ui.bar').on('click', '.signin.item', signInAlert);
-$('header.ui.bar').on('click', '.signup.item', signUpAlert);
+
 $('.more-destination').on('click', '.ui.button', seeMoreDestination);
 
 function search(dest) {
@@ -149,91 +142,3 @@ function seeMoreDestination() {
     })
 }
 
-function signIn() {
-    var email = $('#signin-email-input').val(),
-        password = $('#signin-password-input').val();
-    if (email && password) {
-
-         $.ajax({
-            url: '/user/login/',
-            type: 'GET',
-            data: {
-            email: email,
-            password: password
-            },
-            success: function (r) {
-                console.log(r);
-                if (r.message == "success") {
-                    $('header.ui.bar  .right.menu').addClass('signed');
-                    $('header.ui.bar  .right.menu').text(r.user)
-                    signInDialog.modal('hide');
-                } else {
-                    alert(r.message);
-                }
-            },
-            error: function (err) {
-                alert('Sorry,the server was wrong')
-            }
-        })
-    } else {
-        alert('Please fill in all options ~');
-    }
-
-}
-
-function signUp() {
-    var email = $('#signup-email-input').val(),
-        password = $('#signup-password-input').val(),
-        name = $('#signup-name-input').val(),
-        password_confirmation = $('#signup-confirm-password-input').val();
-    if (email && password && name && password_confirmation) {
-        $.ajax({
-            url: '/user/register',
-            type: 'GET',
-            data: {
-                email: email,
-                password: password,
-                password_confirmation: password_confirmation,
-                name: name
-            },
-            success: function (r) {
-                if (r.code == 0) {
-                    signInAlert();
-                } else {
-                    alert(r.message);
-                }
-            },
-            error: function (err) {
-                alert('Sorry,the server was wrong')
-            }
-        })
-
-    } else {
-        alert('Please fill in all options ~');
-    }
-
-}
-
-function signOut() {
-    //  $('header.ui.bar  .right.menu').removeClass('signed'); 
-    // return;
-    $.get('/user/logout', function (r) {
-        console.log(r);
-        $('header.ui.bar  .right.menu').removeClass('signed');
-        alert('logout succeeded')
-    })
-}
-
-function signInAlert() {
-    signInDialog.modal({
-        blurring: true,
-        transition: 'fade up'
-    }).modal('show');
-}
-
-function signUpAlert() {
-    signUpDialog.modal({
-        blurring: true,
-        transition: 'fade up'
-    }).modal('show');
-}

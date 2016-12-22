@@ -31,12 +31,13 @@ var md5 = require('gulp-md5-plus'),
     // webpack = require('webpack'),
     // webpackConfig = require('./webpack.config.js');
 var options = require('gulp-options');
+var shell = require('gulp-shell');
 
 var host = {  
-    name:'localhost',
+    name:'dreamdivingtrip.com',
     path: 'build',
     port: 3000,
-    html: 'demo.html'
+    html: 'index_bak.html'
 };
 //mac chrome: "Google chrome", 
 var browser = os.platform() === 'linux' ? 'Google chrome' : (
@@ -76,7 +77,7 @@ var buildJsList=['build/js/*.js','!build/js/*.min.js'];
 
 var buildEND = options.has('prd')?'md5:css':'imagemin';
 var prdTasks = options.has('prd')&&options.has('open')?['connect','copyto:public','open']:['copyto:public']
-var devTasks = options.has('open')?['connect','imagemin','sass:dev','js:dev','html:dev','watch','open']:['connect','imagemin','sass:dev','js:dev','html:dev','watch']
+var devTasks = options.has('open')?['connect','imagemin','sass:dev','js:dev','html:dev','watch','open']:['imagemin','sass:dev','js:dev','html:dev','watch','server','open']
 
 //dev环境下的任务
 gulp.task('sass:dev',['copy:css'],function () {
@@ -205,11 +206,15 @@ gulp.task('connect',function(){
   })
 })
 
+gulp.task('server',[buildEND],function (done) {
+    gulp.src('')
+        .pipe(shell(['node server/app.js']))
+});
 gulp.task('open',[buildEND],function (done) {
     gulp.src('')
         .pipe(gulpOpen({
             app: browser,
-            uri: 'http://'+host.name+':'+host.port
+            uri: 'http://'+host.name+':'+host.port+'/'+host.html
         }))
         .on('end', done);
 });

@@ -7,45 +7,18 @@
     <meta name="format-detection" content="telephone=no,email=no">
     <meta name="apple-touch-fullscreen" content="yes">
     <meta name="full-screen" content="yes">
+    <title>Dreamdivingtrip.com: Online Booking for Scuba Diving,Liveaboard and Courses all around the world</title>
     <meta name="description" content="Book your best diving trip，every diving trip with Dreamdivingtrip,the world’s best diving booking site.Your free personal diving assistant.">
     <meta name="keywords" content="diving vacation, diving vacations, diving vacation packages, diving vacation package, diving travel package, diving travel packages, diving travel, diving trip package, diving trip packages, diving trip,planning, hotel, hotels, motel, bed and breakfast, inn, guidebook, review, reviews, popular, plan, airfare, cheap, discount, map, maps, golf, ski, articles, attractions, advice, restaurants">
     <link href="/css/datePick.css" rel="stylesheet">
     <link href="/css/semantic.min.css" rel="stylesheet">
     <link href="/css/index.css" rel="stylesheet">
-    <title>Dreamdivingtrip.com: Online Booking for Scuba Diving,Liveaboard and Courses all around the world</title>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/semantic.min.js"></script>
 </head>
 <body>
-  <div class="full height" id="diving">
-    <header class="ui following bar sticky">
-      <div class="blurring-bg"></div>
-        <div class="ui large secondary  network menu inverted">
-          <div class="item">
-            <div class="ui logo shape">
-              <div class="sides">
-                <div class="active ui side">
-                  <!-- logo img1-->
-                  <img class="ui  image light" src="/images/logo.png">
-                  <!-- logo img2 -->
-                  <img class="ui  image black"  src="/images/logo-black.png">
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- <a class="view-ui item"><i class="sidebar icon"></i>  </a> -->
-          <div class="right menu">
-            <div class="item user ui pointing dropdown">
-                 <div class="text">Welcome</div>
-                 <div class="menu">
-                   <div class="item"><a href="/profile#purchases">Purchases</a></div>
-                   <div class="item"><a href="/profile#setting">Settings</a></div>
-                   <div class="item"><a href="javascript:signOut()">Sign Out</a></div>
-                 </div>         
-            </div>
-            <div class="item signup ">Sign Up</div>
-            <div class="item signin ">Sign In</div>
-          </div>
-        </div>
-    </header>
+  <div class="full height" id="diving">  
+    @@include('component/header.html')
     <!-- 头图部分 开始 -->
     <section class="first-sec ">
       <!-- 头图 img -->
@@ -428,9 +401,6 @@
       <a href="https://www.instagram.com/dreamdivingtrip/"><img class="ui icon image" src="/images/index/ins.png"></a>
     </h2>
   </div>
-
-<script src="/js/jquery.min.js"></script>
-<script src="/js/semantic.min.js"></script>
 <script src="/js/datePick.js"></script>
 <script src="/js/index.js"></script>
 

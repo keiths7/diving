@@ -1,17 +1,17 @@
-<header class="ui following bar sticky">
+<header class="ui following bar sticky" id="P_header" style="display:none">
       <div class="blurring-bg indexshow"></div>
       <div class="ui  menu" data-class="ui  large secondary network menu inverted">
         <div class="item">
           <div class="ui logo shape">
             <div class="sides"> 
               <a class="active ui side" href="/">
-                <img class="ui  image light"  src="/images/logo-black.png">
+                <img class="ui  image light"  src="/images/logo.png">
                 <img class="ui  image black" src="/images/logo-black.png">
               </a>
             </div>
           </div>
         </div>
-        <div class="item indexhide">
+        <div class="item indexhide" style="display: none">
           <div class="ui transparent left icon input">
             <input type="text" placeholder="Search..." id="top_search_input">
             <i class="search icon"></i>
@@ -35,10 +35,12 @@
     $(function(){
         if($('#diving').length>0){
           $('.indexshow').show();
-          $('header .ui.menu').attr('class',$('header .ui.menu').data('class'))
+          $('header .ui.menu').attr('class',$('header .ui.menu').data('class'));
+          $('#P_header').addClass('index')
         }else{
           $('.indexhide').show();
         }
+        $('#P_header').fadeIn();
         $('.user.ui.dropdown').dropdown({
             on:'hover',
             action:function(){    
@@ -51,7 +53,7 @@
               var val=$(this).val().trim();
               if(val){
                 var href=/destination\=\w*/.test(location.href)?
-                location.href.replace(/destination\=\w*/,'destination='+$(this).val()):location.href+'?destination='+$(this).val()
+                location.href.replace(/destination\=\w*/,'destination='+$(this).val()):'/search?destination='+$(this).val()
                 location.href=href;
               }
             }
@@ -65,7 +67,7 @@ function signIn(){
     if (email && password) {
 
         $.ajax({
-            url: '/user/login/',
+            url: '/user/login',
             type: 'GET',
             data: {
                 email: email,
@@ -75,8 +77,8 @@ function signIn(){
                 console.log(r);
                 if (r.message == "success") {
                     $('header.ui.bar  .right.menu').addClass('signed');
-                    $('header.ui.bar  .right.menu').text(r.user);
-                    signInDialog.modal('hide');
+                    $('header.ui.bar  .right.menu .text').text(r.user.name);
+                    $('.ui.modal.login-dialog').modal('hide');
                 } else {
                     alert(r.message);
                 }
@@ -105,6 +107,8 @@ function signUp(){
                 name: name
             },
             success: function success(r) {
+              
+                console.log(r);
                 if (r.message=='success') {
                     alert('registration succeeded!');
                     signInAlert();

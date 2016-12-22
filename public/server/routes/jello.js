@@ -27,6 +27,7 @@ var JelloBase = function () {
 JelloBase.METHOD_GET = 0;
 JelloBase.METHOD_POST = 1;
 JelloBase.METHOD_PUT = 2;
+JelloBase.SHOW_VERSION = false;
 JelloBase.PATTERN_PATH = /^[\w_\/%\.]+$/gi;
 JelloBase.prototype = {
 	host: function (host) {
@@ -209,7 +210,7 @@ var HttpRequest = function (proxyConfig) {
 	}
 	this._targetRequests = null;
 	this._app = null;
-	this._acceptCookie = false;
+	this._acceptCookie = true;
 	this._muteQueryHanding = false;
 	// customiz user-agent
 	this._mUA = null;
@@ -460,27 +461,30 @@ HttpRequest.prototype = {
 				}
 				var httpType = method == JelloBase.METHOD_GET ? 'get' : 'post';
 				request[httpType](carryData, function(err, httpResponse, body) {
-					var data = _this._wrap(_start, new Date().getTime());
+					var resData = _this._wrap(_start, new Date().getTime());
 					if (err) {
-						data.error = -Number.MIN_VALUE;
-						data.msg = err.message;
+						resData.error = -Number.MIN_VALUE;
+						resData.msg = err.message;
 					} else {
-						data.error = httpResponse.statusCode >= 200 && httpResponse.statusCode < 300
+						resData.error = httpResponse.statusCode >= 200 && httpResponse.statusCode < 300
 											? 0 : httpResponse.statusCode;
 						try {
 							if(req.query.jello === JELLO_DEBUG_VIEW_REQUEST){
-								data.debug=carryData;
+								resData.debug=carryData;
 							}
 							var proxyData = JSON.parse(body);
-							data.data = proxyData
+							resData.data = proxyData
 						} catch (e) {
 							// illegal formatting?
 						}
-						data.statusCode = httpResponse.statusCode;
+						resData.statusCode = httpResponse.statusCode;
+						var data=JelloBase.SHOW_VERSION===false?resData.data:resData;
+						console.log('serverData:',data);
 						// write cookie back
 						// do accept cookie only allowed
 						if (mapping._acceptCookie === true) {
 							var cookie = httpResponse.headers['set-cookie'];
+							console.log('serverCookie:',cookie);
 							if (typeof cookie != 'undefined') {
 								resp.setHeader('Set-Cookie', cookie);
 							}
