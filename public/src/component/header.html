@@ -1,15 +1,17 @@
 <header class="ui following bar sticky">
-      <div class="ui  menu ">
+      <div class="blurring-bg indexshow"></div>
+      <div class="ui  menu" data-class="ui  large secondary network menu inverted">
         <div class="item">
           <div class="ui logo shape">
             <div class="sides"> 
               <a class="active ui side" href="/">
-                <img class="ui  image"  src="/images/logo-black.png">
+                <img class="ui  image light"  src="/images/logo-black.png">
+                <img class="ui  image black" src="/images/logo-black.png">
               </a>
             </div>
           </div>
         </div>
-        <div class="item">
+        <div class="item indexhide">
           <div class="ui transparent left icon input">
             <input type="text" placeholder="Search..." id="top_search_input">
             <i class="search icon"></i>
@@ -31,6 +33,12 @@
   </header>
   <script>
     $(function(){
+        if($('#diving').length>0){
+          $('.indexshow').show();
+          $('header .ui.menu').attr('class',$('header .ui.menu').data('class'))
+        }else{
+          $('.indexhide').show();
+        }
         $('.user.ui.dropdown').dropdown({
             on:'hover',
             action:function(){    
@@ -52,51 +60,64 @@
 
 
 function signIn(){
-    // $('header.ui.bar  .right.menu').addClass('signed');
-    // return;
-    var email=$('#signin-email-input').val(),
-        password=$('#signin-password-input').val();
-        console.log(email,password)
-        if(email&&password){
-            $.get('/user/login/',{email:email,password:password},function(r){
-                console.log(r);
-                if(r.message=="success"){
-                    $('header.ui.bar  .right.menu').addClass('signed');
-                    $('header.ui.bar  .right.menu').text(r.user)
-                    signInDialog.modal('hide');  
-                }else{
-                    alert('sorry , someting went wrong ')
-                }
+    var email = $('#signin-email-input').val(),
+        password = $('#signin-password-input').val();
+    if (email && password) {
 
-            })
-        }else{
-            alert('Please fill in all options ~');
-        }
-    
+        $.ajax({
+            url: '/user/login/',
+            type: 'GET',
+            data: {
+                email: email,
+                password: password
+            },
+            success: function success(r) {
+                console.log(r);
+                if (r.message == "success") {
+                    $('header.ui.bar  .right.menu').addClass('signed');
+                    $('header.ui.bar  .right.menu').text(r.user);
+                    signInDialog.modal('hide');
+                } else {
+                    alert(r.message);
+                }
+            },
+            error: function error(err) {
+                alert('Sorry,the server was wrong');
+            }
+        });
+    } else {
+        alert('Please fill in all options ~');
+    }
 }
 function signUp(){
-    var email=$('#signup-email-input').val(),
-        password=$('#signup-password-input').val(),
-        name=$('#signup-name-input').val(),
-        password_confirmation=$('#signup-confirm-password-input').val();
-    if(email&&password&&name&&password_confirmation){
-        $.get('/user/register',
-          {email:email,
-            password:password,
-            password_confirmation:password_confirmation,
-            name:name
-          },
-          function(r){
-                    console.log(r);
-                    if(r.message=='success'){
-                      alert('registration succeeded!');
-                      signInAlert();
-                    }else{
-                      alert(r.message);
-                    }                
-          })
-    }else{
-      alert('Please fill in all options ~');
+    var email = $('#signup-email-input').val(),
+        password = $('#signup-password-input').val(),
+        name = $('#signup-name-input').val(),
+        password_confirmation = $('#signup-confirm-password-input').val();
+    if (email && password && name && password_confirmation) {
+        $.ajax({
+            url: '/user/register',
+            type: 'GET',
+            data: {
+                email: email,
+                password: password,
+                password_confirmation: password_confirmation,
+                name: name
+            },
+            success: function success(r) {
+                if (r.message=='success') {
+                    alert('registration succeeded!');
+                    signInAlert();
+                } else {
+                    alert(r.message);
+                }
+            },
+            error: function error(err) {
+                alert('Sorry,the server was wrong');
+            }
+        });
+    } else {
+        alert('Please fill in all options ~');
     }
    
 }
