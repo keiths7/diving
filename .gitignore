@@ -9,3 +9,6 @@ Homestead.json
 .gitattributes
 uploads
 /public/build   
+build
+/build
+.gitignore
