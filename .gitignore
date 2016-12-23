@@ -8,7 +8,12 @@ Homestead.json
 .env.example
 .gitattributes
 uploads
+<<<<<<< HEAD
 /public/build   
 build
 /build
 .gitignore
+/public/build
+build   
+/build
+

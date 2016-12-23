@@ -56,7 +56,7 @@ var watchCSS = function(file){
     gulp.src(file.srcPath)
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
-                browsers: 'last 3 versions'
+                browsers: 'last 6 versions'
         }))
         .pipe(gulp.dest(file.distDir))
         .pipe(connect.reload());
@@ -85,7 +85,7 @@ gulp.task('sass:dev',['copy:css'],function () {
                 .pipe(sourcemaps.init())               
                 .pipe(sass().on('error', sass.logError))
                 .pipe(autoprefixer({
-                        browsers: 'last 3 versions'
+                        browsers: 'last 6 versions'
                  }))
                  .pipe(sourcemaps.write('./'))
                 .pipe(gulp.dest('build/css'))
@@ -140,7 +140,7 @@ gulp.task('sass',['copy:css'],function () {
     return gulp.src('build/css/sass/*.scss')
                 .pipe(sass().on('error', sass.logError))
                 .pipe(autoprefixer({
-                        browsers: 'last 2 versions'
+                        browsers: 'last 6 versions'
                  }))
                 .pipe(gulp.dest('build/css'))
 });

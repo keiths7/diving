@@ -238,29 +238,31 @@ h2.ui.header{
 
 //header bar 除index
 #P_header .ui.menu .right.menu{
+    display: none;
     .user{
         display: none;
     }
     &.signed{
-          .user{
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            margin-right: 1rem!important;
-            .text{
-                font-size: 1.1em;
-            }
-            a{
-              color: #444;
-            }
+      display: flex;
+        .user{
+          display: flex;
+          margin-right: 1rem!important;
+          .text{
+              font-size: 1.1em;
           }
-          .signup{
-            display: none;
+          a{
+            color: #444;
           }
-          .signin{
-            display: none;
-          }
+        }
+        .signup{
+          display: none;
+        }
+        .signin{
+          display: none;
+        }
+    }
+    &.unsigned{
+      display: flex;
     }
 }
 

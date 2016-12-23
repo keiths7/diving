@@ -11,7 +11,7 @@ var Proxy = function (app) {
 	var apiList=[
 					'/user/register','/user/login','/user/logout','/user/init_password',
 					'/popular/more','/user/info/update','/user/update_pay_info','/user/info',
-					'/user/pay_info','/user/order','/search/get_more'
+					'/user/pay_info','/user/order','/search/get_more','/user/islogin'
 				];
 
 	apiList.forEach(function(v,k){
